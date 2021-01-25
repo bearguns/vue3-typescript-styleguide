@@ -1,0 +1,20 @@
+$blue:#41a6c5;
+$green: #41c560;
+$orange: #ffa74e;
+$black: #2f3031;
+$red: #ff664e;
+$yellow: #ffca4e;
+$gray: #4c6375;
+$white: #ffffff;
+
+$primary: $blue;
+$info: lighten($blue, 15%);
+$success: $green;
+$danger: $red;
+$warning: $yellow;
+
+$gray-lightest: lighten($gray, 50%);
+$gray-light: lighten($gray, 25%);
+$gray-dark: darken($gray, 15%);
+
+$link: $primary;

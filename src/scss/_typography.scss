@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Source+Sans+Pro');
+
+$heading-font: 'Roboto';
+$body-font: 'Source Sans Pro';
+
+$family-sans-serif: $body-font;
+
+* {
+    font-family: $family-sans-serif;
+    font-weight: 400;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: $heading-font;
+}
+
+h1, h2 {
+  font-weight: 400;
+}
+
+.title, .subtitle, h1 {
+    font-family: $heading-font;
+    color: $black;
+    font-weight: 400;
+}
+
+h6.title {
+  font-weight: 700;
+}
+
+label.label {
+  font-family: $heading-font;
+  font-weight: 400;
+  color: $primary;
+}
