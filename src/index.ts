@@ -14,6 +14,7 @@ import AppSelect from "./components/AppSelect.vue";
 import AppTable from "./components/AppTable.vue";
 import AppTabs from "./components/AppTabs.vue";
 import AppTitle from "./components/AppTitle.vue";
+import { Toast, Popup } from "./notifications";
 
 export {
   AppButton,
@@ -31,4 +32,6 @@ export {
   AppTable,
   AppTabs,
   AppTitle,
+  Toast,
+  Popup,
 }
