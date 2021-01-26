@@ -1,6 +1,7 @@
 {
   "name": "@teliax/styleguide",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "files": ["dist"],
   "main": "./dist/@teliax/styleguide.umd.js",
   "module": "./dist/@teliax/styleguide.es.js",
   "scripts": {

@@ -1,4 +1,4 @@
-const path = require("path");
+import * as path from "path";
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import copy from "rollup-plugin-copy";
