@@ -7,7 +7,7 @@
       :class="{ 'is-danger': error }"
       :value="value"
       :disabled="disabled"
-      @input="$emit('input', $event.target.value)"
+      @input="emitValue"
     ></textarea>
     <p class="app-text-area__error help has-text-danger" v-if="error">
       {{ error }}
@@ -38,6 +38,7 @@ export default defineComponent({
     },
     value: {
       required: true,
+      type: String,
     },
     disabled: {
       type: Boolean,
@@ -53,6 +54,11 @@ export default defineComponent({
       type: String,
       required: false,
       default: "",
+    },
+  },
+  methods: {
+    emitValue(event: any): void {
+      this.$emit("input", event.target.value);
     },
   },
 });

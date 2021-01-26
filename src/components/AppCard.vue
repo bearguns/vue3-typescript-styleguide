@@ -60,6 +60,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import "../scss/_variables.scss";
+
 .app-card {
   height: auto;
   &__header {

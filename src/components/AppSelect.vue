@@ -60,7 +60,7 @@ export default defineComponent({
       default: "",
     },
     options: {
-      type: Array as PropType<Option>,
+      type: Array as PropType<Option[]>,
       required: true,
     },
     disabled: {
@@ -88,6 +88,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import "../scss/_colors.scss";
+
 .app-select {
   & .select {
     &::after {

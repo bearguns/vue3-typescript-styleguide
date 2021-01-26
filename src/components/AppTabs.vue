@@ -28,7 +28,7 @@ export default defineComponent({
   emits: ["click"],
   props: {
     tabs: {
-      type: Array as PropType<Tab>,
+      type: Array as PropType<Tab[]>,
       required: true,
     },
     activeTab: {
@@ -40,6 +40,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import "../scss/_typography.scss";
+
 .app-tabs {
   &__list {
     margin-left: 0;

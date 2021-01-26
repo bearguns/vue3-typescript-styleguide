@@ -9,15 +9,15 @@
           :placeholder="placeholder"
           type="text"
           v-model="value"
-          @keyup.enter="$emit('submit', $event)"
-          @input="$emit('input', value)"
+          @keyup.enter="submit"
+          @input="input"
         />
         <span class="icon is-right">
-          <!-- <AppIcon icon="search" /> -->
+          <AppIcon icon="search" />
         </span>
       </div>
       <div class="control">
-        <AppButton @click="$emit('submit')" data-qa="search_submit_button">
+        <AppButton @click="submit" data-qa="search_submit_button">
           Search
         </AppButton>
       </div>
@@ -26,14 +26,14 @@
 </template>
 
 <script lang="ts">
-// import AppIcon from "@/components/common/AppIcon";
 import { defineComponent } from "vue";
-import AppButton from "./AppButton";
+import AppButton from "./AppButton.vue";
+import AppIcon from "./AppIcon.vue";
 
 export default defineComponent({
   name: "AppSearch",
-  components: { AppButton },
-  emits: ["submit"],
+  components: { AppButton, AppIcon },
+  emits: ["submit", "input"],
   props: {
     name: {
       type: String,
@@ -58,6 +58,14 @@ export default defineComponent({
   computed: {
     alignClass(): string {
       return this.align === "right" ? "right-align" : "left-align";
+    },
+  },
+  methods: {
+    submit(): void {
+      this.$emit("submit", this.value);
+    },
+    input(): void {
+      this.$emit("input", this.value);
     },
   },
 });

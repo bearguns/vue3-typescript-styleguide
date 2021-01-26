@@ -15,7 +15,7 @@
       </div>
       <div class="columns">
         <div class="column">
-          <AppButton>Default Button</AppButton>
+          <AppButton @click="handleClick">Default Button</AppButton>
         </div>
         <div class="column">
           <AppButton status="primary">Primary Button</AppButton>
@@ -84,8 +84,11 @@ export default defineComponent({
     AppInput,
   },
   methods: {
-    setTextInput(e: HTMLInputEvent): void {
+    setTextInput(e: any): void {
       this.textInput = e.target.value;
+    },
+    handleClick(): void {
+      console.log("CLICK");
     },
   },
 });

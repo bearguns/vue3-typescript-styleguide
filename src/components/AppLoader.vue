@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import AppIcon from "./AppIcon";
+import AppIcon from "./AppIcon.vue";
 
 export default defineComponent({
   name: "AppLoader",

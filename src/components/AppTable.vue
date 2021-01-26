@@ -32,10 +32,15 @@
   </table>
 </template>
 
-<script>
-import { defineComponent } from "vue";
-import AppCheckbox from "./AppCheckbox";
-import AppIcon from "./AppIcon";
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+import AppCheckbox from "./AppCheckbox.vue";
+import AppIcon from "./AppIcon.vue";
+
+interface Column {
+  label: string;
+  value: string;
+}
 
 export default defineComponent({
   name: "AppTable",
@@ -63,7 +68,7 @@ export default defineComponent({
       default: "DESC",
     },
     columns: {
-      type: Array,
+      type: Array as PropType<Column[]>,
       required: true,
     },
     selectAllChecked: {
@@ -81,6 +86,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import "../scss/_colors.scss";
+@import "../scss/_typography.scss";
+
 .app-table {
   width: 100%;
 

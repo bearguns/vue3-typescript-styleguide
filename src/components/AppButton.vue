@@ -1,9 +1,5 @@
 <template>
-  <button
-    class="button app-button"
-    :class="[statusClass, sizeClass]"
-    @click="$emit('click')"
-  >
+  <button class="button app-button" :class="[statusClass, sizeClass]">
     <slot></slot>
   </button>
 </template>
@@ -24,7 +20,6 @@ export default defineComponent({
       default: "normal",
     },
   },
-  emits: ["click"],
   computed: {
     sizeClass(): string {
       return `is-${this.size}`;
