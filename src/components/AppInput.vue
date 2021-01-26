@@ -18,7 +18,7 @@
       :disabled="disabled"
       :readonly="readonly"
       :step="step"
-      @input="$emit('input', $event)"
+      @input="$emit('input', $event.target.value)"
       @focus="$emit('focus')"
     />
     <p class="app-input__error help has-text-danger" v-if="error">

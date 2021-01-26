@@ -9,7 +9,7 @@
           id=""
           :name="name"
           :data-qa="name"
-          @change="$emit('change', $event)"
+          @change="$emit('change', $event.target.value)"
           :disabled="disabled"
           :size="size"
         >
@@ -35,10 +35,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
+
+interface Option {
+  label: string;
+  value: string;
+}
+
 export default defineComponent({
   name: "AppSelect",
-  emits: ["change"]
+  emits: ["change"],
   props: {
     label: {
       type: String,
@@ -54,7 +60,7 @@ export default defineComponent({
       default: "",
     },
     options: {
-      type: Array,
+      type: Array as PropType<Option>,
       required: true,
     },
     disabled: {
