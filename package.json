@@ -1,9 +1,7 @@
 {
   "name": "@teliax/styleguide",
-  "version": "1.0.3",
-  "files": [
-    "dist"
-  ],
+  "version": "1.0.4",
+  "files": ["dist"],
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/types/**/*.d.ts",
