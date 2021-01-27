@@ -8,7 +8,7 @@ import copy from "rollup-plugin-copy";
 
 export default {
   input: path.resolve(__dirname, "src/index.ts"),
-  external: ["vue"],
+  external: ["vue", /@babel\/runtime/],
   output: {
     format: "esm",
     dir: "dist",
