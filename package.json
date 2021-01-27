@@ -1,17 +1,17 @@
 {
   "name": "@teliax/styleguide",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "files": ["dist"],
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/types/**/*.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/types/index.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
     "test": "yarn jest --coverage true",
     "build:types": "tsc --build tsconfigtypes.json",
-    "build:es": "rimraf dist && NODE_ENV=production rollup --config rollup.config.js && yarn build:types"
+    "build:es": "NODE_ENV=production rollup --config rollup.config.js && yarn build:types"
   },
   "dependencies": {
     "@sweetalert2/theme-bulma": "^4.0.2",
@@ -29,6 +29,7 @@
     "@rollup/plugin-babel": "^5.2.2",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.1.0",
+    "@rollup/plugin-replace": "^2.3.4",
     "@rollup/plugin-typescript": "^8.1.0",
     "@teliax/eslint-config-teliax": "^1.0.2",
     "@vitejs/plugin-vue": "^1.1.2",
