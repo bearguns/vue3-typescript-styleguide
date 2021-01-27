@@ -14,7 +14,10 @@ import AppSelect from "./components/AppSelect.vue";
 import AppTable from "./components/AppTable.vue";
 import AppTabs from "./components/AppTabs.vue";
 import AppTitle from "./components/AppTitle.vue";
-import { Toast, Popup } from "./notifications";
+import { Toast as toast, Popup as popup} from "./notifications/index";
+
+const Toast = new toast();
+const Popup = new popup();
 
 export {
   AppButton,

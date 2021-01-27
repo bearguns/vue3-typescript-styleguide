@@ -7,6 +7,11 @@ describe("AppSearch", () => {
       props: {
         name: "search-test",
       },
+      global: {
+        stubs: {
+          AppIcon: true,
+        },
+      },
     });
     expect(wrapper).toBeTruthy();
   });
@@ -14,6 +19,11 @@ describe("AppSearch", () => {
     const wrapper = mount(AppSearch, {
       props: {
         name: "app-search",
+      },
+      global: {
+        stubs: {
+          AppIcon: true,
+        },
       },
     });
     wrapper.find("input").setValue("foo");
@@ -23,6 +33,11 @@ describe("AppSearch", () => {
     const wrapper = mount(AppSearch, {
       propsData: {
         name: "app-search",
+      },
+      global: {
+        stubs: {
+          AppIcon: true,
+        },
       },
     });
     wrapper.find("button").element.click();

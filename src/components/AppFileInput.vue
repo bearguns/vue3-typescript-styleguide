@@ -46,7 +46,7 @@ export default defineComponent({
     };
   },
   methods: {
-    emitFile(event): void {
+    emitFile(event: any): void {
       this.file = event.target.files[0];
       this.$emit("input", this.file);
     },

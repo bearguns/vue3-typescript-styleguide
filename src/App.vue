@@ -84,8 +84,8 @@ export default defineComponent({
     AppInput,
   },
   methods: {
-    setTextInput(e: any): void {
-      this.textInput = e.target.value;
+    setTextInput(value: string): void {
+      this.textInput = value;
     },
     handleClick(): void {
       console.log("CLICK");

@@ -82,9 +82,4 @@ describe("Unit|Common|AppButton", () => {
     expect(wrapper.element.classList).toContain("button");
     expect(wrapper.element.classList).toContain("is-danger");
   });
-  it("emits click event to parent when clicked", () => {
-    const wrapper = mount(AppButton);
-    wrapper.element.click();
-    expect(wrapper.emitted("click")).toBeTruthy();
-  });
 });
