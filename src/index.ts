@@ -1,40 +1,46 @@
 import "./scss/main.scss";
-import AppButton from "./components/AppButton.vue";
-import AppCard from "./components/AppCard.vue";
-import AppCheckbox from "./components/AppCheckbox.vue";
-import AppDropdown from "./components/AppDropdown.vue";
-import AppFileInput from "./components/AppFileInput.vue";
-import AppIcon from "./components/AppIcon.vue";
-import AppInput from "./components/AppInput.vue";
-import AppLoader from "./components/AppLoader.vue";
-import AppModal from "./components/AppModal.vue";
-import AppPagination from "./components/AppPagination.vue";
-import AppSearch from "./components/AppSearch.vue";
-import AppSelect from "./components/AppSelect.vue";
-import AppTable from "./components/AppTable.vue";
-import AppTabs from "./components/AppTabs.vue";
-import AppTitle from "./components/AppTitle.vue";
+import TxWrapper from "./components/TxWrapper.vue";
+import TxNavbarLink from "./components/TxNavbarLink.vue";
+import TxButton from "./components/TxButton.vue";
+import TxCard from "./components/TxCard.vue";
+import TxCheckbox from "./components/TxCheckbox.vue";
+import TxDropdown from "./components/TxDropdown.vue";
+import TxFile from "./components/TxFile.vue";
+import TxIcon from "./components/TxIcon.vue";
+import TxInput from "./components/TxInput.vue";
+import TxLoader from "./components/TxLoader.vue";
+import TxModal from "./components/TxModal.vue";
+import TxPagination from "./components/TxPagination.vue";
+import TxSearch from "./components/TxSearch.vue";
+import TxSelect from "./components/TxSelect.vue";
+import TxTable from "./components/TxTable.vue";
+import TxTabs from "./components/TxTabs.vue";
+import TxTitle from "./components/TxTitle.vue";
 import { Toast as toast, Popup as popup} from "./notifications/index";
+import registerIcons from "./icons";
 
 const Toast = new toast();
 const Popup = new popup();
 
 export {
-  AppButton,
-  AppCard,
-  AppCheckbox,
-  AppDropdown,
-  AppFileInput,
-  AppIcon,
-  AppInput,
-  AppLoader,
-  AppModal,
-  AppPagination,
-  AppSearch,
-  AppSelect,
-  AppTable,
-  AppTabs,
-  AppTitle,
+  TxWrapper,
+  TxNavbarLink,
+  TxButton,
+  TxCard,
+  TxCheckbox,
+  TxDropdown,
+  TxFile,
+  TxIcon,
+  TxInput,
+  TxLoader,
+  TxModal,
+  TxPagination,
+  TxSearch,
+  TxSelect,
+  TxTable,
+  TxTabs,
+  TxTitle,
   Toast,
   Popup,
+  registerIcons
 }
