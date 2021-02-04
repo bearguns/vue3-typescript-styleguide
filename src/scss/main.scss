@@ -1,12 +1,10 @@
-@import "../../node_modules/sweetalert2/src/sweetalert2.scss";
+// @import "../../node_modules/sweetalert2/src/sweetalert2.scss";
 
+@import 'base';
 @import 'variables';
+@import "spacing";
 @import 'colors';
-@import 'typography';
 @import 'components';
-
-$bp-desktop: 1024px;
-$bp-tablet: 900px;
-$bp-mobile: 768px;
+@import 'typography';
 
 @import '../../node_modules/bulma/bulma.sass';

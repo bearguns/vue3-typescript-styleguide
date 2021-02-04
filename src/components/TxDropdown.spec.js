@@ -1,9 +1,9 @@
 import { mount } from "@vue/test-utils";
-import AppDropdown from "./AppDropdown.vue";
+import TxDropdown from "./TxDropdown.vue";
 
-describe("AppDropdown", () => {
+describe("TxDropdown", () => {
   it("renders button element with slotted label content", () => {
-    const wrapper = mount(AppDropdown, {
+    const wrapper = mount(TxDropdown, {
       slots: {
         label: "Dropdown",
       },
@@ -16,7 +16,7 @@ describe("AppDropdown", () => {
     expect(wrapper.find(".button").html()).toContain("Dropdown");
   });
   it("returns correct icon class when dropdown active status changes", async () => {
-    const wrapper = mount(AppDropdown, {
+    const wrapper = mount(TxDropdown, {
       global: {
         stubs: {
           AppIcon: true,
@@ -28,7 +28,7 @@ describe("AppDropdown", () => {
     expect(wrapper.vm.icon).toBe("chevron-up");
   });
   it("sets active value on button click", async () => {
-    const wrapper = mount(AppDropdown, {
+    const wrapper = mount(TxDropdown, {
       global: {
         stubs: {
           AppIcon: true,
@@ -42,7 +42,7 @@ describe("AppDropdown", () => {
     expect(wrapper.vm.isActive).toBe(false);
   });
   it("closes menu when close method called", async () => {
-    const wrapper = mount(AppDropdown, {
+    const wrapper = mount(TxDropdown, {
       global: {
         stubs: {
           AppIcon: true,
@@ -62,7 +62,7 @@ describe("AppDropdown", () => {
   });
   it("registers event listener if persistent prop is false", () => {
     window.addEventListener = jest.fn();
-    const wrapper = mount(AppDropdown, {
+    const wrapper = mount(TxDropdown, {
       global: {
         stubs: {
           AppIcon: true,
@@ -77,7 +77,7 @@ describe("AppDropdown", () => {
   });
   it("does not register event listener on window if persistent prop is true", () => {
     window.addEventListener = jest.fn();
-    const wrapper = mount(AppDropdown, {
+    const wrapper = mount(TxDropdown, {
       global: {
         stubs: {
           AppIcon: true,
@@ -92,7 +92,7 @@ describe("AppDropdown", () => {
   });
   it("removes event listener on unmount when persistent prop is false", async () => {
     window.removeEventListener = jest.fn();
-    const wrapper = mount(AppDropdown, {
+    const wrapper = mount(TxDropdown, {
       global: {
         stubs: {
           AppIcon: true,

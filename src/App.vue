@@ -1,94 +1,43 @@
 <template>
-  <div class="app__content">
-    <AppTitle>Teliax Styleguide</AppTitle>
-    <hr />
-    <section class="section">
-      <div class="columns">
-        <div class="column">
-          <AppTitle :size="2">Buttons</AppTitle>
-          <p>
-            Buttons are available pre-styled via the AppButton component. These
-            can be customized by providing a <code>status</code> prop to
-            override the color.
-          </p>
-        </div>
-      </div>
-      <div class="columns">
-        <div class="column">
-          <AppButton @click="handleClick">Default Button</AppButton>
-        </div>
-        <div class="column">
-          <AppButton status="primary">Primary Button</AppButton>
-        </div>
-        <div class="column">
-          <AppButton status="danger">Danger Button</AppButton>
-        </div>
-        <div class="column">
-          <AppButton status="success">Success Button</AppButton>
-        </div>
-        <div class="column">
-          <AppButton status="warning">Warning Button</AppButton>
-        </div>
-        <div class="column">
-          <AppButton status="info">Info Button</AppButton>
-        </div>
-      </div>
-    </section>
-    <section class="section">
-      <div class="columns">
-        <div class="column">
-          <AppTitle :size="2">Inputs</AppTitle>
-        </div>
-      </div>
-      <div class="columns">
-        <div class="column">
-          <AppTitle :size="3">Text & Number Inputs</AppTitle>
-        </div>
-      </div>
-      <div class="columns">
-        <div class="column">
-          <div class="field is-grouped">
-            <AppInput
-              label="Text input"
-              name="text-input"
-              :value="textInput"
-              @input="setTextInput"
-            />
-          </div>
-        </div>
-        <div class="column">
-          <AppTitle :size="6">Text input value:</AppTitle>
-          <p>{{ textInput }}</p>
-        </div>
-      </div>
-    </section>
-  </div>
+  <main class="tx-app">
+    <TxNavbar>
+      <template v-slot:logo>
+        <img src="logo.svg" />
+      </template>
+      <template v-slot:nav>
+        <TxNavbarLink label="Home" to="home">
+          <TxIcon icon="home" size="1x" />
+        </TxNavbarLink>
+        <TxNavbarLink label="Buttons" to="buttons">
+          <TxIcon icon="command" size="1x" />
+        </TxNavbarLink>
+      </template>
+    </TxNavbar>
+    <TxHeader>
+      <template v-slot:title>{{ pageTitle }}</template>
+      <template v-slot:actions>
+        <TxButton>Login</TxButton>
+      </template>
+    </TxHeader>
+    <div class="tx-app__content">
+      <router-view />
+    </div>
+  </main>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import AppTitle from "./components/AppTitle.vue";
-import AppButton from "./components/AppButton.vue";
-import AppInput from "./components/AppInput.vue";
+import TxNavbar from "./components/TxNavbar.vue";
+import TxNavbarLink from "./components/TxNavbarLink.vue";
+import TxHeader from "./components/TxHeader.vue";
+import TxButton from "./components/TxButton.vue";
+import TxIcon from "./components/TxIcon.vue";
 
 export default defineComponent({
-  name: "App",
-  data(): any {
-    return {
-      textInput: "",
-    };
-  },
-  components: {
-    AppTitle,
-    AppButton,
-    AppInput,
-  },
-  methods: {
-    setTextInput(value: string): void {
-      this.textInput = value;
-    },
-    handleClick(): void {
-      console.log("CLICK");
+  components: { TxIcon, TxNavbar, TxNavbarLink, TxHeader, TxButton },
+  computed: {
+    pageTitle(): string {
+      return this.$route.meta.title;
     },
   },
 });
@@ -96,8 +45,13 @@ export default defineComponent({
 
 <style lang="scss">
 @import "./scss/main.scss";
+@import "./scss/variables";
 
-.app__content {
-  padding: $content-gutter;
+.tx-app {
+  padding-left: 16rem;
+
+  @media screen and (max-width: $tx-breakpoint--desktop) {
+    padding-left: 6rem;
+  }
 }
 </style>

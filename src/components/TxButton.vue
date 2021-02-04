@@ -1,5 +1,8 @@
 <template>
-  <button class="button app-button" :class="[statusClass, sizeClass]">
+  <button
+    class="app-button button is-rounded"
+    :class="[statusClass, sizeClass]"
+  >
     <slot></slot>
   </button>
 </template>
@@ -7,7 +10,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 export default defineComponent({
-  name: "AppButton",
   props: {
     status: {
       type: String,
@@ -33,11 +35,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .app-button {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-
   & .icon svg {
     margin: 0 auto;
   }

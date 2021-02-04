@@ -1,0 +1,61 @@
+import {
+  HomeIcon,
+  CheckSquareIcon,
+  MapPinIcon,
+  MapIcon,
+  GlobeIcon,
+  LoaderIcon,
+  PhoneIcon,
+  MessageSquareIcon,
+  HashIcon,
+  Trash2Icon,
+  UploadIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
+  ChevronsLeftIcon,
+  ChevronsRightIcon,
+  SearchIcon,
+  ArrowDownIcon,
+  ArrowUpIcon,
+  DownloadIcon,
+  PlusSquareIcon,
+  LogInIcon,
+  DollarSignIcon,
+  XIcon,
+  PowerIcon,
+  EditIcon,
+  CommandIcon
+} from "@zhuowenli/vue-feather-icons";
+
+const icons = {
+  HomeIcon,
+  CheckSquareIcon,
+  MapPinIcon,
+  MapIcon,
+  GlobeIcon,
+  LoaderIcon,
+  PhoneIcon,
+  MessageSquareIcon,
+  HashIcon,
+  Trash2Icon,
+  UploadIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
+  ChevronsLeftIcon,
+  ChevronsRightIcon,
+  SearchIcon,
+  ArrowDownIcon,
+  ArrowUpIcon,
+  DownloadIcon,
+  PlusSquareIcon,
+  LogInIcon,
+  DollarSignIcon,
+  XIcon,
+  PowerIcon,
+  EditIcon,
+  CommandIcon
+};
+
+export default function registerIcons(app: any): void {
+  Object.keys(icons).forEach((key: any): void => app.component(key, icons[key]));
+}

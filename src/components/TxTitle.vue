@@ -1,5 +1,5 @@
 <template>
-  <component class="app-title" :is="titleEl" :class="[titleClass, statusClass]">
+  <component class="title" :is="titleEl" :class="[titleClass, statusClass]">
     <slot></slot>
   </component>
 </template>
@@ -37,10 +37,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.app-title {
-  text-align: left;
-  margin-bottom: 0.75rem;
-}
-</style>
