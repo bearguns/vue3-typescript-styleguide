@@ -1,4 +1,6 @@
 import "./scss/main.scss";
+import TxWrapper from "./components/TxWrapper.vue";
+import TxNavbarLink from "./components/TxNavbarLink.vue";
 import TxButton from "./components/TxButton.vue";
 import TxCard from "./components/TxCard.vue";
 import TxCheckbox from "./components/TxCheckbox.vue";
@@ -21,6 +23,8 @@ const Toast = new toast();
 const Popup = new popup();
 
 export {
+  TxWrapper,
+  TxNavbarLink,
   TxButton,
   TxCard,
   TxCheckbox,

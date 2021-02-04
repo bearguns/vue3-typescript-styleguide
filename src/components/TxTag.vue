@@ -9,7 +9,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "AppTag",
+  name: "TxTag",
   emits: ["click"],
   props: {
     status: {

@@ -84,7 +84,7 @@ export default defineComponent({
 
   &__footer {
     width: 100%;
-    padding: $inner-gutter;
+    padding: 1.5rem 0.75rem;
   }
 }
 </style>
