@@ -37,6 +37,7 @@ export default defineComponent({
           "edit",
           "home",
           "command",
+          "activity",
         ].includes(value);
       },
     },
@@ -96,6 +97,8 @@ export default defineComponent({
           return "HomeIcon";
         case "command":
           return "CommandIcon";
+        case "activity":
+          return "ActivityIcon";
         default:
           return "CheckSquareIcon";
       }
