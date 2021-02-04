@@ -43,7 +43,7 @@ interface Option {
 }
 
 export default defineComponent({
-  name: "AppSelect",
+  name: "TxSelect",
   emits: ["change"],
   props: {
     label: {

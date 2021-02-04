@@ -13,13 +13,13 @@
           @input="input"
         />
         <span class="icon is-right">
-          <AppIcon icon="search" />
+          <TxIcon icon="search" />
         </span>
       </div>
       <div class="control">
-        <AppButton @click="submit" data-qa="search_submit_button">
+        <TxButton @click="submit" data-qa="search_submit_button">
           Search
-        </AppButton>
+        </TxButton>
       </div>
     </div>
   </div>
@@ -27,12 +27,12 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import AppButton from "./AppButton.vue";
-import AppIcon from "./AppIcon.vue";
+import TxButton from "./TxButton.vue";
+import TxIcon from "./TxIcon.vue";
 
 export default defineComponent({
-  name: "AppSearch",
-  components: { AppButton, AppIcon },
+  name: "TxSearch",
+  components: { TxButton, TxIcon },
   emits: ["submit", "input"],
   props: {
     name: {

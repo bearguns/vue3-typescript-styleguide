@@ -1,18 +1,18 @@
 <template>
   <div class="app-loader">
     <div class="app-loader__icon">
-      <AppIcon icon="loader" size="4x" />
+      <TxIcon icon="loader" size="4x" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import AppIcon from "./AppIcon.vue";
+import TxIcon from "./TxIcon.vue";
 
 export default defineComponent({
-  name: "AppLoader",
-  components: { AppIcon },
+  name: "TxLoader",
+  components: { TxIcon },
 });
 </script>
 

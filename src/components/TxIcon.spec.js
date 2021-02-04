@@ -1,7 +1,7 @@
 import { mount } from "@vue/test-utils";
-import AppIcon from "./AppIcon.vue";
+import TxIcon from "./TxIcon.vue";
 
-describe("AppIcon", () => {
+describe("TxIcon", () => {
   // For future tests, append new icon names and component names here
   const iconsUnderTest = [
     { icon: "check-square", name: "CheckSquareIcon" },
@@ -33,7 +33,7 @@ describe("AppIcon", () => {
 
   // For future tests, be sure to update the stubs here for simplicity and performance
   beforeEach(() => {
-    wrapper = mount(AppIcon, {
+    wrapper = mount(TxIcon, {
       global: {
         stubs: {
           CheckSquareIcon: true,

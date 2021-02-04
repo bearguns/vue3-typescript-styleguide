@@ -24,7 +24,7 @@ interface Tab {
 }
 
 export default defineComponent({
-  name: "AppTabs",
+  name: "TxTabs",
   emits: ["click"],
   props: {
     tabs: {

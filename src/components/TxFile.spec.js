@@ -1,13 +1,13 @@
 import { mount } from "@vue/test-utils";
-import AppFileInput from "./AppFileInput.vue";
+import TxFile from "./TxFile.vue";
 
-describe("AppFileInput", () => {
+describe("TxFile", () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = mount(AppFileInput, {
+    wrapper = mount(TxFile, {
       global: {
         stubs: {
-          AppIcon: true,
+          TxIcon: true,
         },
       },
       props: {

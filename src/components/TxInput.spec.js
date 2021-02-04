@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import AppInput from "./AppInput";
+import TxInput from "./TxInput";
 
 const defaultProps = {
   name: "app-input",
@@ -7,9 +7,9 @@ const defaultProps = {
   placeholder: "your input here",
 };
 
-describe("Unit|Common|AppInput", () => {
+describe("Unit|Common|TxInput", () => {
   it("renders expected attributes on input element", () => {
-    const wrapper = mount(AppInput, {
+    const wrapper = mount(TxInput, {
       props: {
         ...defaultProps,
       },
@@ -21,7 +21,7 @@ describe("Unit|Common|AppInput", () => {
   });
   it("renders provided help text", () => {
     const helpText = "*This field is required";
-    const wrapper = mount(AppInput, {
+    const wrapper = mount(TxInput, {
       props: {
         ...defaultProps,
         helpText,
@@ -32,7 +32,7 @@ describe("Unit|Common|AppInput", () => {
   });
   it("renders provided error text", () => {
     const errorText = "*This field is required";
-    const wrapper = mount(AppInput, {
+    const wrapper = mount(TxInput, {
       props: {
         ...defaultProps,
         error: errorText,
@@ -42,7 +42,7 @@ describe("Unit|Common|AppInput", () => {
     expect(wrapper.find(".app-input__error").html()).toContain(errorText);
   });
   it("does not render error text if no error provided", () => {
-    const wrapper = mount(AppInput, {
+    const wrapper = mount(TxInput, {
       props: {
         ...defaultProps,
       },
@@ -52,7 +52,7 @@ describe("Unit|Common|AppInput", () => {
   it("reacts to change in error status", async () => {
     const helpText = "*This field is required.";
     const error = "This field cannot be blank.";
-    const wrapper = mount(AppInput, {
+    const wrapper = mount(TxInput, {
       props: {
         ...defaultProps,
         helpText,
@@ -66,7 +66,7 @@ describe("Unit|Common|AppInput", () => {
   });
   it("emits updated value on input", () => {
     const inputValue = "my input value";
-    const wrapper = mount(AppInput, {
+    const wrapper = mount(TxInput, {
       props: {
         ...defaultProps,
       },
@@ -77,7 +77,7 @@ describe("Unit|Common|AppInput", () => {
   it("reacts to updated value on prop change", async () => {
     const inputValue = "my input value";
     const newValue = "my second input value";
-    const wrapper = mount(AppInput, {
+    const wrapper = mount(TxInput, {
       props: {
         ...defaultProps,
         value: inputValue,
@@ -88,7 +88,7 @@ describe("Unit|Common|AppInput", () => {
     expect(wrapper.find("input").element.value).toBe(newValue);
   });
   it("renders input as readonly when readonly prop provided", () => {
-    const wrapper = mount(AppInput, {
+    const wrapper = mount(TxInput, {
       props: {
         ...defaultProps,
         readonly: true,
@@ -97,7 +97,7 @@ describe("Unit|Common|AppInput", () => {
     expect(wrapper.find("input").element.readOnly).toEqual(true);
   });
   it("renders input as disabled when disabled prop provided", () => {
-    const wrapper = mount(AppInput, {
+    const wrapper = mount(TxInput, {
       props: {
         ...defaultProps,
         disabled: true,

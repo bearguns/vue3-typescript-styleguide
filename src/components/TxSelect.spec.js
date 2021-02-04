@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import AppSelect from "./AppSelect";
+import TxSelect from "./TxSelect";
 
 const defaultProps = {
   name: "app-select",
@@ -11,9 +11,9 @@ const defaultProps = {
   label: "Select",
 };
 
-describe("Unit|Common|AppSelect", () => {
+describe("Unit|Common|TxSelect", () => {
   it("renders select element with provided options", () => {
-    const wrapper = mount(AppSelect, {
+    const wrapper = mount(TxSelect, {
       props: {
         ...defaultProps,
       },
@@ -23,7 +23,7 @@ describe("Unit|Common|AppSelect", () => {
     );
   });
   it("renders provided label", () => {
-    const wrapper = mount(AppSelect, {
+    const wrapper = mount(TxSelect, {
       props: {
         ...defaultProps,
       },
@@ -31,7 +31,7 @@ describe("Unit|Common|AppSelect", () => {
     expect(wrapper.find("label").html()).toContain(defaultProps.label);
   });
   it("renders provided name", () => {
-    const wrapper = mount(AppSelect, {
+    const wrapper = mount(TxSelect, {
       props: {
         ...defaultProps,
       },
@@ -39,7 +39,7 @@ describe("Unit|Common|AppSelect", () => {
     expect(wrapper.find("select").element.name).toEqual(defaultProps.name);
   });
   it("selects blank option if no value provided", () => {
-    const wrapper = mount(AppSelect, {
+    const wrapper = mount(TxSelect, {
       props: {
         ...defaultProps,
       },
@@ -47,7 +47,7 @@ describe("Unit|Common|AppSelect", () => {
     expect(wrapper.find("option").element.selected).toBe(true);
   });
   it("selects appropriate option if value provided", () => {
-    const wrapper = mount(AppSelect, {
+    const wrapper = mount(TxSelect, {
       props: {
         ...defaultProps,
         value: defaultProps.options[0].value,
@@ -59,7 +59,7 @@ describe("Unit|Common|AppSelect", () => {
     );
   });
   it("emits selected value on change", async () => {
-    const wrapper = mount(AppSelect, {
+    const wrapper = mount(TxSelect, {
       props: {
         ...defaultProps,
       },
@@ -74,7 +74,7 @@ describe("Unit|Common|AppSelect", () => {
     ]);
   });
   it("reacts to change in provided value", async () => {
-    const wrapper = mount(AppSelect, {
+    const wrapper = mount(TxSelect, {
       props: {
         ...defaultProps,
       },
@@ -91,7 +91,7 @@ describe("Unit|Common|AppSelect", () => {
   });
   it("renders provided help text", () => {
     const helpText = "*This field is required";
-    const wrapper = mount(AppSelect, {
+    const wrapper = mount(TxSelect, {
       props: {
         ...defaultProps,
         helpText,
@@ -101,7 +101,7 @@ describe("Unit|Common|AppSelect", () => {
   });
   it("render provided error text", () => {
     const errorText = "*This field is required";
-    const wrapper = mount(AppSelect, {
+    const wrapper = mount(TxSelect, {
       props: {
         ...defaultProps,
         error: errorText,
@@ -110,7 +110,7 @@ describe("Unit|Common|AppSelect", () => {
     expect(wrapper.find(".app-select__error").html()).toContain(errorText);
   });
   it("renders disabled select element if disabled prop true", () => {
-    const wrapper = mount(AppSelect, {
+    const wrapper = mount(TxSelect, {
       props: {
         ...defaultProps,
         disabled: true,

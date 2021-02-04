@@ -9,7 +9,7 @@ describe("TxDropdown", () => {
       },
       global: {
         stubs: {
-          AppIcon: true,
+          TxIcon: true,
         },
       },
     });
@@ -19,7 +19,7 @@ describe("TxDropdown", () => {
     const wrapper = mount(TxDropdown, {
       global: {
         stubs: {
-          AppIcon: true,
+          TxIcon: true,
         },
       },
     });
@@ -31,7 +31,7 @@ describe("TxDropdown", () => {
     const wrapper = mount(TxDropdown, {
       global: {
         stubs: {
-          AppIcon: true,
+          TxIcon: true,
         },
       },
     });
@@ -45,7 +45,7 @@ describe("TxDropdown", () => {
     const wrapper = mount(TxDropdown, {
       global: {
         stubs: {
-          AppIcon: true,
+          TxIcon: true,
         },
       },
       data() {
@@ -65,7 +65,7 @@ describe("TxDropdown", () => {
     const wrapper = mount(TxDropdown, {
       global: {
         stubs: {
-          AppIcon: true,
+          TxIcon: true,
         },
       },
     });
@@ -80,7 +80,7 @@ describe("TxDropdown", () => {
     const wrapper = mount(TxDropdown, {
       global: {
         stubs: {
-          AppIcon: true,
+          TxIcon: true,
         },
       },
       props: {
@@ -95,7 +95,7 @@ describe("TxDropdown", () => {
     const wrapper = mount(TxDropdown, {
       global: {
         stubs: {
-          AppIcon: true,
+          TxIcon: true,
         },
       },
     });

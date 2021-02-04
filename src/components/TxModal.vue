@@ -15,7 +15,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 export default defineComponent({
-  name: "AppModal",
+  name: "TxModal",
   emits: ["click"],
   props: {
     active: {

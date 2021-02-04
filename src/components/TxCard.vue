@@ -27,7 +27,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 export default defineComponent({
-  name: "AppCard",
+  name: "TxCard",
   props: {
     status: {
       type: String,

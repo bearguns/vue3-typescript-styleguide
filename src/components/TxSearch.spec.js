@@ -1,28 +1,28 @@
 import { mount } from "@vue/test-utils";
-import AppSearch from "./AppSearch.vue";
+import TxSearch from "./TxSearch.vue";
 
-describe("AppSearch", () => {
+describe("TxSearch", () => {
   it("renders", () => {
-    const wrapper = mount(AppSearch, {
+    const wrapper = mount(TxSearch, {
       props: {
         name: "search-test",
       },
       global: {
         stubs: {
-          AppIcon: true,
+          TxIcon: true,
         },
       },
     });
     expect(wrapper).toBeTruthy();
   });
   it("emits current value on input", () => {
-    const wrapper = mount(AppSearch, {
+    const wrapper = mount(TxSearch, {
       props: {
         name: "app-search",
       },
       global: {
         stubs: {
-          AppIcon: true,
+          TxIcon: true,
         },
       },
     });
@@ -30,13 +30,13 @@ describe("AppSearch", () => {
     expect(wrapper.emitted("input")[0]).toEqual(["foo"]);
   });
   it("emits submit event on button click", () => {
-    const wrapper = mount(AppSearch, {
+    const wrapper = mount(TxSearch, {
       propsData: {
         name: "app-search",
       },
       global: {
         stubs: {
-          AppIcon: true,
+          TxIcon: true,
         },
       },
     });

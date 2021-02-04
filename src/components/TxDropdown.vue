@@ -11,7 +11,7 @@
           <slot name="label"></slot>
         </span>
         <span class="icon">
-          <AppIcon :icon="icon" />
+          <TxIcon :icon="icon" />
         </span>
       </button>
     </div>
@@ -25,11 +25,11 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import AppIcon from "./AppIcon.vue";
+import TxIcon from "./TxIcon.vue";
 
 export default defineComponent({
-  name: "AppDropdown",
-  components: { AppIcon },
+  name: "TxDropdown",
+  components: { TxIcon },
   props: {
     persistent: {
       type: Boolean,

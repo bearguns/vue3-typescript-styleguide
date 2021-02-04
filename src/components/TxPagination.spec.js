@@ -1,16 +1,16 @@
 import { mount } from "@vue/test-utils";
-import AppPagination from "./AppPagination";
+import TxPagination from "./TxPagination";
 
-describe("Unit|Common|AppPagination", () => {
+describe("Unit|Common|TxPagination", () => {
   it("renders page numbers 1-10 on initial load", () => {
-    const wrapper = mount(AppPagination, {
+    const wrapper = mount(TxPagination, {
       props: {
         lastPage: 25,
         currentPage: 1,
       },
       global: {
         stubs: {
-          AppIcon: true,
+          TxIcon: true,
         },
       },
     });
@@ -29,14 +29,14 @@ describe("Unit|Common|AppPagination", () => {
     expect(links[10].html()).toContain(10);
   });
   it("renders page numbers 1 - lastPage if lastPage < 10", () => {
-    const wrapper = mount(AppPagination, {
+    const wrapper = mount(TxPagination, {
       props: {
         lastPage: 4,
         currentPage: 1,
       },
       global: {
         stubs: {
-          AppIcon: true,
+          TxIcon: true,
         },
       },
     });
@@ -49,14 +49,14 @@ describe("Unit|Common|AppPagination", () => {
     expect(links[4].html()).toContain(4);
   });
   it("applies is-current class to link if link number === currentPage", async () => {
-    const wrapper = mount(AppPagination, {
+    const wrapper = mount(TxPagination, {
       props: {
         lastPage: 10,
         currentPage: 1,
       },
       global: {
         stubs: {
-          AppIcon: true,
+          TxIcon: true,
         },
       },
     });
@@ -67,14 +67,14 @@ describe("Unit|Common|AppPagination", () => {
     expect(links[1].element.classList).not.toContain("is-current");
   });
   it("reacts to change in currentPage and selects appropriate link", async () => {
-    const wrapper = mount(AppPagination, {
+    const wrapper = mount(TxPagination, {
       props: {
         lastPage: 10,
         currentPage: 8,
       },
       global: {
         stubs: {
-          AppIcon: true,
+          TxIcon: true,
         },
       },
     });
@@ -84,14 +84,14 @@ describe("Unit|Common|AppPagination", () => {
     );
   });
   it("emits gotoPage(1) when left chevron button clicked", () => {
-    const wrapper = mount(AppPagination, {
+    const wrapper = mount(TxPagination, {
       props: {
         lastPage: 200,
         currentPage: 75,
       },
       global: {
         stubs: {
-          AppIcon: true,
+          TxIcon: true,
         },
       },
     });
@@ -100,14 +100,14 @@ describe("Unit|Common|AppPagination", () => {
     expect(wrapper.emitted().input[0]).toEqual([1]);
   });
   it("emits goToPage(lastPage) when right chevron button clicked", () => {
-    const wrapper = mount(AppPagination, {
+    const wrapper = mount(TxPagination, {
       props: {
         lastPage: 783,
         currentPage: 212,
       },
       global: {
         stubs: {
-          AppIcon: true,
+          TxIcon: true,
         },
       },
     });
@@ -116,14 +116,14 @@ describe("Unit|Common|AppPagination", () => {
     expect(wrapper.emitted().input[0]).toEqual([wrapper.props().lastPage]);
   });
   it("emits goToPage(currentPage + 1) on next button click", () => {
-    const wrapper = mount(AppPagination, {
+    const wrapper = mount(TxPagination, {
       props: {
         lastPage: 10,
         currentPage: 1,
       },
       global: {
         stubs: {
-          AppIcon: true,
+          TxIcon: true,
         },
       },
     });
@@ -131,14 +131,14 @@ describe("Unit|Common|AppPagination", () => {
     expect(wrapper.emitted().input[0]).toEqual([2]);
   });
   it("emits goToPage(currentPage - 1) on previous button click", () => {
-    const wrapper = mount(AppPagination, {
+    const wrapper = mount(TxPagination, {
       props: {
         lastPage: 10,
         currentPage: 4,
       },
       global: {
         stubs: {
-          AppIcon: true,
+          TxIcon: true,
         },
       },
     });
@@ -146,14 +146,14 @@ describe("Unit|Common|AppPagination", () => {
     expect(wrapper.emitted().input[0]).toEqual([3]);
   });
   it("ignores previous button click if on first page", () => {
-    const wrapper = mount(AppPagination, {
+    const wrapper = mount(TxPagination, {
       props: {
         lastPage: 10,
         currentPage: 1,
       },
       global: {
         stubs: {
-          AppIcon: true,
+          TxIcon: true,
         },
       },
     });
@@ -161,14 +161,14 @@ describe("Unit|Common|AppPagination", () => {
     expect(wrapper.emitted().input).toBeFalsy();
   });
   it("ignores next button click if on last page", () => {
-    const wrapper = mount(AppPagination, {
+    const wrapper = mount(TxPagination, {
       props: {
         lastPage: 10,
         currentPage: 10,
       },
       global: {
         stubs: {
-          AppIcon: true,
+          TxIcon: true,
         },
       },
     });
@@ -176,42 +176,42 @@ describe("Unit|Common|AppPagination", () => {
     expect(wrapper.emitted().input).toBeFalsy();
   });
   it("calculates a page range of 10 if lastPage > 10", () => {
-    const wrapper = mount(AppPagination, {
+    const wrapper = mount(TxPagination, {
       props: {
         lastPage: 69,
         currentPage: 47,
       },
       global: {
         stubs: {
-          AppIcon: true,
+          TxIcon: true,
         },
       },
     });
     expect(wrapper.vm.pageRange).toBe(10);
   });
   it("calculates a page range of 4 if lastPage === 4", () => {
-    const wrapper = mount(AppPagination, {
+    const wrapper = mount(TxPagination, {
       props: {
         lastPage: 4,
         currentPage: 1,
       },
       global: {
         stubs: {
-          AppIcon: true,
+          TxIcon: true,
         },
       },
     });
     expect(wrapper.vm.pageRange).toBe(4);
   });
   it("calculates a page range offset if user crosses midway point when going to next page", async () => {
-    const wrapper = mount(AppPagination, {
+    const wrapper = mount(TxPagination, {
       props: {
         lastPage: 25,
         currentPage: 1,
       },
       global: {
         stubs: {
-          AppIcon: true,
+          TxIcon: true,
         },
       },
     });

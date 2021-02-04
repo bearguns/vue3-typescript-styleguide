@@ -23,7 +23,7 @@
           class="pagination-link"
           @click="goToPage(1)"
         >
-          <AppIcon icon="chevrons-left" />
+          <TxIcon icon="chevrons-left" />
         </a>
       </li>
       <template v-if="lastPage > 10">
@@ -56,7 +56,7 @@
           class="pagination-link"
           @click="goToPage(lastPage)"
         >
-          <AppIcon icon="chevrons-right" />
+          <TxIcon icon="chevrons-right" />
         </a>
       </li>
     </ul>
@@ -65,11 +65,11 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import AppIcon from "./AppIcon.vue";
+import TxIcon from "./TxIcon.vue";
 
 export default defineComponent({
-  name: "AppPagination",
-  components: { AppIcon },
+  name: "TxPagination",
+  components: { TxIcon },
   props: {
     lastPage: {
       type: Number,

@@ -11,7 +11,7 @@
       />
       <span class="file-cta">
         <span class="file-icon">
-          <AppIcon icon="upload" />
+          <TxIcon icon="upload" />
         </span>
         <span class="file-label">Choose a file...</span>
       </span>
@@ -24,11 +24,11 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import AppIcon from "./AppIcon.vue";
+import TxIcon from "./TxIcon.vue";
 
 export default defineComponent({
-  name: "AppFileInput",
-  components: { AppIcon },
+  name: "TxFileInput",
+  components: { TxIcon },
   emits: ["input"],
   props: {
     name: {

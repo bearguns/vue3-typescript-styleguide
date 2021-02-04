@@ -1,9 +1,9 @@
 <template>
   <div class="columns">
     <div class="column">
-      <AppTitle :size="2">Buttons</AppTitle>
+      <TxTitle :size="2">Buttons</TxTitle>
       <p>
-        Buttons are available pre-styled via the AppButton component. These can
+        Buttons are available pre-styled via the TxButton component. These can
         be customized by providing a <code>status</code> prop to override the
         color.
       </p>
@@ -11,27 +11,27 @@
   </div>
   <div class="columns">
     <div class="column">
-      <AppButton @click="handleClick">Default Button</AppButton>
+      <TxButton @click="handleClick">Default Button</TxButton>
     </div>
     <div class="column">
-      <AppButton status="primary">Primary Button</AppButton>
+      <TxButton status="primary">Primary Button</TxButton>
     </div>
     <div class="column">
-      <AppButton status="danger">Danger Button</AppButton>
+      <TxButton status="danger">Danger Button</TxButton>
     </div>
     <div class="column">
-      <AppButton status="success">Success Button</AppButton>
+      <TxButton status="success">Success Button</TxButton>
     </div>
     <div class="column">
-      <AppButton status="warning">Warning Button</AppButton>
+      <TxButton status="warning">Warning Button</TxButton>
     </div>
     <div class="column">
-      <AppButton status="info">Info Button</AppButton>
+      <TxButton status="info">Info Button</TxButton>
     </div>
   </div>
   <div class="columns">
     <div class="column">
-      <AppTitle :size="2">Icon Buttons</AppTitle>
+      <TxTitle :size="2">Icon Buttons</TxTitle>
       <p>
         Buttons can be used with icons by passing an
         <code>vue-feather-icon</code> into the default slot. See Icons for more
@@ -41,25 +41,25 @@
   </div>
   <div class="columns">
     <div class="column">
-      <AppButton>
+      <TxButton>
         <MessageSquareIcon />
-      </AppButton>
-      <AppButton status="danger">
+      </TxButton>
+      <TxButton status="danger">
         <Trash2Icon />
-      </AppButton>
-      <AppButton status="primary">
+      </TxButton>
+      <TxButton status="primary">
         <EditIcon />
-      </AppButton>
+      </TxButton>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import AppButton from "./AppButton.vue";
-import AppTitle from "./AppTitle.vue";
+import TxButton from "./TxButton.vue";
+import TxTitle from "./TxTitle.vue";
 
 export default defineComponent({
-  components: { AppTitle, AppButton },
+  components: { TxTitle, TxButton },
 });
 </script>

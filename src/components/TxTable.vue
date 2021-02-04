@@ -2,7 +2,7 @@
   <table class="app-table table is-striped is-hoverable">
     <thead class="table-head">
       <th class="table-head__cell" v-if="selectable">
-        <AppCheckbox
+        <TxCheckbox
           name="select-all"
           @click="$emit('selectAll', $event)"
           :checked="selectAllChecked"
@@ -16,7 +16,7 @@
         @click="$emit('sort', column.value)"
       >
         {{ column.label }}
-        <AppIcon
+        <TxIcon
           :icon="sortIcon"
           v-if="sortable && column.value === sortColumn"
         />
@@ -34,8 +34,8 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
-import AppCheckbox from "./AppCheckbox.vue";
-import AppIcon from "./AppIcon.vue";
+import TxCheckbox from "./TxCheckbox.vue";
+import TxIcon from "./TxIcon.vue";
 
 interface Column {
   label: string;
@@ -43,8 +43,8 @@ interface Column {
 }
 
 export default defineComponent({
-  name: "AppTable",
-  components: { AppCheckbox, AppIcon },
+  name: "TxTable",
+  components: { TxCheckbox, TxIcon },
   emits: ["selectAll", "sort"],
   props: {
     selectable: {

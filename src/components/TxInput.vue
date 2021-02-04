@@ -33,7 +33,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 export default defineComponent({
-  name: "AppInput",
+  name: "TxInput",
   emits: ["focus", "input"],
   props: {
     label: {
