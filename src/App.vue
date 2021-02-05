@@ -1,28 +1,26 @@
 <template>
-  <main class="tx-app">
-    <TxNavbar>
-      <template v-slot:logo>
-        <img src="logo.svg" />
-      </template>
-      <template v-slot:nav>
-        <TxNavbarLink label="Home" to="home">
-          <TxIcon icon="home" size="1x" />
-        </TxNavbarLink>
-        <TxNavbarLink label="Buttons" to="buttons">
-          <TxIcon icon="command" size="1x" />
-        </TxNavbarLink>
-      </template>
-    </TxNavbar>
-    <TxHeader>
-      <template v-slot:title>{{ pageTitle }}</template>
-      <template v-slot:actions>
-        <TxButton>Login</TxButton>
-      </template>
-    </TxHeader>
-    <div class="tx-app__content">
-      <router-view />
-    </div>
-  </main>
+  <TxWrapper>
+    <template v-slot:appLogo>
+      <img src="logo.svg" />
+    </template>
+    <template v-slot:navMenu>
+      <TxNavbarLink label="Home" to="home">
+        <TxIcon icon="home" />
+      </TxNavbarLink>
+      <TxNavbarLink label="Buttons" to="buttons">
+        <TxIcon icon="command" size="1x" />
+      </TxNavbarLink>
+    </template>
+    <template v-slot:pageTitle>{{ pageTitle }}</template>
+    <template v-slot:headerActions>
+      <TxButton>Login</TxButton>
+    </template>
+    <template v-slot:content>
+      <div>
+        <router-view />
+      </div>
+    </template>
+  </TxWrapper>
 </template>
 
 <script lang="ts">
@@ -32,9 +30,10 @@ import TxNavbarLink from "./components/TxNavbarLink.vue";
 import TxHeader from "./components/TxHeader.vue";
 import TxButton from "./components/TxButton.vue";
 import TxIcon from "./components/TxIcon.vue";
+import TxWrapper from "./components/TxWrapper.vue";
 
 export default defineComponent({
-  components: { TxIcon, TxNavbar, TxNavbarLink, TxHeader, TxButton },
+  components: { TxWrapper, TxIcon, TxNavbar, TxNavbarLink, TxHeader, TxButton },
   computed: {
     pageTitle(): string {
       return this.$route.meta.title;
@@ -45,13 +44,4 @@ export default defineComponent({
 
 <style lang="scss">
 @import "./scss/main.scss";
-@import "./scss/variables";
-
-.tx-app {
-  padding-left: 16rem;
-
-  @media screen and (max-width: $tx-breakpoint--desktop) {
-    padding-left: 6rem;
-  }
-}
 </style>

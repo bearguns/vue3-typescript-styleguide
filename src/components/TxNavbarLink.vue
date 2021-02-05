@@ -1,6 +1,11 @@
 <template>
   <li class="tx-navbar-item">
-    <router-link :to="{ name: to }" class="tx-navbar-item__link" href="">
+    <router-link
+      :to="{ name: to }"
+      class="tx-navbar-item__link"
+      :class="{ 'tx-navbar-item__link--active': isActive }"
+      href=""
+    >
       <slot></slot>
       <span>{{ label }}</span>
     </router-link>
@@ -20,6 +25,11 @@ export default defineComponent({
       required: true,
     },
   },
+  computed: {
+    isActive(): boolean {
+      return this.$route.name === this.to;
+    },
+  },
 });
 </script>
 
@@ -27,13 +37,14 @@ export default defineComponent({
 @import "../scss/colors";
 @import "../scss/variables";
 @import "../scss/typography";
+@import "../scss/animations";
 
 .tx-navbar-item {
   text-align: left;
   width: 100%;
   padding: 0.5rem 1.75rem;
-
   &__link {
+    transition: color 0.25s ease-in-out;
     display: flex;
     align-items: center;
     text-align: center;
@@ -41,6 +52,11 @@ export default defineComponent({
     font-size: 1.75rem;
     font-weight: $font-weight--light;
     color: $white;
+    &--active {
+      border-bottom: 2px solid $blue;
+      color: $blue;
+    }
+
     &:hover {
       color: $blue;
     }

@@ -16,7 +16,9 @@
         <slot name="headerActions"></slot>
       </template>
     </TxHeader>
-    <slot name="content"></slot>
+    <div class="tx-app__content">
+      <slot name="content"></slot>
+    </div>
   </main>
 </template>
 
@@ -32,11 +34,18 @@ export default defineComponent({
 
 <style lang="scss">
 @import "../scss/variables";
+@import "../scss/animations";
+
 .tx-app {
   padding-left: 16rem;
 
   @media screen and (max-width: $tx-breakpoint--desktop) {
     padding-left: 6rem;
+  }
+
+  &__content {
+    opacity: 0;
+    animation: 0.25s 0.5s linear forwards fadeIn;
   }
 }
 </style>

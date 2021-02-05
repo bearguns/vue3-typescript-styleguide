@@ -14,8 +14,11 @@
 <style lang="scss" scoped>
 @import "../scss/colors";
 @import "../scss/variables";
+@import "../scss/animations";
 
 .tx-navbar {
+  transform: translateX(-100%);
+  animation: 0.25s 0.25s ease-out forwards slideInLeft;
   position: fixed;
   left: 0;
   top: 0;
@@ -29,6 +32,8 @@
   }
 
   &__logo {
+    opacity: 0;
+    animation: 0.75s 0.5s linear forwards fadeIn;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -36,6 +41,8 @@
   }
 
   &__menu ul {
+    opacity: 0;
+    animation: 0.75s 0.5s ease forwards fadeIn;
     width: 100%;
     display: flex;
     flex-direction: column;

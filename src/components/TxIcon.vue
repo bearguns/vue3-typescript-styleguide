@@ -1,5 +1,5 @@
 <template>
-  <component :is="component"></component>
+  <component :is="component" :size="size"></component>
 </template>
 
 <script lang="ts">
@@ -40,6 +40,11 @@ export default defineComponent({
           "activity",
         ].includes(value);
       },
+    },
+    size: {
+      type: String,
+      required: false,
+      default: "1x",
     },
   },
   computed: {

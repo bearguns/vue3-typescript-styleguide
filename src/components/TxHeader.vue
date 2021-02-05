@@ -26,12 +26,13 @@ export default defineComponent({
 </script>
 <style lang="scss">
 @import "../scss/colors";
-
+@import "../scss/animations";
 .tx-header {
+  transform: translateY(-100%);
+  animation: 0.5s 0s ease-in-out forwards slideInTop;
   &.navbar {
     background-color: $black;
   }
-  height: 5.5rem;
   padding: 1rem 0.75rem;
   width: 100%;
   margin: 0;
