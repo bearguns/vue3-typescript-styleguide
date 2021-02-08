@@ -13,10 +13,10 @@ $success: $green;
 $danger: $red;
 $warning: $yellow;
 
-$gray-lightest: lighten($gray, 60%);
+$gray-lightest: lighten($gray, 58%);
 $gray-light: lighten($gray, 30%);
 $gray-dark: darken($gray, 15%);
 
 $link: $primary;
 
-$body-background-color: $white;
+$body-background-color: $gray-lightest;

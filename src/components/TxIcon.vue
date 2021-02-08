@@ -38,6 +38,7 @@ export default defineComponent({
           "home",
           "command",
           "activity",
+          "card",
         ].includes(value);
       },
     },
@@ -104,6 +105,8 @@ export default defineComponent({
           return "CommandIcon";
         case "activity":
           return "ActivityIcon";
+        case "card":
+          return "CreditCardIcon";
         default:
           return "CheckSquareIcon";
       }
