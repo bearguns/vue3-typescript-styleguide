@@ -1,24 +1,24 @@
 <template>
-  <div class="card app-card">
+  <div class="card tx-card">
     <header
-      class="card-header app-card__header"
-      :class="statusClass"
-      v-if="hasHeaderBar"
+      class="card-header tx-card__header"
+      :class="headerClass"
+      v-if="hasHeader"
+      @click="expand"
     >
-      <p
-        class="card-header-title app-card__title"
-        :class="{ 'has-bg': hasHeaderBar }"
-        v-if="hasHeaderBar"
-      >
-        <slot name="title"></slot>
-      </p>
+      <TxTitle :size="3">
+        <slot name="header"></slot>
+      </TxTitle>
+      <TxIcon v-if="expandable" :icon="headerIcon" size="1.5x" />
     </header>
-    <div class="card-content app-card__content">
-      <div class="content">
-        <slot></slot>
+    <div class="tx-card__content" :class="[expandClass]">
+      <div class="card-content">
+        <div class="content">
+          <slot></slot>
+        </div>
       </div>
     </div>
-    <footer class="card-footer app-card__footer">
+    <footer class="card-footer tx-card__footer" v-if="hasFooter">
       <slot name="footer"></slot>
     </footer>
   </div>
@@ -26,59 +26,110 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import TxTitle from "./TxTitle.vue";
+import TxIcon from "./TxIcon.vue";
 export default defineComponent({
   name: "TxCard",
+  components: { TxTitle, TxIcon },
+  data() {
+    return {
+      open: false,
+    };
+  },
   props: {
     status: {
       type: String,
       required: false,
       default: "",
     },
+    expandable: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   computed: {
-    statusClass(): string {
-      switch (this.status) {
-        case "primary":
-          return "has-background-primary";
-        case "info":
-          return "has-background-info";
-        case "warning":
-          return "has-background-warning";
-        case "danger":
-          return "has-background-danger";
-        case "success":
-          return "has-background-success";
-        default:
-          return "";
+    headerClass(): string {
+      return `tx-card__header--${this.status}`;
+    },
+    hasHeader(): boolean {
+      return !!this.$slots.header || this.expandable;
+    },
+    hasFooter(): boolean {
+      return !!this.$slots.footer;
+    },
+    headerIcon(): string {
+      return this.open ? "chevron-up" : "chevron-down";
+    },
+    expandClass(): string {
+      if (this.expandable) {
+        return this.open
+          ? "tx-card__content--expanded"
+          : "tx-card__content--collapsed";
       }
     },
-    hasHeaderBar(): boolean {
-      return this.status !== "";
+  },
+  methods: {
+    expand(): void {
+      this.open = !this.open;
     },
   },
 });
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/_variables.scss";
+@import "../scss/variables";
+@import "../scss/colors";
 
-.app-card {
+.tx-card {
   height: auto;
+  border-radius: 8px;
   &__header {
-    min-height: 3rem;
+    height: 4rem;
+    padding: 1.25rem;
+    border-bottom: 2px solid $black;
+    color: $black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & .title {
+      margin-bottom: 0;
+    }
+    &--primary {
+      border-bottom-color: $blue;
+      & * {
+        color: $blue;
+      }
+    }
+
+    &--danger {
+      border-bottom-color: $red;
+      & * {
+        color: $red;
+      }
+    }
   }
 
   &__content {
-    min-height: 75%;
+    min-height: 12rem;
     max-height: 75vh;
     overflow-y: scroll;
-  }
+    transition: min-height 0.25s ease-in-out;
 
-  &__title {
-    font-size: 1.25rem;
-    &.has-bg,
-    &.has-bg .title {
-      color: #f3f3f3;
+    & .card-content {
+      transition: opacity 0.75s linear;
+    }
+    &--collapsed {
+      & .card-content {
+        display: none;
+      }
+      min-height: 0px;
+      overflow-y: hidden;
+    }
+
+    &--expanded .content {
+      min-height: initial;
     }
   }
 

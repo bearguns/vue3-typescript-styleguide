@@ -25,7 +25,8 @@ import {
   PowerIcon,
   EditIcon,
   CommandIcon,
-  ActivityIcon
+  ActivityIcon,
+  CreditCardIcon
 } from "@zhuowenli/vue-feather-icons";
 
 const icons = {
@@ -55,7 +56,8 @@ const icons = {
   "PowerIcon": PowerIcon,
   "EditIcon": EditIcon,
   "CommandIcon": CommandIcon,
-  "ActivityIcon": ActivityIcon
+  "ActivityIcon": ActivityIcon,
+  "CreditCardIcon": CreditCardIcon
 };
 
 export default function registerIcons(app: any): void {

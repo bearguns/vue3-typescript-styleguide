@@ -3,7 +3,7 @@
     <router-link
       :to="{ name: to }"
       class="tx-navbar-item__link"
-      :class="{ 'tx-navbar-item__link--active': isActive }"
+      :class="{ 'tx-navbar-item__link--active': active }"
       href=""
     >
       <slot></slot>
@@ -24,10 +24,10 @@ export default defineComponent({
       type: String,
       required: true,
     },
-  },
-  computed: {
-    isActive(): boolean {
-      return this.$route.name === this.to;
+    active: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
   },
 });

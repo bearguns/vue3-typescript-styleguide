@@ -1,6 +1,6 @@
 {
   "name": "@teliax/styleguide",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "files": ["dist"],
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -14,7 +14,6 @@
     "build:es": "NODE_ENV=production rollup --config rollup.config.js && yarn build:types"
   },
   "dependencies": {
-    "@sweetalert2/theme-bulma": "^4.0.2",
     "@zhuowenli/vue-feather-icons": "^5.0.2",
     "bulma": "^0.9.1",
     "sweetalert2": "^10.13.3",
