@@ -1,5 +1,5 @@
 <template>
-  <div class="file is-full-width has-name" @click="triggerInput">
+  <div class="file is-full-width has-name">
     <label class="file-label" :for="name">
       <input
         class="file-input"
@@ -49,9 +49,6 @@ export default defineComponent({
     emitFile(event: any): void {
       this.file = event.target.files[0];
       this.$emit("input", this.file);
-    },
-    triggerInput(): void {
-      this.$refs.input.click();
     },
   },
 });

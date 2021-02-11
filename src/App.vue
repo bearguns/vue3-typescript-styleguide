@@ -19,6 +19,11 @@
       <TxButton @click="popup">Login</TxButton>
     </template>
     <template v-slot:content>
+      <div class="columns">
+        <div class="column">
+          <TxFile />
+        </div>
+      </div>
       <div>
         <router-view />
       </div>
@@ -36,6 +41,7 @@ import TxButton from "./components/TxButton.vue";
 import TxIcon from "./components/TxIcon.vue";
 import TxWrapper from "./components/TxWrapper.vue";
 import TxCard from "./components/TxCard.vue";
+import TxFile from "./components/TxFile.vue";
 
 const popupClient = new Popup();
 
@@ -48,6 +54,7 @@ export default defineComponent({
     TxHeader,
     TxButton,
     TxCard,
+    TxFile,
   },
   computed: {
     pageTitle(): string {
