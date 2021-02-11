@@ -1,0 +1,43 @@
+#+TITLE: Teliax Styleguide
+#+AUTHOR: Teliax
+
+* About
+This repository provides a UI styleguide and VueJS component library
+for Teliax UI projects.
+
+** Technologies used
+- VueJS 3+
+- TypeScript
+- SASS
+- Rollup
+
+* Getting Started
+To begin, make sure you have a personal access token configured on
+Github. This will allow you to clone and install private ~npm~ modules
+hosted under the Teliax organization on Github.
+
+[[https://docs.github.com/en/packages/guides/configuring-npm-for-use-with-github-packages][These instructions on GitHub]] can provide more information on
+authenticating, but the steps below can assist:
+
+** Installing private packages from GitHub
+1. Make sure you have a personal access token created in GitHub
+   - Authenticate to GitHub.com
+   - Navigate to Settings -> Developer Settings -> Personal access tokens
+   - Generate a personal access token with repo scopes, and
+     ~write:packages~, ~read:packages~ scopes.
+2. Create a file in your user directory called ~.npmrc~:
+=$ touch ~/.npmrc=
+3. In your text editor, add the following to ~~/.npmrc~, substituting
+   your personal access token:
+#+BEGIN_SRC
+@teliax:registry=https://npm.pkg.github.com/
+//npm.pkg.github.com/:_authToken=YOUR_PERSONAL_ACCESS_TOKEN
+#+END_SRC
+
+** Running the styleguide locally
+
+1. Clone this repo to your machine
+2. Install dependencies with Yarn:
+=$ yarn install=
+3. Run the dev server and navigate to the URL shown in your terminal:
+=$ yarn dev=
