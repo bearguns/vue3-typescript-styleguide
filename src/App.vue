@@ -19,11 +19,6 @@
       <TxButton @click="popup">Login</TxButton>
     </template>
     <template v-slot:content>
-      <div class="columns">
-        <div class="column">
-          <TxFile />
-        </div>
-      </div>
       <div>
         <router-view />
       </div>

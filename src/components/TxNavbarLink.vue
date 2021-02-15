@@ -44,7 +44,7 @@ export default defineComponent({
   width: 100%;
   padding: 0.5rem 1.75rem;
   &__link {
-    transition: color 0.25s ease-in-out;
+    transition: color 0.2s ease-in-out;
     display: flex;
     align-items: center;
     text-align: center;
@@ -75,6 +75,16 @@ export default defineComponent({
       & span {
         font-size: 1rem;
         margin-left: 0;
+      }
+    }
+
+    @media screen and (max-width: $tx-breakpoint--mobile) {
+      flex-direction: initial;
+
+      font-size: 2.25rem;
+      & span {
+        font-size: 2.25rem;
+        margin-left: 0.75rem;
       }
     }
   }

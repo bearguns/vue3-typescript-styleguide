@@ -39,6 +39,7 @@ export default defineComponent({
           "command",
           "activity",
           "card",
+          "menu",
         ].includes(value);
       },
     },
@@ -107,6 +108,8 @@ export default defineComponent({
           return "ActivityIcon";
         case "card":
           return "CreditCardIcon";
+        case "menu":
+          return "MenuIcon";
         default:
           return "CheckSquareIcon";
       }
