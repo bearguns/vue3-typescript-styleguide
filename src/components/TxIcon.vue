@@ -40,6 +40,13 @@ export default defineComponent({
           "activity",
           "card",
           "menu",
+          "tag",
+          "chart",
+          "user",
+          "users",
+          "server",
+          "briefcase",
+          "lock",
         ].includes(value);
       },
     },
@@ -110,6 +117,20 @@ export default defineComponent({
           return "CreditCardIcon";
         case "menu":
           return "MenuIcon";
+        case "tag":
+          return "TagIcon";
+        case "chart":
+          return "PieChartIcon";
+        case "server":
+          return "ServerIcon";
+        case "user":
+          return "UserIcon";
+        case "users":
+          return "UsersIcon";
+        case "briefcase":
+          return "BriefcaseIcon";
+        case "lock":
+          return "LockIcon";
         default:
           return "CheckSquareIcon";
       }

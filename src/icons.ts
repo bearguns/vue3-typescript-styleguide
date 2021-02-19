@@ -27,7 +27,14 @@ import {
   CommandIcon,
   ActivityIcon,
   CreditCardIcon,
-  MenuIcon
+  MenuIcon,
+  PieChartIcon,
+  TagIcon,
+  ServerIcon,
+  UserIcon,
+  UsersIcon,
+  BriefcaseIcon,
+  LockIcon
 } from "@zhuowenli/vue-feather-icons";
 
 const icons = {
@@ -59,7 +66,14 @@ const icons = {
   "CommandIcon": CommandIcon,
   "ActivityIcon": ActivityIcon,
   "CreditCardIcon": CreditCardIcon,
-  "MenuIcon": MenuIcon
+  "MenuIcon": MenuIcon,
+  "PieChartIcon": PieChartIcon,
+  "TagIcon": TagIcon,
+  "ServerIcon": ServerIcon,
+  "UserIcon": UserIcon,
+  "UsersIcon": UsersIcon,
+  "BriefcaseIcon": BriefcaseIcon,
+  "LockIcon": LockIcon
 };
 
 export default function registerIcons(app: any): void {
