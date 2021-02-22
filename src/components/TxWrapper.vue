@@ -40,7 +40,6 @@ export default defineComponent({
   },
   methods: {
     toggleNavbar(): void {
-      console.log("aaaaaaay");
       this.showNav = !this.showNav;
     },
   },
@@ -53,27 +52,38 @@ export default defineComponent({
 
 .tx-app {
   height: 100%;
+  padding: 0.5rem;
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: 1fr;
   grid-template-areas: "sidebar" "content";
 
-  @display screen and (max-width: $tx-breakpoint--mobile) {
-    grid-template-columns: auto;
+  @media screen and (max-width: $tx-breakpoint--mobile) {
+    grid-template-columns: 1fr;
+    padding: 0px;
   }
 
   &__navbar {
     grid-area: "sidebar";
     grid-row: span 1;
-    top: 0;
-    left: 0;
+
+    @media screen and (max-width: $tx-breakpoint--mobile) {
+      grid-area: none;
+    }
   }
+
   &__content {
+    padding-left: 1rem;
     grid-area: "content";
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
+
+    @media screen and (max-width: $tx-breakpoint--mobile) {
+      padding: 0px;
+    }
   }
+
   &__view {
     overflow: auto;
     opacity: 0;

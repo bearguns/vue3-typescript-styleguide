@@ -38,17 +38,22 @@ export default defineComponent({
 .tx-navbar {
   transform: translateX(-100%);
   animation: 0.25s 0.25s ease-out forwards slideInLeft;
+  border-radius: 12px;
   min-height: 100%;
   padding: 1.75rem 0.5rem;
   background-color: $black;
-  border-right: 3px solid $blue;
   z-index: 3;
 
   @media screen and (max-width: $tx-breakpoint--tablet) {
     width: 6rem;
   }
+
   @media screen and (min-width: $tx-breakpoint--desktop) {
     width: 16rem;
+  }
+
+  @media screen and (max-width: $tx-breakpoint--mobile) {
+    border-radius: 0px;
   }
 
   &__content {
@@ -84,6 +89,7 @@ export default defineComponent({
     opacity: 0;
     animation: 0.75s 0.5s ease forwards fadeIn;
     width: 100%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;

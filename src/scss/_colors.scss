@@ -1,11 +1,10 @@
 $blue:#41a6c5;
-$green: #41c560;
+$green: #64c541;
 $orange: #ffa74e;
-$black: #2f3031;
-$red: #ff664e;
+$black: #112e37;
+$red: #C56041;
 $yellow: #ffca4e;
-$gray: #4c6375;
-$white: #FDFDF0;
+$gray: #8B8B8B;
 
 $primary: $blue;
 $info: lighten($blue, 20%);
@@ -13,9 +12,11 @@ $success: $green;
 $danger: $red;
 $warning: $yellow;
 
-$gray-lightest: lighten($gray, 58%);
-$gray-light: lighten($gray, 30%);
-$gray-dark: darken($gray, 15%);
+$gray-lightest: lighten($gray, 40%);
+$gray-light: lighten($gray, 20%);
+$gray-dark: darken($gray, 10%);
+
+$white: $gray-lightest;
 
 $link: $primary;
 

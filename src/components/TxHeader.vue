@@ -45,6 +45,11 @@ export default defineComponent({
   animation: 0.5s 0s ease-in-out forwards slideInTop;
   padding: 0.5rem 0.25rem;
   margin: 0;
+  border-radius: 12px;
+
+  @media screen and (max-width: $tx-breakpoint--mobile) {
+    border-radius: 0px;
+  }
 
   &__toggle {
     color: $white;
