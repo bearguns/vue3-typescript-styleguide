@@ -1,23 +1,29 @@
 $blue:#41a6c5;
-$green: #64c541;
+$green: #41c560;
 $orange: #ffa74e;
-$black: #112e37;
-$red: #C56041;
+$red: #c56041;
 $yellow: #ffca4e;
 $gray: #8B8B8B;
+$white: #f5f5f5;
+$blue--dark: darken($blue, 20%);
+$blue--darkest: #061114;
 
+$black: $blue--darkest;
 $primary: $blue;
 $info: lighten($blue, 20%);
 $success: $green;
 $danger: $red;
 $warning: $yellow;
 
-$gray-lightest: lighten($gray, 40%);
-$gray-light: lighten($gray, 20%);
-$gray-dark: darken($gray, 10%);
+$gray--lightest: #e8e8e8;
+$gray--lighter: #d1d1d1;
+$gray--light: #a2a2a2;
 
-$white: $gray-lightest;
+$gray--dark: #6f6f6f;
+$gray--darker: #535353;
+$gray--darkest: #383838;
 
 $link: $primary;
 
-$body-background-color: $gray-lightest;
+$body-background-color: $gray--lightest;
+$navbar-burger-color: $blue;

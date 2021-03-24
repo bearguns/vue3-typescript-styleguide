@@ -84,10 +84,11 @@ export default defineComponent({
 .tx-card {
   height: auto;
   border-radius: 8px;
+  background-color: $white;
   &__header {
     height: 4rem;
     padding: 1.25rem;
-    border-bottom: 2px solid $black;
+    border-bottom: 1px solid $gray--darker;
     color: $black;
     display: flex;
     justify-content: space-between;

@@ -1,16 +1,26 @@
 <template>
-  <nav class="tx-navbar" :class="{ 'tx-navbar--active': active }">
-    <div class="tx-navbar__content">
-      <div class="tx-navbar__logo">
-        <slot name="logo"></slot>
-        <div class="tx-navbar__button">
-          <TxIcon icon="close" size="3x" @click="$emit('toggle')" />
-        </div>
-      </div>
-      <div class="tx-navbar__menu">
-        <ul class="tx-navbar-nav" @click="$emit('toggle')">
-          <slot name="nav"></slot>
-        </ul>
+  <nav class="navbar tx-navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <router-link to="/">
+        <img alt="logo" :src="logo" />
+      </router-link>
+      <a
+        role="button"
+        class="navbar-burger"
+        :class="{ 'is-active': menuActive }"
+        aria-label="menu"
+        :aria-expanded="showMenu"
+        @click="toggleMenu"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div class="navbar-menu" :class="{ 'is-active': menuActive }">
+      <div class="navbar-start tx-navbar--start">
+        <slot name="start"></slot>
       </div>
     </div>
   </nav>
@@ -18,97 +28,95 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import TxTitle from "./TxTitle.vue";
+import TxButton from "./TxButton.vue";
 import TxIcon from "./TxIcon.vue";
+import TxDropdown from "./TxDropdown.vue";
 export default defineComponent({
-  components: { TxIcon },
+  components: { TxTitle, TxButton, TxIcon, TxDropdown },
   props: {
-    active: {
-      type: Boolean,
+    logo: {
+      type: String,
       required: false,
-      default: false,
+      default: "logo.svg",
+    },
+  },
+  data() {
+    return {
+      menuActive: false,
+    };
+  },
+  methods: {
+    toggleMenu() {
+      this.menuActive = !this.menuActive;
     },
   },
 });
 </script>
 <style lang="scss" scoped>
 @import "../scss/colors";
-@import "../scss/variables";
 @import "../scss/animations";
+@import "../scss/variables";
 
 .tx-navbar {
-  transform: translateX(-100%);
-  animation: 0.25s 0.25s ease-out forwards slideInLeft;
-  border-radius: 12px;
-  min-height: 100%;
-  padding: 1.75rem 0.5rem;
-  background-color: $black;
-  z-index: 3;
+  transform: translateY(-100%);
+  animation: 0.5s 0s ease-in-out forwards slideInTop;
+  padding: 0.5rem;
+  margin: 0;
 
-  @media screen and (max-width: $tx-breakpoint--tablet) {
-    width: 6rem;
-  }
-
-  @media screen and (min-width: $tx-breakpoint--desktop) {
-    width: 16rem;
-  }
-
-  @media screen and (max-width: $tx-breakpoint--mobile) {
-    border-radius: 0px;
-  }
-
-  &__content {
+  &.navbar {
+    padding: 0.75rem 1rem;
+    height: 5rem;
+    background-color: $black;
     position: sticky;
-    top: 1.75rem;
-    left: 0;
-    overflow: hidden;
-  }
+    top: 0;
+    z-index: 1;
+    box-shadow: $tx-drop-shadow;
 
-  &__logo {
-    opacity: 0;
-    animation: 0.75s 0.5s linear forwards fadeIn;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 3.25rem;
+    & .navbar-brand {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
-    @media screen and (max-width: $tx-breakpoint--mobile) {
-      justify-content: space-between;
+      @media screen and (max-width: $tx-breakpoint--mobile) {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      & img {
+        width: 10rem;
+        height: auto;
+
+        @media screen and (max-width: $tx-breakpoint--mobile) {
+          width: 7rem;
+        }
+      }
+
+      &.navbar-burger {
+        color: $blue;
+
+        &:hover {
+          color: $blue;
+        }
+      }
     }
   }
 
-  &__button {
-    @media screen and (min-width: $tx-breakpoint--mobile) {
+  &__title {
+    display: inline-block;
+    @media screen and (max-width: $tx-breakpoint--mobile) {
       display: none;
     }
-    color: $red;
-    margin-bottom: -0.75rem;
-  }
-
-  &__menu ul {
-    opacity: 0;
-    animation: 0.75s 0.5s ease forwards fadeIn;
-    width: 100%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  @media screen and (max-width: $tx-breakpoint--mobile) {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 5;
-    width: 0px;
-    height: 100vh;
-    padding: 0;
-    transition: width 0.2s ease-in-out;
-    &--active {
-      width: 75vw;
-      padding: 0.75rem 0.5rem;
+    &.navbar-item * {
+      color: $black;
     }
+  }
+}
+.tx-header__toggle {
+  margin-right: 1rem;
+  cursor: pointer;
+  @media screen and (min-width: $tx-breakpoint--mobile) {
+    display: none;
   }
 }
 </style>

@@ -47,6 +47,7 @@ export default defineComponent({
           "server",
           "briefcase",
           "lock",
+          "droplet",
         ].includes(value);
       },
     },
@@ -131,6 +132,8 @@ export default defineComponent({
           return "BriefcaseIcon";
         case "lock":
           return "LockIcon";
+        case "droplet":
+          return "DropletIcon";
         default:
           return "CheckSquareIcon";
       }

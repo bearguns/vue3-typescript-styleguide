@@ -1,8 +1,5 @@
 <template>
-  <button
-    class="app-button button is-rounded"
-    :class="[statusClass, sizeClass]"
-  >
+  <button class="app-button button" :class="[statusClass, sizeClass]">
     <slot></slot>
   </button>
 </template>

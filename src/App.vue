@@ -1,40 +1,24 @@
 <template>
-  <TxWrapper>
-    <template v-slot:appLogo>
-      <img src="logo.svg" />
-    </template>
-    <template v-slot:navMenu>
-      <TxNavbarLink label="Home" to="home">
-        <TxIcon icon="home" />
-      </TxNavbarLink>
-      <TxNavbarLink label="Buttons" to="buttons">
-        <TxIcon icon="command" size="1x" />
-      </TxNavbarLink>
-      <TxNavbarLink to="cards" label="Cards">
-        <TxIcon icon="card" />
-      </TxNavbarLink>
-    </template>
-    <template v-slot:pageTitle>{{ pageTitle }}</template>
-    <template v-slot:headerActions>
-      <TxButton @click="popup">Login</TxButton>
-    </template>
-    <template v-slot:content>
-      <div>
-        <router-view />
+  <div class="styleguide">
+    <div class="styleguide__header">
+      <TxNavbar />
+    </div>
+    <div class="styleguide__content">
+      <div class="styleguide__sidebar">
+        <TxSidebar />
       </div>
-    </template>
-  </TxWrapper>
+      <div class="styleguide__views"></div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import { Popup } from "./notifications";
 import TxNavbar from "./components/TxNavbar.vue";
-import TxNavbarLink from "./components/TxNavbarLink.vue";
-import TxHeader from "./components/TxHeader.vue";
+import TxSidebar from "./components/TxSidebar.vue";
 import TxButton from "./components/TxButton.vue";
 import TxIcon from "./components/TxIcon.vue";
-import TxWrapper from "./components/TxWrapper.vue";
 import TxCard from "./components/TxCard.vue";
 import TxFile from "./components/TxFile.vue";
 
@@ -42,14 +26,12 @@ const popupClient = new Popup();
 
 export default defineComponent({
   components: {
-    TxWrapper,
     TxIcon,
     TxNavbar,
-    TxNavbarLink,
-    TxHeader,
     TxButton,
     TxCard,
     TxFile,
+    TxSidebar,
   },
   computed: {
     pageTitle(): string {
@@ -66,4 +48,10 @@ export default defineComponent({
 
 <style lang="scss">
 @import "./scss/main.scss";
+
+.styleguide {
+  &__content {
+    display: flex;
+  }
+}
 </style>

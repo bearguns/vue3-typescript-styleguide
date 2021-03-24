@@ -8,7 +8,6 @@ html {
 body {
   margin: 0;
   min-height: 100%;
-  background-color: $gray-lightest;
 }
 
 *,
@@ -20,3 +19,9 @@ body {
 #app {
   height: 100vh;
 }
+
+
+$radius: 8px;
+$radius-small: 4px;
+$radius-large: 12px;
+$radius-rounded: 9999px;

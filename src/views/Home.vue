@@ -1,18 +1,18 @@
 <template>
-  <TxPageWrapper>
+  <div class="home">
+    <TxTitle>Teliax Styleguide</TxTitle>
     <p>
       This application serves as a design style guide and component library for
       Teliax UI applications.
     </p>
-  </TxPageWrapper>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import TxSearch from "../components/TxSearch.vue";
 import TxTitle from "../components/TxTitle.vue";
-import TxPageWrapper from "../components/TxPageWrapper.vue";
-
 export default defineComponent({
-  components: { TxTitle, TxPageWrapper },
+  components: { TxTitle, TxSearch },
 });
 </script>

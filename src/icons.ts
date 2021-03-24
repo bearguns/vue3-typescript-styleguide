@@ -34,7 +34,8 @@ import {
   UserIcon,
   UsersIcon,
   BriefcaseIcon,
-  LockIcon
+  LockIcon,
+  DropletIcon
 } from "@zhuowenli/vue-feather-icons";
 
 const icons = {
@@ -73,7 +74,8 @@ const icons = {
   "UserIcon": UserIcon,
   "UsersIcon": UsersIcon,
   "BriefcaseIcon": BriefcaseIcon,
-  "LockIcon": LockIcon
+  "LockIcon": LockIcon,
+  "DropletIcon": DropletIcon
 };
 
 export default function registerIcons(app: any): void {
