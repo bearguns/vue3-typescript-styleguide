@@ -1,13 +1,13 @@
 import { mount } from "@vue/test-utils";
-import TxInput from "./TxInput.vue";
+import InputField from "./InputField.vue";
 const defaultProps = {
   name: "namey",
   label: "My input",
 };
 
-describe("Components | Inputs | TxInput", () => {
+describe("Components | Inputs | InputField", () => {
   test("Renders provided input in 'input' slot", () => {
-    const wrapper = mount(TxInput, {
+    const wrapper = mount(InputField, {
       slots: {
         input: '<input type="text" value="foo" />',
       },
@@ -19,7 +19,7 @@ describe("Components | Inputs | TxInput", () => {
   });
 
   test("Renders provided label", () => {
-    const wrapper = mount(TxInput, {
+    const wrapper = mount(InputField, {
       props: {
         ...defaultProps,
       },
@@ -28,7 +28,7 @@ describe("Components | Inputs | TxInput", () => {
   });
 
   test("Passes provided name to 'for' attribute on label", () => {
-    const wrapper = mount(TxInput, {
+    const wrapper = mount(InputField, {
       props: {
         ...defaultProps,
       },
@@ -37,7 +37,7 @@ describe("Components | Inputs | TxInput", () => {
   });
 
   test("Passes provided name to 'data-qa' attribute on label", () => {
-    const wrapper = mount(TxInput, {
+    const wrapper = mount(InputField, {
       props: {
         ...defaultProps,
       },
@@ -49,7 +49,7 @@ describe("Components | Inputs | TxInput", () => {
 
   test("Renders helpMsg if provided", () => {
     const helpMsg = "This field is really hard to fill out, be careful.";
-    const wrapper = mount(TxInput, {
+    const wrapper = mount(InputField, {
       props: {
         ...defaultProps,
         helpMsg,
@@ -60,7 +60,7 @@ describe("Components | Inputs | TxInput", () => {
 
   test("Renders errorMsg if provided", () => {
     const errorMsg = "This field is WRONG";
-    const wrapper = mount(TxInput, {
+    const wrapper = mount(InputField, {
       props: {
         ...defaultProps,
         errorMsg,
@@ -71,7 +71,7 @@ describe("Components | Inputs | TxInput", () => {
 
   test("Renders successMsg if provided", () => {
     const successMsg = "This field is GREAT.";
-    const wrapper = mount(TxInput, {
+    const wrapper = mount(InputField, {
       props: {
         ...defaultProps,
         successMsg,

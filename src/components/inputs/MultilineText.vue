@@ -3,24 +3,23 @@
     :name="name"
     :label="label"
     :errorMsg="errorMsg"
-    :successMsg="successMsg"
     :helpMsg="helpMsg"
+    :successMsg="successMsg"
     :isValid="isValid"
   >
     <template v-slot:input>
-      <input
-        :name="name"
-        :data-qa="`${name}_input`"
-        type="number"
-        :value="modelValue"
-        :step="step"
-        :min="min"
-        :max="max"
-        class="input"
+      <textarea
+        class="textarea"
         :class="inputClasses"
+        :cols="cols"
+        id=""
+        :name="name"
+        :rows="rows"
+        :value="modelValue"
+        :data-qa="`${name}_textarea`"
         @input="$emit('update:modelValue', $event.target.value)"
         @blur="$emit('blur')"
-      />
+      ></textarea>
     </template>
   </InputField>
 </template>
@@ -29,29 +28,24 @@
 import { defineComponent } from "vue";
 import { defaultProps, classBindings } from "../../composers/inputs.ts";
 import InputField from "./InputField.vue";
-export default {
-  name: "NumberInput",
+export default defineComponent({
+  name: "MultilineText",
   components: { InputField },
   emits: ["blur", "update:modelValue"],
   props: {
     ...defaultProps(),
-    step: {
+    cols: {
       type: Number,
       required: false,
-      default: 1,
+      default: 30,
     },
-    min: {
+    rows: {
       type: Number,
       required: false,
-      default: 0,
-    },
-    max: {
-      type: Number,
-      required: false,
-      default: 99999,
+      default: 10,
     },
     modelValue: {
-      type: Number,
+      type: String,
       required: false,
     },
   },
@@ -60,5 +54,5 @@ export default {
       inputClasses: classBindings(props),
     };
   },
-};
+});
 </script>

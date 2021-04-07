@@ -1,9 +1,9 @@
 import { mount } from "@vue/test-utils";
-import TxTitle from "./TxTitle";
+import AppTitle from "./AppTitle.vue";
 
-describe("Unit|Common|TxTitle", () => {
+describe("Unit|Common|AppTitle", () => {
   it("renders appropriate h1 element", () => {
-    const wrapper = mount(TxTitle, {
+    const wrapper = mount(AppTitle, {
       propsData: {
         size: 1,
       },
@@ -12,7 +12,7 @@ describe("Unit|Common|TxTitle", () => {
     expect(wrapper.element.classList).toContain("is-size-1");
   });
   it("renders appropriate h2 element", () => {
-    const wrapper = mount(TxTitle, {
+    const wrapper = mount(AppTitle, {
       propsData: {
         size: 2,
       },
@@ -21,7 +21,7 @@ describe("Unit|Common|TxTitle", () => {
     expect(wrapper.element.classList).toContain("is-size-2");
   });
   it("renders appropriate h3 element", () => {
-    const wrapper = mount(TxTitle, {
+    const wrapper = mount(AppTitle, {
       propsData: {
         size: 3,
       },
@@ -30,7 +30,7 @@ describe("Unit|Common|TxTitle", () => {
     expect(wrapper.element.classList).toContain("is-size-3");
   });
   it("renders appropriate h4 element", () => {
-    const wrapper = mount(TxTitle, {
+    const wrapper = mount(AppTitle, {
       propsData: {
         size: 4,
       },
@@ -39,7 +39,7 @@ describe("Unit|Common|TxTitle", () => {
     expect(wrapper.element.classList).toContain("is-size-4");
   });
   it("renders appropriate h5 element", () => {
-    const wrapper = mount(TxTitle, {
+    const wrapper = mount(AppTitle, {
       propsData: {
         size: 5,
       },
@@ -48,7 +48,7 @@ describe("Unit|Common|TxTitle", () => {
     expect(wrapper.element.classList).toContain("is-size-5");
   });
   it("renders appropriate h6 element", () => {
-    const wrapper = mount(TxTitle, {
+    const wrapper = mount(AppTitle, {
       propsData: {
         size: 6,
       },
@@ -57,7 +57,7 @@ describe("Unit|Common|TxTitle", () => {
     expect(wrapper.element.classList).toContain("is-size-6");
   });
   it("renders with appropriate status modifier --primary", () => {
-    const wrapper = mount(TxTitle, {
+    const wrapper = mount(AppTitle, {
       propsData: {
         status: "primary",
       },
@@ -65,7 +65,7 @@ describe("Unit|Common|TxTitle", () => {
     expect(wrapper.element.classList).toContain("has-text-primary");
   });
   it("renders with appropriate status modifier --info", () => {
-    const wrapper = mount(TxTitle, {
+    const wrapper = mount(AppTitle, {
       propsData: {
         status: "info",
       },
@@ -73,7 +73,7 @@ describe("Unit|Common|TxTitle", () => {
     expect(wrapper.element.classList).toContain("has-text-info");
   });
   it("renders with appropriate status modifier --success", () => {
-    const wrapper = mount(TxTitle, {
+    const wrapper = mount(AppTitle, {
       propsData: {
         status: "success",
       },
@@ -81,7 +81,7 @@ describe("Unit|Common|TxTitle", () => {
     expect(wrapper.element.classList).toContain("has-text-success");
   });
   it("renders with appropriate status modifier --danger", () => {
-    const wrapper = mount(TxTitle, {
+    const wrapper = mount(AppTitle, {
       propsData: {
         status: "danger",
       },
@@ -90,7 +90,7 @@ describe("Unit|Common|TxTitle", () => {
   });
   it("renders provided content in slot", () => {
     const slotText = "Hello, world!";
-    const wrapper = mount(TxTitle, {
+    const wrapper = mount(AppTitle, {
       slots: {
         default: slotText,
       },

@@ -2,6 +2,7 @@
   <div class="field tx-input-field">
     <label
       class="label has-text-primary is-medium tx-input-field__wrapper"
+      :class="labelClasses"
       :for="name"
       :data-qa="`${name}_label`"
     >
@@ -23,12 +24,24 @@
 </template>
 
 <script lang="ts">
-import { defaultProps } from "../../composers/inputs.ts";
-import { defineComponent } from "vue";
+import { defaultProps, classBindings } from "../../composers/inputs.ts";
+import { defineComponent, computed } from "vue";
 export default defineComponent({
   name: "TxInput",
   props: {
     ...defaultProps(),
+  },
+  setup(props) {
+    const labelClasses = computed(() => {
+      return {
+        "has-text-danger": props.errorMsg,
+        "has-text-success": props.successMsg || props.isValid,
+      };
+    });
+
+    return {
+      labelClasses,
+    };
   },
 });
 </script>
