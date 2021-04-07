@@ -3,10 +3,9 @@ import vue from "rollup-plugin-vue";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import babel from "@rollup/plugin-babel";
-import css from "rollup-plugin-css-only";
 import sass from "rollup-plugin-scss";
+import css from "rollup-plugin-css-only";
 import copy from "rollup-plugin-copy";
-import replace from "@rollup/plugin-replace";
 
 const extensions = [".js", ".jsx", ".vue", ".ts"];
 export default {
@@ -14,11 +13,13 @@ export default {
   external: ["vue", /@babel\/runtime/],
   output: {
     format: "esm",
-    file: "dist/index.js",
+    dir: "dist",
   },
   plugins: [
-    sass(),
-    css(),
+    sass({
+      sass: require("sass"),
+    }),
+    css({ output: "dist/bundle.css" }),
     vue({ css: false }),
     babel({
       exclude: "node_modules/**",

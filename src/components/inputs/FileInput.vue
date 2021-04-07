@@ -3,7 +3,7 @@
     <div class="control">
       <label class="label" for="">{{ label }}</label>
       <div class="file has-name">
-        <label class="file-label" :for="name" data-qa="`${name}_label`" @click="openBrowser">
+        <label class="file-label" :for="name" data-qa="`${name}_label`">
           <input
             class="file-input"
             type="file"
@@ -31,6 +31,7 @@ import { defaultProps } from "../../composers/inputs";
 import { UploadIcon } from "../icons";
 
 export default defineComponent({
+  name: "FileInput",
   components: { UploadIcon },
   emits: ["change"],
   props: {
@@ -52,7 +53,6 @@ export default defineComponent({
     }
 
     function handleChange(event) {
-      console.log(event.target.files);
       emit("change", event.target.files);
     }
 
