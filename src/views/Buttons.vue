@@ -1,11 +1,9 @@
-<template>
-  <ButtonsIntro />
-</template>
+<template></template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import ButtonsIntro from "../components/pages/buttons/ButtonsIntro.vue";
+import { PageWrapper } from "../components/layout";
 export default defineComponent({
-  components: { ButtonsIntro },
+  components: { PageWrapper },
 });
 </script>

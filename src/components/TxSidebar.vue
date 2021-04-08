@@ -24,7 +24,7 @@ export default defineComponent({
 @import "../scss/animations";
 .tx-sidebar {
   height: 100vh;
-  background-color: $white;
+  background-color: $black;
   width: 16rem;
   display: flex;
   flex-direction: column;

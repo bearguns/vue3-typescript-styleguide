@@ -1,29 +1,30 @@
+@use "sass:color";
 $blue:#41a6c5;
-$green: #41c560;
+$green: #64bc26;
 $orange: #ffa74e;
 $red: #c56041;
 $yellow: #ffca4e;
 $gray: #8B8B8B;
-$white: #f5f5f5;
-$blue--dark: darken($blue, 20%);
-$blue--darkest: #061114;
 
-$black: $blue--darkest;
+$white: color.scale($blue, $lightness: 98%);
+$black: color.scale($blue, $lightness: -90%);
+
 $primary: $blue;
 $info: lighten($blue, 20%);
 $success: $green;
 $danger: $red;
 $warning: $yellow;
 
-$gray--lightest: #e8e8e8;
-$gray--lighter: #d1d1d1;
-$gray--light: #a2a2a2;
+$gray--lightest: color.scale($gray, $lightness: 90%);
+$gray--lighter: color.scale($gray, $lightness: 60%);
+$gray--light: color.scale($gray, $lightness: 30%);
 
-$gray--dark: #6f6f6f;
-$gray--darker: #535353;
-$gray--darkest: #383838;
+$gray--dark: color.scale($gray, $lightness: -20%);
+$gray--darker: color.scale($gray, $lightness: -40%);
+$gray--darkest: color.scale($gray, $lightness: -60%);
 
 $link: $primary;
 
-$body-background-color: $gray--lightest;
+$bg-color: color.scale($blue, $lightness: 92%);
+$body-background-color: $bg-color;
 $navbar-burger-color: $blue;

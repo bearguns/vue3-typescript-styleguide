@@ -1,13 +1,13 @@
 import { mount } from "@vue/test-utils";
-import TxCard from "./TxCard.vue";
+import AppCard from "./AppCard.vue";
 
-describe("TxCard", () => {
+describe("AppCard", () => {
   it("renders card with no header bar", () => {
-    const wrapper = mount(TxCard);
+    const wrapper = mount(AppCard);
     expect(wrapper.find(".app-card__header").exists()).toBe(false);
   });
   it("renders card with appropriate status bar", async () => {
-    const wrapper = mount(TxCard, {
+    const wrapper = mount(AppCard, {
       props: {
         status: "primary",
       },
@@ -34,7 +34,7 @@ describe("TxCard", () => {
   });
   it("renders slotted title text", () => {
     const slotText = "Slot Text";
-    const wrapper = mount(TxCard, {
+    const wrapper = mount(AppCard, {
       props: {
         status: "primary",
       },
@@ -46,7 +46,7 @@ describe("TxCard", () => {
   });
   it("renders slotted content in default slot", () => {
     const slotContent = "<h1>I'm the content!</h1>";
-    const wrapper = mount(TxCard, {
+    const wrapper = mount(AppCard, {
       slots: {
         default: slotContent,
       },
@@ -55,7 +55,7 @@ describe("TxCard", () => {
   });
   it("renders slotted content in footer slot", () => {
     const slotContent = "<button>Submit</button>";
-    const wrapper = mount(TxCard, {
+    const wrapper = mount(AppCard, {
       slots: {
         footer: slotContent,
       },

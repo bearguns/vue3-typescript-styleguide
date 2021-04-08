@@ -2,12 +2,11 @@
 html {
   font-size: 16px;
   box-sizing: border-box;
-  height: 100%;
 }
 
 body {
   margin: 0;
-  min-height: 100%;
+  min-height: 100vh;
 }
 
 *,
@@ -17,11 +16,5 @@ body {
 }
 
 #app {
-  height: 100vh;
+  height: 100%;
 }
-
-
-$radius: 8px;
-$radius-small: 4px;
-$radius-large: 12px;
-$radius-rounded: 9999px;

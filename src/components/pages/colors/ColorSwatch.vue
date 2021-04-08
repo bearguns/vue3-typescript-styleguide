@@ -43,7 +43,7 @@ export default defineComponent({
 
 <style lang="scss">
 @import "../../../scss/colors";
-@import "../../../scss/base";
+@import "../../../scss/variables";
 .color-swatch {
   height: auto;
   width: auto;

@@ -1,87 +1,72 @@
 <template>
-  <div class="card tx-card">
-    <header
-      class="card-header tx-card__header"
-      :class="headerClass"
-      v-if="hasHeader"
-      @click="expand"
-    >
-      <TxTitle :size="3">
+  <div class="card app-card">
+    <header class="card-header app-card__header" :class="headerClass" @click="toggleExpand">
+      <AppTitle :size="3">
         <slot name="header"></slot>
-      </TxTitle>
-      <TxIcon v-if="expandable" :icon="headerIcon" size="1.5x" />
+      </AppTitle>
+      <ChevronIcon v-if="expand" :direction="expanded ? 'up' : 'down'" size="1.5x" />
     </header>
-    <div class="tx-card__content" :class="[expandClass]">
+    <div class="app-card__content" :class="[expandClass]">
       <div class="card-content">
         <div class="content">
           <slot></slot>
         </div>
       </div>
     </div>
-    <footer class="card-footer tx-card__footer" v-if="hasFooter">
+    <footer class="card-footer app-card__footer" v-if="$slots.footer">
       <slot name="footer"></slot>
     </footer>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import TxTitle from "./TxTitle.vue";
-import TxIcon from "./TxIcon.vue";
+import { defineComponent, ref, computed } from "vue";
+import AppTitle from "./AppTitle.vue";
+import { ChevronIcon } from "../icons";
 export default defineComponent({
-  name: "TxCard",
-  components: { TxTitle, TxIcon },
-  data() {
-    return {
-      open: false,
-    };
-  },
+  components: { AppTitle, ChevronIcon },
   props: {
     status: {
       type: String,
       required: false,
       default: "",
     },
-    expandable: {
+    expand: {
       type: Boolean,
       required: false,
       default: false,
     },
   },
-  computed: {
-    headerClass(): string {
-      return `tx-card__header--${this.status}`;
-    },
-    hasHeader(): boolean {
-      return !!this.$slots.header || this.expandable;
-    },
-    hasFooter(): boolean {
-      return !!this.$slots.footer;
-    },
-    headerIcon(): string {
-      return this.open ? "chevron-up" : "chevron-down";
-    },
-    expandClass(): string {
-      if (this.expandable) {
-        return this.open
-          ? "tx-card__content--expanded"
-          : "tx-card__content--collapsed";
+  setup(props) {
+    const expanded = ref(false);
+    const expandClass = computed(() => {
+      if (props.expand) {
+        return expanded.value ? "app-card__content--expanded" : "app-card__content--collapsed";
       }
-    },
-  },
-  methods: {
-    expand(): void {
-      this.open = !this.open;
-    },
+    });
+    const headerClass = computed(() => {
+      return `app-card__header--${props.status}`;
+    });
+
+    function toggleExpand() {
+      expanded.value = !expanded.value;
+    }
+
+    return {
+      expanded,
+      expandClass,
+      headerClass,
+      toggleExpand,
+    };
   },
 });
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/variables";
-@import "../scss/colors";
+@import "../../scss/variables";
+@import "../../scss/colors";
 
-.tx-card {
+.app-card {
   height: auto;
   border-radius: 8px;
   background-color: $white;
