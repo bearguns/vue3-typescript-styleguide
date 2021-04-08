@@ -24,6 +24,7 @@ export default defineComponent({
       { label: "Layout", to: { name: "layoutComponents" } },
       { label: "Controls", to: { name: "controlComponents" } },
       { label: "Inputs", to: { name: "inputComponents" } },
+      { label: "Presenters", to: { name: "presenterComponents" } },
     ];
     const route = useRoute();
     const pageTitle = computed(() => route.meta.title);

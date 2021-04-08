@@ -1,20 +1,21 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import { Home, Layout, Components, Inputs, Controls } from "./views";
+import { Home, Layout, Components, Inputs, Controls, Presenters } from "./views";
 
 const routes: Array<RouteRecordRaw> = [
-  { path: "/",
+  {
+    path: "/",
     component: Home,
     name: "home",
     meta: {
-      title: "Ivy Styleguide"
-    }
+      title: "Ivy Styleguide",
+    },
   },
   {
     path: "/components",
     component: Components,
     name: "components",
     meta: {
-      title: "Component Library"
+      title: "Component Library",
     },
     children: [
       {
@@ -22,31 +23,38 @@ const routes: Array<RouteRecordRaw> = [
         component: Layout,
         name: "layoutComponents",
         meta: {
-          title: "Components / Layout"
-        }
+          title: "Components / Layout",
+        },
       },
       {
         path: "controls",
         component: Controls,
         name: "controlComponents",
         meta: {
-          title: "Components / Controls"
-        }
+          title: "Components / Controls",
+        },
       },
       {
         path: "inputs",
         component: Inputs,
         name: "inputComponents",
         meta: {
-          title: "Components / Inputs"
-        }
-      }
-    ]
+          title: "Components / Inputs",
+        },
+      },
+      {
+        path: "presenters",
+        component: Presenters,
+        name: "presenterComponents",
+        meta: {
+          title: "Components / Presenters",
+        },
+      },
+    ],
   },
-
 ];
 
 export default createRouter({
   routes,
-  history: createWebHashHistory()
+  history: createWebHashHistory(),
 });

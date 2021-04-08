@@ -25,6 +25,6 @@ $gray--darkest: color.scale($gray, $lightness: -60%);
 
 $link: $primary;
 
-$bg-color: $gray--lightest;
+$bg-color: color.scale($blue, $lightness: 92%);
 $body-background-color: $bg-color;
 $navbar-burger-color: $blue;
