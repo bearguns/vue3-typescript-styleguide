@@ -21,9 +21,12 @@
   flex-direction: column;
 
   &__submenu {
+    position: sticky;
     width: 100%;
-    height: auto;
-    min-height: 3.55rem;
+    height: 4.75rem;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
     background-color: $gray--lightest;
     box-shadow: $tx-drop-shadow;
   }

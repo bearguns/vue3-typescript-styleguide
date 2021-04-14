@@ -1,7 +1,7 @@
 <template>
   <div class="card app-card">
     <header class="card-header app-card__header" :class="headerClass" @click="toggleExpand">
-      <AppTitle :size="3">
+      <AppTitle :size="4">
         <slot name="header"></slot>
       </AppTitle>
       <ChevronIcon v-if="expand" :direction="expanded ? 'up' : 'down'" size="1.5x" />
@@ -71,9 +71,10 @@ export default defineComponent({
   border-radius: 8px;
   background-color: $white;
   &__header {
-    height: 4rem;
-    padding: 1.25rem;
-    border-bottom: 1px solid $gray--darker;
+    height: 3.75rem;
+    padding: 1rem;
+    border-bottom: 2px solid;
+    border-color: $gray--darker;
     color: $black;
     display: flex;
     justify-content: space-between;
@@ -93,6 +94,13 @@ export default defineComponent({
       border-bottom-color: $red;
       & * {
         color: $red;
+      }
+    }
+
+    &--success {
+      border-bottom-color: $green;
+      & * {
+        color: $green;
       }
     }
   }

@@ -16,7 +16,7 @@
 @import "../../scss/colors";
 @import "../../scss/variables";
 .app-header {
-  height: 5rem;
+  height: 5.5rem;
   width: 100%;
   padding: 1.25rem 0.75rem;
   background-color: $white;

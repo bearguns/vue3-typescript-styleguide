@@ -32,7 +32,7 @@ import {
   validateIncluded,
   validateExcluded,
   errors,
-} from "../../composers/inputs.ts";
+} from "../../composers/inputs";
 import InputField from "./InputField.vue";
 
 export default defineComponent({
@@ -48,7 +48,7 @@ export default defineComponent({
   },
   setup(props) {
     const error = ref("");
-    function validateOnBlur(value): void {
+    function validateOnBlur(value: string): void {
       if (props.errorMsg) {
         error.value = props.errorMsg;
         return undefined;
