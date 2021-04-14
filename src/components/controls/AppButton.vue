@@ -1,5 +1,5 @@
 <template>
-  <button class="button" :class="classBindings">
+  <button class="button" :class="classBindings" :disabled="disabled">
     <slot></slot>
   </button>
 </template>
@@ -19,6 +19,11 @@ export default defineComponent({
       default: false,
     },
     rounded: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    disabled: {
       type: Boolean,
       required: false,
       default: false,

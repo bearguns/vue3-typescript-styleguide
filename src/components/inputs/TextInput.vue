@@ -46,9 +46,10 @@ export default defineComponent({
       required: false,
     },
   },
-  setup(props) {
+  setup(props, { emit }) {
     const error = ref("");
     function validateOnBlur(value: string): void {
+      emit("blur", value);
       if (props.errorMsg) {
         error.value = props.errorMsg;
         return undefined;
@@ -59,10 +60,6 @@ export default defineComponent({
         return undefined;
       }
 
-      // if (props.allow === "alpha") {
-      //   error.value =
-      // }
-      //
       if (props.include) {
         if (props.include.strict) {
           error.value = validateIncluded(value, props.include) ? "" : errors.includeStrict(props.include.chars);
