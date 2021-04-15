@@ -1,6 +1,6 @@
 {
   "name": "@teliax/styleguide",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "files": [
     "dist"
   ],
@@ -14,7 +14,7 @@
     "test": "yarn jest --coverage true",
     "build:types": "tsc --build tsconfigtypes.json",
     "build:es": "NODE_ENV=production rollup --config rollup.config.js && yarn build:types",
-    "publish": "yarn build:es && npm publish"
+    "build:publish": "yarn build:es && npm publish"
   },
   "dependencies": {
     "@zhuowenli/vue-feather-icons": "^5.0.2",
