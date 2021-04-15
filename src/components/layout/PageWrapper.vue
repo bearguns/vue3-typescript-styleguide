@@ -22,8 +22,9 @@
 
   &__submenu {
     position: sticky;
+    top: 5.5rem;
     width: 100%;
-    height: 4.75rem;
+    height: 4.25rem;
     display: flex;
     align-items: center;
     padding: 0 1rem;
