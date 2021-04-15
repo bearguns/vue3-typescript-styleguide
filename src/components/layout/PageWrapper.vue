@@ -4,9 +4,7 @@
       <slot name="submenu"></slot>
     </div>
     <div class="page-wrapper__content">
-      <section class="section">
-        <slot name="content"></slot>
-      </section>
+      <slot name="content"></slot>
     </div>
   </div>
 </template>
@@ -30,6 +28,10 @@
     padding: 0 1rem;
     background-color: $gray--lightest;
     box-shadow: $tx-drop-shadow;
+  }
+
+  &__content {
+    padding: 1.5rem 1rem;
   }
 }
 </style>

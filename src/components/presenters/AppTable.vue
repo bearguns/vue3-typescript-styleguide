@@ -1,7 +1,7 @@
 <template>
   <div class="app-table">
     <table class="app-table__table table is-striped is-hoverable">
-      <thead class="table-head">
+      <thead class="table-head" :class="{ 'table-head--with-select': select }">
         <th
           class="table-head__cell"
           :class="{ sortable: sort }"
@@ -49,6 +49,11 @@ export default defineComponent({
       required: false,
       default: false,
     },
+    select: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   setup(props) {},
 });
@@ -70,6 +75,7 @@ export default defineComponent({
   box-shadow: $tx-drop-shadow;
   &__table {
     width: 100%;
+
     .table-head {
       width: 100%;
       & th {
@@ -86,7 +92,7 @@ export default defineComponent({
         }
       }
 
-      & th:first-child {
+      &--with-select th:first-child {
         width: 8rem;
         padding-left: 0.75rem;
       }
