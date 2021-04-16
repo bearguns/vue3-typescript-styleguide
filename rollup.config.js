@@ -38,6 +38,10 @@ export default {
           src: "src/scss/*",
           dest: "dist/scss",
         },
+        {
+          src: "bundle.css",
+          dest: "dist/",
+        },
       ],
       hook: "writeBundle",
     }),
