@@ -38,7 +38,7 @@ export function deregisterPopup() {
   popupMessage.text = "";
 }
 
-const registerToast = (text: string, status: status, timeout: number = 5000) => {
+const registerToast = (text: string, status: status, timeout: number = 2000) => {
   const id = uuid();
   const msg: Toast = {
     text,
@@ -65,14 +65,14 @@ const registerPopup = (title: string, status: status, text: string, showConfirm?
 };
 
 export const toast = {
-  error(text: string) {
-    registerToast(text, "danger");
+  error(text: string, timeout: number) {
+    registerToast(text, "danger", timeout);
   },
-  success(text: string) {
-    registerToast(text, "success");
+  success(text: string, timeout: number) {
+    registerToast(text, "success", timeout);
   },
-  info(text: string) {
-    registerToast(text, "info");
+  info(text: string, timeout: number) {
+    registerToast(text, "info", timeout);
   },
 };
 
