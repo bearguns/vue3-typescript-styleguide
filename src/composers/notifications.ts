@@ -17,8 +17,14 @@ interface Popup {
   showConfirm: boolean;
 }
 
-export const toastMessages = reactive([]);
-export const popupMessage = reactive({});
+export const toastMessages = reactive<Toast[]>([]);
+export const popupMessage = reactive<Popup>({
+  status: "success",
+  text: "",
+  title: "",
+  id: "0",
+  showConfirm: true,
+});
 
 function deregisterNotification(id: string) {
   toastMessages.splice(
