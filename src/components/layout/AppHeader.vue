@@ -1,8 +1,8 @@
 <template>
   <header class="app-header">
-    <h1 class="title app-header__title">
+    <AppTitle :size="3">
       <slot name="page-title"></slot>
-    </h1>
+    </AppTitle>
     <ul class="app-header__links">
       <slot name="header-links"></slot>
     </ul>
@@ -10,8 +10,18 @@
       <slot name="header-menu"></slot>
     </div>
   </header>
+  <AppSubmenu />
 </template>
 
+<script lang="ts">
+import { defineComponent } from "vue";
+import AppTitle from "./AppTitle.vue";
+import AppSubmenu from "./AppSubmenu.vue";
+export default defineComponent({
+  name: "AppHeader",
+  components: { AppTitle, AppSubmenu },
+});
+</script>
 <style lang="scss" scoped>
 @import "../../scss/colors";
 @import "../../scss/variables";

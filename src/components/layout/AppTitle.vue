@@ -1,12 +1,14 @@
 <template>
-  <component class="title" :is="titleEl" :class="[titleClass, statusClass]">
+  <component class="title app-title" :is="`h${size}`" :class="[titleClass, statusClass]">
     <slot></slot>
   </component>
 </template>
 
 <script lang="ts">
-import { computed } from "vue";
-export default {
+import { computed, defineComponent, PropType } from "vue";
+type status = "success" | "danger" | "info" | "warning";
+export default defineComponent({
+  name: "AppTitle",
   props: {
     size: {
       type: Number,
@@ -14,26 +16,22 @@ export default {
       default: 1,
     },
     status: {
-      type: String,
+      type: String as PropType<status>,
       required: false,
       default: "",
     },
   },
-  setup(props: any) {
-    const titleEl = computed((): string => {
-      return `h${props.size}`;
-    });
-    const titleClass = computed((): string => {
-      return `is-size-${props.size}`;
-    });
-    const statusClass = computed((): string => {
-      if (props.status) {
-        return `has-text-${props.status}`;
-      }
-      return "";
-    });
-
-    return { titleEl, titleClass, statusClass };
+  setup(props) {
+    return {
+      titleClass: computed(() => `is-size-${props.size}`),
+      statusClass: computed(() => (props.status ? `has-text-${props.status}` : "")),
+    };
   },
-};
+});
 </script>
+
+<style lang="scss" scoped>
+.title.app-title {
+  margin-bottom: 0.5rem;
+}
+</style>

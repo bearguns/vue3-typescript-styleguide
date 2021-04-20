@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import { Home, Layout, Components, Inputs, Controls, Presenters } from "./views";
+import { Home, Layout, Components, Inputs, Controls, Presenters, Notifications } from "./views";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -48,6 +48,14 @@ const routes: Array<RouteRecordRaw> = [
         name: "presenterComponents",
         meta: {
           title: "Components / Presenters",
+        },
+      },
+      {
+        path: "notifications",
+        component: Notifications,
+        name: "notificationCenter",
+        meta: {
+          title: "Components / Notifications",
         },
       },
     ],

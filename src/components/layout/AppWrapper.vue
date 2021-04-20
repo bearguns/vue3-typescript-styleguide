@@ -21,7 +21,7 @@
       <div class="app-wrapper__content">
         <slot name="current-page"></slot>
       </div>
-      <div id="notification-center"></div>
+      <NotificationCenter />
     </div>
   </div>
 </template>
@@ -30,8 +30,9 @@
 import { defineComponent } from "vue";
 import AppSidebar from "./AppSidebar.vue";
 import AppHeader from "./AppHeader.vue";
+import { NotificationCenter } from "../presenters";
 export default defineComponent({
-  components: { AppSidebar, AppHeader },
+  components: { AppSidebar, AppHeader, NotificationCenter },
   props: {
     pageTitle: {
       type: String,
@@ -84,15 +85,5 @@ export default defineComponent({
     width: 100%;
     height: auto;
   }
-}
-
-#notification-center {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  z-index: 3;
-  width: 100%;
-  height: auto;
-  padding: 1.75rem;
 }
 </style>

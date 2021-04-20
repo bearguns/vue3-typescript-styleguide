@@ -8,14 +8,4 @@ import PageWrapper from "./PageWrapper.vue";
 import SidebarLink from "./SidebarLink.vue";
 import SidebarLinkMenu from "./SidebarLinkMenu.vue";
 
-export {
-  AppWrapper,
-  AppHeader,
-  AppSidebar,
-  PageWrapper,
-  SidebarLink,
-  SidebarLinkMenu,
-  AppPanel,
-  AppCard,
-  AppTitle
-}
+export { AppWrapper, AppHeader, AppSidebar, AppTitle, PageWrapper, SidebarLink, SidebarLinkMenu, AppPanel, AppCard };
