@@ -1,6 +1,6 @@
 <template>
   <div class="card app-card">
-    <header class="card-header app-card__header" :class="headerClass" @click="toggleExpand">
+    <header class="card-header app-card__header" :class="headerClass" @click="toggleExpand" v-if="$slots.header">
       <AppTitle :size="4">
         <slot name="header"></slot>
       </AppTitle>
@@ -13,7 +13,7 @@
         </div>
       </div>
     </div>
-    <footer class="card-footer app-card__footer" v-if="$slots.footer">
+    <footer class="card-footer app-card__footer" v-if="showFooter">
       <slot name="footer"></slot>
     </footer>
   </div>
@@ -37,15 +37,23 @@ export default defineComponent({
       default: false,
     },
   },
-  setup(props) {
+  setup(props, { slots }) {
     const expanded = ref(false);
     const expandClass = computed(() => {
       if (props.expand) {
         return expanded.value ? "app-card__content--expanded" : "app-card__content--collapsed";
       }
     });
+
     const headerClass = computed(() => {
       return `app-card__header--${props.status}`;
+    });
+
+    const showFooter = computed(() => {
+      if (props.expand) {
+        return slots.footer && expanded.value === true;
+      }
+      return slots.footer;
     });
 
     function toggleExpand() {
@@ -57,6 +65,7 @@ export default defineComponent({
       expandClass,
       headerClass,
       toggleExpand,
+      showFooter,
     };
   },
 });

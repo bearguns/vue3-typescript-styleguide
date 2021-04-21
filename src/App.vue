@@ -5,7 +5,7 @@
     </template>
     <template #sidebar-links>
       <SidebarLink :to="{ name: 'home' }" label="Home" />
-      <SidebarLinkMenu label="Components" :links="links" />
+      <SidebarLinkMenu label="Components" :links="links" name="components" />
     </template>
     <template #current-page>
       <router-view />

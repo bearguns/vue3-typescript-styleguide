@@ -2,13 +2,13 @@
   <div class="sidebar-link-menu">
     <div
       class="sidebar-link-menu__label"
-      :class="{ 'sidebar-link-menu__label--active': expanded }"
+      :class="{ 'sidebar-link-menu__label--active': showAsOpen }"
       @click="toggleExpand"
     >
       {{ label }}
-      <ChevronIcon :direction="expanded ? 'up' : 'down'" size="1x" :color="expanded ? 'primary' : 'white'" />
+      <ChevronIcon :direction="expanded ? 'up' : 'down'" size="1x" :color="showAsOpen ? 'primary' : 'white'" />
     </div>
-    <div class="sidebar-link-menu__links" :class="{ 'sidebar-link-menu__links--expanded': expanded }">
+    <div class="sidebar-link-menu__links" :class="{ 'sidebar-link-menu__links--expanded': showAsOpen }">
       <SidebarLink v-for="link in links" :key="link.to" :label="link.label" :to="link.to" />
     </div>
   </div>
@@ -16,6 +16,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType, ref, computed } from "vue";
+import { useRoute } from "vue-router";
 import SidebarLink from "./SidebarLink.vue";
 import { ChevronIcon } from "../icons";
 
@@ -32,10 +33,18 @@ export default defineComponent({
     label: {
       type: String,
     },
+    name: {
+      type: String,
+      required: true,
+    },
   },
   components: { ChevronIcon, SidebarLink },
   setup(props) {
+    const route = useRoute();
     const expanded = ref(false);
+    const showAsOpen = computed((): boolean => {
+      return route.matched[0]?.name === props.name || expanded.value === true;
+    });
 
     function toggleExpand() {
       expanded.value = !expanded.value;
@@ -44,6 +53,7 @@ export default defineComponent({
     return {
       expanded,
       toggleExpand,
+      showAsOpen,
     };
   },
 });
