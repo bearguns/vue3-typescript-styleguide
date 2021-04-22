@@ -6,10 +6,10 @@
       @click="toggleExpand"
     >
       {{ label }}
-      <ChevronIcon :direction="expanded ? 'up' : 'down'" size="1x" :color="showAsOpen ? 'primary' : 'white'" />
+      <ChevronIcon :direction="showAsOpen ? 'up' : 'down'" size="1x" :color="showAsOpen ? 'primary' : 'white'" />
     </div>
     <div class="sidebar-link-menu__links" :class="{ 'sidebar-link-menu__links--expanded': showAsOpen }">
-      <SidebarLink v-for="link in links" :key="link.to" :label="link.label" :to="link.to" />
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -20,16 +20,8 @@ import { useRoute } from "vue-router";
 import SidebarLink from "./SidebarLink.vue";
 import { ChevronIcon } from "../icons";
 
-interface SidebarMenuItem {
-  to: string;
-  label: string;
-}
-
 export default defineComponent({
   props: {
-    links: {
-      type: Array as PropType<SidebarMenuItem[]>,
-    },
     label: {
       type: String,
     },
@@ -37,13 +29,16 @@ export default defineComponent({
       type: String,
       required: true,
     },
+    route: {
+      type: Object,
+      required: true,
+    },
   },
   components: { ChevronIcon, SidebarLink },
   setup(props) {
-    const route = useRoute();
     const expanded = ref(false);
     const showAsOpen = computed((): boolean => {
-      return route.matched[0]?.name === props.name || expanded.value === true;
+      return props.route.matched[0]?.name === props.name || expanded.value === true;
     });
 
     function toggleExpand() {
@@ -96,6 +91,7 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     padding-left: 1rem;
+
     &--expanded {
       max-height: 999px;
     }

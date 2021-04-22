@@ -1,12 +1,11 @@
 <template>
-  <router-link :to="to" class="sidebar-link" :class="{ 'sidebar-link--active': active }">
+  <router-link :to="{ name: to }" class="sidebar-link">
     {{ label }}
   </router-link>
 </template>
 
 <script lang="ts">
 import { defineComponent, computed, PropType } from "vue";
-import { useRoute } from "vue-router";
 interface LinkTo {
   name: string;
   params?: object;
@@ -14,21 +13,17 @@ interface LinkTo {
 export default defineComponent({
   props: {
     to: {
-      type: Object as PropType<LinkTo>,
+      type: String,
       required: true,
     },
     label: {
       type: String,
       required: true,
     },
-  },
-  setup(props) {
-    const route = useRoute();
-    const active = computed(() => {
-      return route.name === props.to.name;
-    });
-
-    return { active };
+    route: {
+      type: Object,
+      required: true,
+    },
   },
 });
 </script>
@@ -40,11 +35,15 @@ export default defineComponent({
   color: $white;
   transition: color 0.3s ease-in-out;
   position: relative;
-  &--active {
+
+  &.router-link-active,
+  &.router-link-exact-active {
     color: $blue;
   }
 
-  &:after {
+  &:after,
+  &.router-link-active:after,
+  &.router-link-exact-active:after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -56,7 +55,8 @@ export default defineComponent({
   }
 
   &:hover:after,
-  &--active:after {
+  &.router-link-active:after,
+  &.router-link-exact-active:after {
     height: 2px;
     width: 100%;
   }
