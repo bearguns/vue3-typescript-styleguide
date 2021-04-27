@@ -21,6 +21,7 @@ import SidebarLink from "./SidebarLink.vue";
 import { ChevronIcon } from "../icons";
 
 export default defineComponent({
+  name: "SidebarLinkMenu",
   props: {
     label: {
       type: String,

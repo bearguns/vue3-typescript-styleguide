@@ -4,8 +4,11 @@
       <img alt="" src="logo.svg" />
     </template>
     <template #sidebar-links>
-      <SidebarLink :to="{ name: 'home' }" label="Home" />
-      <SidebarLinkMenu label="Components" :links="links" name="components" />
+      <SidebarLink to="home" label="Home" />
+      <SidebarLinkMenu name="components" label="Components" :route="route">
+        <SidebarLink to="layoutComponents" label="Layout" />
+        <SidebarLink to="controlComponents" label="Controls" />
+      </SidebarLinkMenu>
     </template>
     <template #current-page>
       <router-view />
@@ -20,16 +23,9 @@ import { AppWrapper, SidebarLink, SidebarLinkMenu } from "./components/layout";
 export default defineComponent({
   components: { AppWrapper, SidebarLink, SidebarLinkMenu },
   setup() {
-    const links = [
-      { label: "Layout", to: { name: "layoutComponents" } },
-      { label: "Controls", to: { name: "controlComponents" } },
-      { label: "Inputs", to: { name: "inputComponents" } },
-      { label: "Presenters", to: { name: "presenterComponents" } },
-      { label: "Notifications", to: { name: "notificationCenter" } },
-    ];
     const route = useRoute();
     const pageTitle = computed(() => route.meta.title);
-    return { links, pageTitle };
+    return { pageTitle, route };
   },
 });
 </script>

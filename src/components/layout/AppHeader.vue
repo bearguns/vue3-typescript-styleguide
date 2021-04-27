@@ -7,7 +7,9 @@
       <slot name="header-links"></slot>
     </ul>
     <div class="app-header__menu">
-      <slot name="header-menu"></slot>
+      <AppDropdown>
+        <slot name="header-menu"></slot>
+      </AppDropdown>
     </div>
   </header>
   <AppSubmenu />
@@ -17,9 +19,11 @@
 import { defineComponent } from "vue";
 import AppTitle from "./AppTitle.vue";
 import AppSubmenu from "./AppSubmenu.vue";
+import { AppDropdown } from "../controls";
+
 export default defineComponent({
   name: "AppHeader",
-  components: { AppTitle, AppSubmenu },
+  components: { AppTitle, AppSubmenu, AppDropdown },
 });
 </script>
 <style lang="scss" scoped>

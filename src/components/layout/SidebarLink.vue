@@ -11,6 +11,7 @@ interface LinkTo {
   params?: object;
 }
 export default defineComponent({
+  name: "SidebarLink",
   props: {
     to: {
       type: String,

@@ -18,6 +18,7 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 export default defineComponent({
+  name: "AppSwitch",
   emits: ["update:modelValue"],
   props: {
     label: {

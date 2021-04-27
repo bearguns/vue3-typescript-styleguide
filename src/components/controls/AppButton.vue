@@ -8,6 +8,7 @@
 import { defineComponent, PropType, computed } from "vue";
 import { status } from "../../composers";
 export default defineComponent({
+  name: "AppButton",
   props: {
     status: {
       type: String as PropType<status>,

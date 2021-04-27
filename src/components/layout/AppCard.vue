@@ -24,6 +24,7 @@ import { defineComponent, ref, computed } from "vue";
 import AppTitle from "./AppTitle.vue";
 import { ChevronIcon } from "../icons";
 export default defineComponent({
+  name: "AppCard",
   components: { AppTitle, ChevronIcon },
   props: {
     status: {

@@ -13,6 +13,7 @@
 import { defineComponent } from "vue";
 import PanelWrapper from "./PanelWrapper.vue";
 export default defineComponent({
+  name: "AppPanel",
   components: { PanelWrapper },
   props: {
     title: {

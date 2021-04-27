@@ -16,6 +16,12 @@
           <template v-slot:page-title>
             {{ pageTitle }}
           </template>
+          <template #header-links>
+            <slot name="links"></slot>
+          </template>
+          <template #header-menu>
+            <slot name="menu"></slot>
+          </template>
         </AppHeader>
       </div>
       <div class="app-wrapper__content">
@@ -32,6 +38,7 @@ import AppSidebar from "./AppSidebar.vue";
 import AppHeader from "./AppHeader.vue";
 import { NotificationCenter } from "../presenters";
 export default defineComponent({
+  name: "AppWrapper",
   components: { AppSidebar, AppHeader, NotificationCenter },
   props: {
     pageTitle: {
