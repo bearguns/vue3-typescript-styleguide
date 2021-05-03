@@ -10,6 +10,9 @@
         <SidebarLink to="controlComponents" label="Controls" />
       </SidebarLinkMenu>
     </template>
+    <template #header-menu>
+      <UserMenu />
+    </template>
     <template #current-page>
       <router-view />
     </template>
@@ -20,8 +23,10 @@
 import { defineComponent, computed } from "vue";
 import { useRoute } from "vue-router";
 import { AppWrapper, SidebarLink, SidebarLinkMenu } from "./components/layout";
+import { UserMenu } from "./components/controls";
+
 export default defineComponent({
-  components: { AppWrapper, SidebarLink, SidebarLinkMenu },
+  components: { UserMenu, AppWrapper, SidebarLink, SidebarLinkMenu },
   setup() {
     const route = useRoute();
     const pageTitle = computed(() => route.meta.title);

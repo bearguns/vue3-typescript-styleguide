@@ -3,13 +3,11 @@
     <AppTitle :size="3">
       <slot name="page-title"></slot>
     </AppTitle>
-    <ul class="app-header__links">
+    <div class="app-header__links">
       <slot name="header-links"></slot>
-    </ul>
+    </div>
     <div class="app-header__menu">
-      <AppDropdown>
-        <slot name="header-menu"></slot>
-      </AppDropdown>
+      <slot name="header-menu"></slot>
     </div>
   </header>
   <AppSubmenu />
@@ -19,11 +17,10 @@
 import { defineComponent } from "vue";
 import AppTitle from "./AppTitle.vue";
 import AppSubmenu from "./AppSubmenu.vue";
-import { AppDropdown } from "../controls";
 
 export default defineComponent({
   name: "AppHeader",
-  components: { AppTitle, AppSubmenu, AppDropdown },
+  components: { AppTitle, AppSubmenu },
 });
 </script>
 <style lang="scss" scoped>
@@ -37,7 +34,7 @@ export default defineComponent({
   box-shadow: $tx-drop-shadow;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
 
   &__title.title {
@@ -49,9 +46,11 @@ export default defineComponent({
     padding: 0.25rem;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     width: auto;
+    flex-grow: 1;
+    margin-right: 0.75rem;
   }
 
   &__menu {
