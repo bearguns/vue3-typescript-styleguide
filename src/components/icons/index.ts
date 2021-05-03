@@ -5,5 +5,6 @@ import InfoIcon from "./InfoIcon.vue";
 import CheckCircleIcon from "./CheckCircleIcon.vue";
 import AlertIcon from "./AlertIcon.vue";
 import UserIcon from "./UserIcon.vue";
+import LoaderIcon from "./LoaderIcon.vue";
 
-export { ChevronIcon, ChevronsIcon, UploadIcon, UserIcon, InfoIcon, CheckCircleIcon, AlertIcon };
+export { LoaderIcon, ChevronIcon, ChevronsIcon, UploadIcon, UserIcon, InfoIcon, CheckCircleIcon, AlertIcon };

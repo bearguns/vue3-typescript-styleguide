@@ -2,6 +2,7 @@
   <div id="notification-center">
     <ToastNotification v-for="msg in toastMessages" :key="msg.id" :msg="msg" />
     <PopupNotification />
+    <LoadingBanner :show="loading" />
   </div>
 </template>
 
@@ -11,10 +12,17 @@ import { toastMessages, popupMessage, toast, popup } from "../../composers/notif
 import { AppButton } from "../controls";
 import PopupNotification from "./PopupNotification.vue";
 import ToastNotification from "./ToastNotification.vue";
+import LoadingBanner from "./LoadingBanner.vue";
 export default defineComponent({
   name: "NotificationCenter",
-  components: { AppButton, PopupNotification, ToastNotification },
-  setup() {
+  components: { AppButton, PopupNotification, ToastNotification, LoadingBanner },
+  props: {
+    loading: {
+      type: Boolean,
+      required: true,
+    },
+  },
+  setup(props) {
     return {
       toastMessages,
     };

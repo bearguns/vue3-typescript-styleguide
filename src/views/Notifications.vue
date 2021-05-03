@@ -6,6 +6,7 @@
     <AppButton status="danger" @click="errorPopup">Error Popup</AppButton>
     <AppButton status="success" @click="successPopup">Success Popup</AppButton>
     <AppButton status="info" @click="infoPopup">Info Popup</AppButton>
+    <AppButton status="primary" @click="showLoadingBanner">Loading Banner</AppButton>
   </teleport>
   <div class="notifications-page">
     <div class="box">
@@ -74,6 +75,7 @@ import { defineComponent } from "vue";
 import { AppButton } from "../components/controls";
 import { PageWrapper, AppTitle } from "../components/layout";
 import { toast, popup } from "../composers/notifications";
+import { showLoader } from "../composers/demo";
 export default defineComponent({
   name: "NotificationsPage",
   components: { PageWrapper, AppButton, AppTitle },
@@ -96,6 +98,10 @@ export default defineComponent({
       },
       infoPopup() {
         popup.info("Actually,", "I'm an info popup.", true);
+      },
+      showLoadingBanner() {
+        showLoader.value = true;
+        setTimeout(() => (showLoader.value = false), 2000);
       },
     };
   },

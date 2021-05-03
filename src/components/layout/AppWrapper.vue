@@ -28,7 +28,7 @@
       <div class="app-wrapper__content">
         <slot name="current-page"></slot>
       </div>
-      <NotificationCenter />
+      <NotificationCenter :loading="loading" />
     </div>
   </div>
 </template>
@@ -47,6 +47,10 @@ export default defineComponent({
       required: true,
     },
     sidebar: {
+      type: Boolean,
+      required: true,
+    },
+    loading: {
       type: Boolean,
       required: true,
     },

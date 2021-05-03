@@ -1,6 +1,6 @@
 <template>
   <IconWrapper :color="color">
-    <LoadingIcon :size="size" />
+    <LoadingIcon :size="size" :class="{ spin: spin }" />
   </IconWrapper>
 </template>
 
@@ -13,6 +13,25 @@ export default defineComponent({
   components: { IconWrapper, LoadingIcon },
   props: {
     ...defaultProps(),
+    spin: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
 });
 </script>
+
+<style lang="scss" scoped>
+@keyframes rotateForever {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.spin {
+  animation: 3s linear rotateForever infinite;
+}
+</style>
