@@ -54,7 +54,7 @@ label.label {
   cursor: pointer;
   width: 3rem;
   height: 1.5rem;
-  background-color: $gray--lighter;
+  background-color: $gray--dark;
 
   border-radius: 100px;
   z-index: 1;
@@ -68,7 +68,7 @@ label.label {
     left: 0;
     width: 1.45rem;
     height: 1.45rem;
-    background-color: $white;
+    background-color: $gray--lighter;
     border-radius: 100%;
     transition: all 0.3s;
   }

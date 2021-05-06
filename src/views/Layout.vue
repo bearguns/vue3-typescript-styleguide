@@ -1,5 +1,6 @@
 <template>
   <div class="layout-page">
+    <AppTitle>UI Layout Components</AppTitle>
     <Boxes />
     <Panels />
     <Cards />

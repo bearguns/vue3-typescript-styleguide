@@ -1,35 +1,43 @@
 <template>
   <header class="app-header">
-    <AppTitle :size="3">
-      <slot name="page-title"></slot>
-    </AppTitle>
-    <div class="app-header__links">
-      <slot name="header-links"></slot>
+    <div class="app-header__title">
+      <AppTitle :size="1">
+        {{ title }}
+      </AppTitle>
+      <nav class="breadcrumb">
+        <ul id="header-breadcrumbs"></ul>
+      </nav>
     </div>
     <div class="app-header__menu">
-      <slot name="header-menu"></slot>
+      <UserMenu>
+        <slot name="header-menu"></slot>
+      </UserMenu>
     </div>
   </header>
-  <AppSubmenu />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import AppTitle from "./AppTitle.vue";
-import AppSubmenu from "./AppSubmenu.vue";
-
+import { UserMenu } from "../controls";
 export default defineComponent({
   name: "AppHeader",
-  components: { AppTitle, AppSubmenu },
+  components: { AppTitle, UserMenu },
+  props: {
+    title: String,
+  },
 });
 </script>
 <style lang="scss" scoped>
 @import "../../scss/colors";
 @import "../../scss/variables";
 .app-header {
-  height: 5.5rem;
+  height: 5rem;
   width: 100%;
-  padding: 1.25rem 0.75rem;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 4;
   background-color: $white;
   box-shadow: $tx-drop-shadow;
   display: flex;

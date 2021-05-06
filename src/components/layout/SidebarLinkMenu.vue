@@ -1,10 +1,6 @@
 <template>
-  <div class="sidebar-link-menu">
-    <div
-      class="sidebar-link-menu__label"
-      :class="{ 'sidebar-link-menu__label--active': showAsOpen }"
-      @click="toggleExpand"
-    >
+  <div class="sidebar-link-menu" @mouseenter="expandMenu" @mouseleave="collapseMenu">
+    <div class="sidebar-link-menu__label" :class="{ 'sidebar-link-menu__label--active': showAsOpen }">
       {{ label }}
       <ChevronIcon :direction="showAsOpen ? 'up' : 'down'" size="1x" :color="showAsOpen ? 'primary' : 'white'" />
     </div>
@@ -25,13 +21,10 @@ export default defineComponent({
   props: {
     label: {
       type: String,
-    },
-    name: {
-      type: String,
       required: true,
     },
-    route: {
-      type: Object,
+    active: {
+      type: Boolean,
       required: true,
     },
   },
@@ -39,16 +32,21 @@ export default defineComponent({
   setup(props) {
     const expanded = ref(false);
     const showAsOpen = computed((): boolean => {
-      return props.route.matched[0]?.name === props.name || expanded.value === true;
+      return props.active || expanded.value;
     });
 
-    function toggleExpand() {
-      expanded.value = !expanded.value;
+    function expandMenu() {
+      expanded.value = true;
+    }
+
+    function collapseMenu() {
+      expanded.value = false;
     }
 
     return {
       expanded,
-      toggleExpand,
+      expandMenu,
+      collapseMenu,
       showAsOpen,
     };
   },
@@ -65,7 +63,8 @@ export default defineComponent({
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: color 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
+
     &:hover {
       color: $blue;
     }
@@ -88,7 +87,7 @@ export default defineComponent({
   &__links {
     max-height: 0px;
     overflow: hidden;
-    transition: max-height 0.3s ease-in-out;
+    transition: max-height 0.2s linear;
     display: flex;
     flex-direction: column;
     padding-left: 1rem;

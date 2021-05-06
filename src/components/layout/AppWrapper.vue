@@ -1,35 +1,17 @@
 <template>
   <div class="app-wrapper">
-    <div class="app-wrapper__sidebar">
-      <AppSidebar v-if="sidebar">
-        <template #logo>
-          <slot name="logo"></slot>
-        </template>
-        <template #links>
-          <slot name="sidebar-links" />
-        </template>
-      </AppSidebar>
+    <AppSidebar>
+      <template #logo>
+        <slot name="sidebar-logo"></slot>
+      </template>
+      <template #links>
+        <slot name="sidebar-links" />
+      </template>
+    </AppSidebar>
+    <div class="app-wrapper__content">
+      <slot></slot>
     </div>
-    <div class="app-wrapper__body">
-      <div class="app-wrapper__header">
-        <AppHeader>
-          <template v-slot:page-title>
-            <slot name="header-brand"></slot>
-            {{ pageTitle }}
-          </template>
-          <template #header-links>
-            <slot name="header-links"></slot>
-          </template>
-          <template #header-menu>
-            <slot name="header-menu"></slot>
-          </template>
-        </AppHeader>
-      </div>
-      <div class="app-wrapper__content">
-        <slot name="current-page"></slot>
-      </div>
-      <NotificationCenter :loading="loading" />
-    </div>
+    <NotificationCenter :loading="loading" />
   </div>
 </template>
 
@@ -46,10 +28,6 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    sidebar: {
-      type: Boolean,
-      required: true,
-    },
     loading: {
       type: Boolean,
       required: true,
@@ -63,13 +41,6 @@ export default defineComponent({
 .app-wrapper {
   width: 100vw;
   height: 100vh;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: 1fr;
-
-  @media screen and (max-width: $tx-breakpoint--mobile) {
-    grid-template-columns: 1fr;
-  }
 
   &:before {
     content: "";
@@ -81,14 +52,6 @@ export default defineComponent({
     z-index: -1;
   }
 
-  &__header {
-    width: 100%;
-    position: sticky;
-    top: 0;
-    right: 0;
-    z-index: 14;
-  }
-
   &__body {
     display: flex;
     flex-direction: column;
@@ -97,6 +60,7 @@ export default defineComponent({
   }
 
   &__content {
+    padding-left: 16rem;
     width: 100%;
     height: auto;
   }

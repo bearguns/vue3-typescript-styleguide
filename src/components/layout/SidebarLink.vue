@@ -1,28 +1,25 @@
 <template>
-  <router-link :to="{ name: to }" class="sidebar-link">
+  <router-link :to="to" class="sidebar-link">
     {{ label }}
   </router-link>
 </template>
 
 <script lang="ts">
 import { defineComponent, computed, PropType } from "vue";
-interface LinkTo {
-  name: string;
-  params?: object;
-}
+import { LinkTo } from "./interfaces";
 export default defineComponent({
   name: "SidebarLink",
   props: {
     to: {
-      type: String,
+      type: Object as PropType<LinkTo>,
       required: true,
     },
     label: {
       type: String,
       required: true,
     },
-    route: {
-      type: Object,
+    active: {
+      type: Boolean,
       required: true,
     },
   },
@@ -52,7 +49,7 @@ export default defineComponent({
     width: 0px;
     height: 0px;
     background-color: $blue;
-    transition: width 0.3s ease-in-out;
+    transition: width 0.2s ease-in-out;
   }
 
   &:hover:after,

@@ -1,15 +1,9 @@
 <template>
   <div class="dropdown app-dropdown" ref="dropdown" :class="{ 'is-active': isActive }">
     <div class="dropdown-trigger">
-      <AppButton
-        @click.stop="toggleActive"
-        status="primary"
-        :secondary="true"
-        class="is-medium"
-        :class="{ 'is-rounded': rounded }"
-      >
+      <AppButton @click.stop="toggleActive" :secondary="true" class="is-medium" :class="{ 'is-rounded': rounded }">
         <slot name="label"></slot>
-        <span class="icon app-dropdown__icon">
+        <span class="app-dropdown__icon">
           <ChevronIcon :direction="isActive ? 'up' : 'down'" color="primary" />
         </span>
       </AppButton>
@@ -73,6 +67,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .app-dropdown {
   & .dropdown-trigger .button {
+    width: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -80,7 +75,7 @@ export default defineComponent({
   }
 
   &__icon {
-    margin-left: 0.5rem;
+    margin-left: 0.75rem;
     line-height: 1;
   }
 }

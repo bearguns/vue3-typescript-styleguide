@@ -1,16 +1,16 @@
 @use "sass:color";
 $blue:#41a6c5;
-$green: #64bc26;
+$green: #42D76F;
 $orange: #ffa74e;
 $red: #c56041;
 $yellow: #ffca4e;
-$gray: #8B8B8B;
+$purple: #5069CE;
 
-$white: color.scale($blue, $lightness: 98%);
-$black: color.scale($blue, $lightness: -90%);
-
+$white: #f5f5f5;
+$gray: #DDDDDD;
+$black: #00011A;
 $primary: $blue;
-$info: lighten($blue, 20%);
+$info: #5069CE;
 $success: $green;
 $danger: $red;
 $warning: $yellow;
@@ -25,8 +25,7 @@ $gray--darkest: color.scale($gray, $lightness: -60%);
 
 $link: $primary;
 
-$bg-color: color.scale($blue, $lightness: 92%);
+$bg-color: $gray;
+// $body-background-color: $bg-color;
 $body-background-color: $bg-color;
 $navbar-burger-color: $blue;
-
-$box-background-color: rgba($white, 0.85);

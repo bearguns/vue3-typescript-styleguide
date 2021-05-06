@@ -40,6 +40,10 @@ const props = {
     type: String,
     required: true,
   },
+  placeholder: {
+    type: String,
+    required: true,
+  },
   helpMsg: {
     type: String,
     required: false,
@@ -76,12 +80,12 @@ const props = {
   },
   min: {
     type: Number,
-    required: false
+    required: false,
   },
   max: {
     type: Number,
-    required: false
-  }
+    required: false,
+  },
 };
 
 export const defaultProps = () => props;

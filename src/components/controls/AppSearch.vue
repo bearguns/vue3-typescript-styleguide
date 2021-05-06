@@ -13,26 +13,24 @@
           @input="input"
         />
         <span class="icon is-right">
-          <TxIcon icon="search" />
+          <SearchIcon color="gray" />
         </span>
       </div>
       <div class="control">
-        <TxButton @click="submit" data-qa="search_submit_button">
-          Search
-        </TxButton>
+        <AppButton @click="submit" data-qa="search_submit_button"> Search </AppButton>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import TxButton from "./TxButton.vue";
-import TxIcon from "./TxIcon.vue";
+import { defineComponent, ref, computed } from "vue";
+import { AppButton } from "../controls";
+import { SearchIcon } from "../icons";
 
 export default defineComponent({
-  name: "TxSearch",
-  components: { TxButton, TxIcon },
+  name: "AppSearch",
+  components: { AppButton, SearchIcon },
   emits: ["submit", "input"],
   props: {
     name: {
@@ -50,23 +48,23 @@ export default defineComponent({
       default: "right",
     },
   },
-  data() {
+  setup(props, { emit }) {
+    const value = ref("");
+    const alignClass = computed(() => (props.align === "right" ? "right-align" : "left-align"));
+
+    function submit(): void {
+      emit("submit", value.value);
+    }
+    function input(): void {
+      emit("input", value.value);
+    }
+
     return {
-      value: "",
+      value,
+      alignClass,
+      submit,
+      input,
     };
-  },
-  computed: {
-    alignClass(): string {
-      return this.align === "right" ? "right-align" : "left-align";
-    },
-  },
-  methods: {
-    submit(): void {
-      this.$emit("submit", this.value);
-    },
-    input(): void {
-      this.$emit("input", this.value);
-    },
   },
 });
 </script>

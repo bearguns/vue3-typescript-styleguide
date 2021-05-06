@@ -32,6 +32,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .title.app-title {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 </style>

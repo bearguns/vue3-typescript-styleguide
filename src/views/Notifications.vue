@@ -1,13 +1,4 @@
 <template>
-  <teleport to="#submenu">
-    <AppButton status="danger" @click="errorToast">Error Toast</AppButton>
-    <AppButton status="success" @click="successToast">Success Toast</AppButton>
-    <AppButton status="info" @click="infoToast">Info Toast</AppButton>
-    <AppButton status="danger" @click="errorPopup">Error Popup</AppButton>
-    <AppButton status="success" @click="successPopup">Success Popup</AppButton>
-    <AppButton status="info" @click="infoPopup">Info Popup</AppButton>
-    <AppButton status="primary" @click="showLoadingBanner">Loading Banner</AppButton>
-  </teleport>
   <div class="notifications-page">
     <div class="box">
       <div class="block">

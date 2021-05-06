@@ -1,10 +1,9 @@
 <template>
   <div class="box">
-    <AppTitle>UI Layout</AppTitle>
     <div class="block">
       <AppTitle :size="2">Boxes</AppTitle>
       <p>
-        At the most basic level, UI elements should be contained in a <code>div</code> container with the
+        At the most basic level, UI elements can be contained in a <code>div</code> container with the
         <code>.box</code> class.
       </p>
       <p>

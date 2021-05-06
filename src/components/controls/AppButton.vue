@@ -49,3 +49,15 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.button {
+  min-width: 6rem;
+  width: auto;
+
+  &--block {
+    display: block;
+    width: 100%;
+  }
+}
+</style>

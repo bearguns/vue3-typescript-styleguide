@@ -6,17 +6,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/",
     component: Home,
     name: "home",
-    meta: {
-      title: "Ivy Styleguide",
-    },
   },
   {
     path: "/components",
-    component: Components,
     name: "components",
-    meta: {
-      title: "Component Library",
-    },
+    component: Components,
     children: [
       {
         path: "layout",
@@ -50,15 +44,15 @@ const routes: Array<RouteRecordRaw> = [
           title: "Components / Presenters",
         },
       },
-      {
-        path: "notifications",
-        component: Notifications,
-        name: "notificationCenter",
-        meta: {
-          title: "Components / Notifications",
-        },
-      },
     ],
+  },
+  {
+    path: "/notifications",
+    component: Notifications,
+    name: "notificationCenter",
+    meta: {
+      title: "Components / Notifications",
+    },
   },
 ];
 

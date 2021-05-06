@@ -1,15 +1,8 @@
 <template>
-  <PageWrapper>
-    <template #content>
-      <router-view />
-    </template>
-  </PageWrapper>
+  <router-view />
 </template>
 
 <script lang="ts">
 import { defineComponent, reactive } from "vue";
-import { PageWrapper } from "../components/layout";
-export default defineComponent({
-  components: { PageWrapper },
-});
+export default defineComponent({});
 </script>

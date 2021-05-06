@@ -22,11 +22,12 @@ export default defineComponent({
 @import "../../scss/variables";
 
 .app-sidebar {
-  position: sticky;
+  position: fixed;
+  z-index: 3;
   left: 0;
   top: 0;
-  width: auto;
-  min-width: 12rem;
+  width: 16rem;
+  min-width: 8rem;
   min-height: 100vh;
   background-color: $black;
   transition: all 0.3s ease-in-out;
@@ -37,17 +38,24 @@ export default defineComponent({
 }
 
 .app-nav {
-  padding: 1.25rem 0.75rem;
+  padding: 2.25rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 
   &__logo {
-    width: 75%;
-    height: auto;
-    margin: 0 auto;
+    width: 80%;
+
+    & img {
+      margin: 0 auto;
+    }
   }
 
   &__menu {
     margin-top: 1.75rem;
     padding: 1.25rem;
+    text-align: left;
   }
 }
 </style>

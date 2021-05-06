@@ -15,6 +15,7 @@
         :data-qa="`${name}_input`"
         :name="name"
         :value="modelValue"
+        :placeholder="placeholder"
         @input="$emit('update:modelValue', $event.target.value)"
         @blur="validateOnBlur($event.target.value)"
       />

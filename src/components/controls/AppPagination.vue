@@ -1,25 +1,25 @@
 <template>
   <nav class="pagination" role="navigation" aria-label="pagination">
-    <a
-      class="pagination-previous"
+    <button
+      class="pagination-previous has-background-white"
       @click="goToPage(currentPage - 1)"
       :disabled="isFirstPage"
       data-qa="pagination_previous_page_button"
     >
       Previous
-    </a>
-    <a
-      class="pagination-next"
+    </button>
+    <button
+      class="pagination-next has-background-white"
       @click="goToPage(currentPage + 1)"
       :disabled="isLastPage"
       data-qa="pagination_next_page_button"
     >
       Next
-    </a>
+    </button>
     <ul class="pagination-list">
       <li>
         <a data-qa="pagination_first_page_button" class="pagination-link" @click="goToPage(1)">
-          <ChevronsIcon direction="left" />
+          <ChevronsIcon direction="left" class="pagination-link__icon" />
         </a>
       </li>
       <template v-if="lastPage > 10">
@@ -48,7 +48,7 @@
       </template>
       <li>
         <a data-qa="pagination_last_page_button" class="pagination-link" @click="goToPage(lastPage)">
-          <ChevronsIcon direction="right" />
+          <ChevronsIcon direction="right" class="pagination-link__icon" />
         </a>
       </li>
     </ul>
@@ -60,7 +60,7 @@ import { defineComponent, computed } from "vue";
 import { ChevronsIcon } from "../icons";
 
 export default defineComponent({
-  name: "TxPagination",
+  name: "AppPagination",
   emits: ["input"],
   components: { ChevronsIcon },
   props: {
@@ -98,6 +98,14 @@ export default defineComponent({
       }
       emit("input", num);
     }
+
+    return {
+      isLastPage,
+      isFirstPage,
+      offset,
+      pageRange,
+      goToPage,
+    };
   },
 });
 </script>
@@ -110,5 +118,8 @@ export default defineComponent({
     flex-grow: 0;
     flex-wrap: nowrap;
   }
+}
+.pagination-link__icon {
+  margin-top: 25%;
 }
 </style>

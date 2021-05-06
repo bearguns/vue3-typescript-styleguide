@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="demo-cards">
     <div class="block">
       <AppTitle :size="2">Cards</AppTitle>
       <p>
@@ -10,9 +10,6 @@
         Cards work well within <code>.box</code> containers, or on their own as they are designed to "float" above their
         container, giving a sense of depth and contrast.
       </p>
-    </div>
-    <div class="block">
-      <AppTitle :size="3">Card basics</AppTitle>
     </div>
     <div class="columns">
       <div class="column">
@@ -42,7 +39,11 @@
           </p>
           <p class="has-text-success" v-if="cardsAreCool">Yes, cards are kinda cool and useful.</p>
           <template #footer>
-            <AppSwitch label="Select this to confirm that cards are kinda cool and useful." v-model="cardsAreCool" />
+            <div class="field">
+              <div class="control">
+                <AppButton status="info"> See? </AppButton>
+              </div>
+            </div>
           </template>
         </AppCard>
       </div>
@@ -118,3 +119,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.demo-cards {
+  margin-bottom: 2rem;
+}
+</style>
