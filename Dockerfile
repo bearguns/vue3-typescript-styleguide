@@ -2,6 +2,7 @@
 FROM node:lts-alpine as build
 WORKDIR /opt/app
 ARG NPM_TOKEN
+ENV NPM_TOKEN $NPM_TOKEN
 COPY package.json /opt/app
 COPY yarn.lock /opt/app
 COPY .npmrc /opt/app
