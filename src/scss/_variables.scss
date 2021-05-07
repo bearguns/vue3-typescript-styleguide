@@ -17,10 +17,15 @@ $radius-large: 6px;
 // @Card component variables
 $card-background-color: $white;
 $card-header-padding: 0.75rem 1.25rem;
-$card-shadow: $tx-drop-shadow;
+$card-header-shadow: none;
+$card-shadow: none;
 $card-footer-border-top: 1px solid $gray;
 
 
 // @Box element variables
 $box-background-color: $white;
-$box-shadow: $tx-drop-shadow;
+$box-shadow: none;
+
+.box, .card {
+  border: 1px solid $gray--darker;
+}

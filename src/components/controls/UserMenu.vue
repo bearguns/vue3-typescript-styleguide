@@ -46,7 +46,6 @@ export default defineComponent({
     background: $white;
     border: 2px solid $gray--darker;
     color: $gray--darker;
-    box-shadow: $tx-drop-shadow;
     transition: all 0.2s linear;
 
     &--active,
