@@ -1,5 +1,7 @@
 <template>
-  <p>foo</p>
+  <div class="home-view">
+    <p class="title is-size-1">Teliax Styleguide & Component Library</p>
+  </div>
 </template>
 
 <script lang="ts">

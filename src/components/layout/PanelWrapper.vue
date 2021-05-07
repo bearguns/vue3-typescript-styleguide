@@ -70,7 +70,7 @@ export default defineComponent({
 
   &__content {
     margin-top: 0.75rem;
-    transition: max-height 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
 
     &--collapsed {
       max-height: 0;
