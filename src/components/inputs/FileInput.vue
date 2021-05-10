@@ -3,15 +3,8 @@
     <div class="control">
       <label class="label" for="">{{ label }}</label>
       <div class="file has-name">
-        <label class="file-label" :for="name" data-qa="`${name}_label`">
-          <input
-            class="file-input"
-            type="file"
-            :name="name"
-            data-qa="`${name}_input`"
-            ref="fileInput"
-            @change="handleChange($event)"
-          />
+        <label class="file-label" :for="name" data-qa="`${name}_label`" @click="trigger">
+          <input class="file-input" type="file" :name="name" data-qa="`${name}_input`" @change="handleChange($event)" />
           <span class="file-cta">
             <span class="file-icon">
               <UploadIcon size="1x" />
@@ -45,18 +38,19 @@ export default defineComponent({
       required: false,
     },
   },
-  setup(props, { emit, refs }) {
+  setup(props, { emit }) {
     const fileInput = ref(null);
 
-    function openBrowser() {
-      fileInput.value.click();
-    }
-
-    function handleChange(event) {
+    function handleChange(event: any) {
+      console.log(event);
       emit("change", event.target.files);
     }
 
-    return { handleChange, openBrowser, fileInput };
+    function trigger() {
+      document.querySelector(`input[name='${props.name}']`)?.click();
+    }
+
+    return { handleChange, fileInput, trigger };
   },
 });
 </script>

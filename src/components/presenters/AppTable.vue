@@ -1,20 +1,14 @@
 <template>
   <div class="app-table">
     <table class="app-table__table table is-striped is-hoverable">
-      <thead class="table-head" :class="{ 'table-head--with-select': select }">
-        <th
-          class="table-head__cell"
-          :class="{ sortable: sort }"
-          v-for="column in columns"
-          :key="column.value || column"
-          @click="$emit('sort', column.value || column)"
-        >
-          {{ column.label || column }}
+      <thead class="table-head">
+        <th class="table-head__cell" v-for="column in columns" :key="column">
+          {{ column }}
         </th>
         <th v-if="actions">Actions</th>
       </thead>
       <tbody>
-        <slot name="body"></slot>
+        <slot></slot>
       </tbody>
       <tfoot>
         <slot name="footer"></slot>
@@ -26,30 +20,16 @@
 <script lang="ts">
 import { defineComponent, PropType, computed } from "vue";
 type ColumnNames = string[];
-interface SortColumn {
-  label: string;
-  value: string;
-}
-type Columns = ColumnNames | SortColumn[];
+
 export default defineComponent({
   name: "AppTable",
   emits: ["sort"],
   props: {
     columns: {
-      type: Array as PropType<Columns>,
+      type: Array as PropType<ColumnNames>,
       required: true,
     },
     actions: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    sort: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    select: {
       type: Boolean,
       required: false,
       default: false,
@@ -69,10 +49,9 @@ export default defineComponent({
   height: auto;
   background-color: $white;
   padding: 2px;
-  border: 1px solid $bg-color;
+  border: 1px solid $gray--darker;
   border-top: 2px solid $blue;
   border-radius: $radius;
-  box-shadow: $tx-drop-shadow;
   &__table {
     width: 100%;
 
@@ -88,6 +67,11 @@ export default defineComponent({
           &:hover {
             color: $blue;
             transition: color 0.15s linear;
+          }
+
+          & span {
+            display: flex;
+            align-items: center;
           }
         }
       }

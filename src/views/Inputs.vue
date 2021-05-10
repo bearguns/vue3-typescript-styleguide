@@ -80,13 +80,18 @@
       <NumberInputDemo />
     </div>
   </div>
+
+  <div class="box">
+    <p class="title">Specialized Inputs</p>
+    <FileInputDemo />
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, reactive, computed, ref } from "vue";
-import { TextInputDemo, NumberInputDemo } from "../components/pages/inputs";
+import { TextInputDemo, NumberInputDemo, FileInputDemo } from "../components/pages/inputs";
 export default defineComponent({
-  components: { TextInputDemo, NumberInputDemo },
+  components: { TextInputDemo, NumberInputDemo, FileInputDemo },
   setup(props) {},
 });
 </script>

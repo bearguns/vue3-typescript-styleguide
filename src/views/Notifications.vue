@@ -1,6 +1,23 @@
 <template>
   <div class="notifications-page">
     <div class="box">
+      <div class="columns">
+        <div class="column-is-half">
+          <div class="field is-grouped">
+            <div class="control">
+              <AppButton status="danger" @click="errorToast">Error Toast</AppButton>
+            </div>
+            <div class="control">
+              <AppButton status="success" @click="successPopup">Success Popup</AppButton>
+            </div>
+            <div class="control">
+              <AppButton status="primary" @click="showLoadingBanner">Loading Banner</AppButton>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="box">
       <div class="block">
         <AppTitle :size="2">Notifications</AppTitle>
         <p>
@@ -62,6 +79,7 @@
 </template>
 
 <script lang="ts">
+import { useStore } from "vuex";
 import { defineComponent } from "vue";
 import { AppButton } from "../components/controls";
 import { PageWrapper, AppTitle } from "../components/layout";
@@ -71,6 +89,7 @@ export default defineComponent({
   name: "NotificationsPage",
   components: { PageWrapper, AppButton, AppTitle },
   setup() {
+    const store = useStore();
     return {
       errorToast() {
         toast.error("This is an error toast!");
@@ -91,8 +110,8 @@ export default defineComponent({
         popup.info("Actually,", "I'm an info popup.", true);
       },
       showLoadingBanner() {
-        showLoader.value = true;
-        setTimeout(() => (showLoader.value = false), 2000);
+        store.commit("setLoading", true);
+        setTimeout(() => store.commit("setLoading", false), 2000);
       },
     };
   },
