@@ -1,6 +1,6 @@
 <template>
   <IconWrapper :color="color">
-    <component :is="icon" :size="size" :color="color" />
+    <component :is="icon" :size="size" :color="color" class="cv-icon" />
   </IconWrapper>
 </template>
 
@@ -35,3 +35,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.cv-icon {
+  margin-top: 50%;
+}
+</style>

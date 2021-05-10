@@ -1,6 +1,6 @@
 <template>
   <transition name="slide">
-    <div class="loading-banner container" v-if="show">
+    <div class="loading-banner" v-if="show">
       <div class="loading-banner__content">
         <LoaderIcon size="3x" color="white" :spin="true" />
         <AppTitle :size="2">Loading...</AppTitle>
@@ -51,7 +51,7 @@ export default defineComponent({
 }
 
 .loading-banner {
-  width: 100%;
+  width: 100vw;
   height: 5.5rem;
   position: absolute;
   z-index: 9;
@@ -61,7 +61,7 @@ export default defineComponent({
 
   &__content {
     color: $white;
-    padding: 1rem 0.75rem;
+    padding: 1.25rem 0.75rem;
     width: 100%;
     display: flex;
     justify-content: flex-start;
