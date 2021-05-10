@@ -29,3 +29,7 @@ $box-shadow: none;
 .box, .card {
   border: 1px solid $gray--darker;
 }
+
+.message {
+  box-shadow: $tx-drop-shadow;
+}

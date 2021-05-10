@@ -49,7 +49,7 @@ const registerToast = (text: string, status: status, timeout: number = 2000) => 
   setTimeout(() => deregisterNotification(id), timeout);
 };
 
-const registerPopup = (title: string, status: status, text: string, showConfirm?: boolean, timeout: number = 0) => {
+const registerPopup = (title: string, status: status, text: string, showConfirm?: boolean, timeout: number = 7000) => {
   const id = uuid();
   const msg: Popup = {
     title,
@@ -59,7 +59,7 @@ const registerPopup = (title: string, status: status, text: string, showConfirm?
     showConfirm: showConfirm ? true : false,
   };
   Object.assign(popupMessage, msg);
-  if (timeout) {
+  if (!showConfirm) {
     setTimeout(() => deregisterPopup(), timeout);
   }
 };
@@ -77,13 +77,13 @@ export const toast = {
 };
 
 export const popup = {
-  error(title: string, text: string, showConfirm?: boolean) {
+  error(title: string, text: string, showConfirm: boolean = true) {
     registerPopup(title, "danger", text, showConfirm);
   },
-  success(title: string, text: string, showConfirm?: boolean) {
+  success(title: string, text: string, showConfirm: boolean = true) {
     registerPopup(title, "success", text, showConfirm);
   },
-  info(title: string, text: string, showConfirm?: boolean) {
+  info(title: string, text: string, showConfirm: boolean = true) {
     registerPopup(title, "info", text, showConfirm);
   },
 };

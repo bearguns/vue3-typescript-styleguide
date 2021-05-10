@@ -68,6 +68,24 @@ export default defineComponent({
     transform: translateX(0);
   }
 }
+
+@keyframes shrink {
+  0% {
+    width: 100%;
+  }
+  25% {
+    width: 75%;
+  }
+  50% {
+    width: 50%;
+  }
+  75% {
+    width: 25%;
+  }
+  100% {
+    width: 0%;
+  }
+}
 .popup {
   height: 18rem;
   width: 24rem;
@@ -79,7 +97,21 @@ export default defineComponent({
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  animation: 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) popupSlideIn;
+  animation: 0.2s cubic-bezier(0.165, 0.84, 0.44, 1) popupSlideIn;
   animation-fill-mode: forwards;
+
+  &__body {
+    text-align: center;
+  }
+
+  &::after {
+    content: "";
+    height: 2px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    background-color: $gray--dark;
+    animation: 7s linear shrink;
+  }
 }
 </style>
