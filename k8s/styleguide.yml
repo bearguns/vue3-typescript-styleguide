@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: styleguide
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: styleguide
+  namespace: styleguide
+  labels:
+    service: styleguide
+spec:
+  type: LoadBalancer
+  ports:
+  - name: "web"
+    port: 80
+    targetPort: 80
+  selector:
+    service: styleguide
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: styleguide
+  namespace: styleguide
+  labels:
+    service: styleguide
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: styleguide
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        service: styleguide
+    spec:
+      containers:
+      - name: styleguide
+        image: teliax/styleguide
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+          limits:
+            memory: "500Mi"
+            cpu: "500m"
+      imagePullSecrets:
+      - name: regcred
+      restartPolicy: Always
