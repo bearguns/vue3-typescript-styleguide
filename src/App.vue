@@ -54,6 +54,7 @@ export default defineComponent({
       localStorage.removeItem("styleguide");
       router.push({ name: "splash" });
     }
+
     return { pageTitle, route, showLoader, loggedIn, logout, logoUrl, loading };
   },
 });
