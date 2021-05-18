@@ -3,6 +3,8 @@ import vue from "@vitejs/plugin-vue";
 import image from "@rollup/plugin-image";
 import url from "@rollup/plugin-url";
 import fonts from "vite-plugin-fonts";
+import markdown from "vite-plugin-markdown";
+
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
@@ -10,6 +12,7 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    markdown({ mode: "html" }),
     image(),
     url({
       // by default, rollup-plugin-url will not handle font files
