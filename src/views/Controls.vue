@@ -35,6 +35,11 @@
       </div>
     </div>
     <ButtonsDemo />
+    <div class="columns">
+      <div class="column is-one-third">
+        <SearchSelectDemo />
+      </div>
+    </div>
     <PaginationDemo />
     <SearchDemo />
   </div>
@@ -46,7 +51,7 @@ import { AppPanel, AppTitle } from "../components/layout";
 import { AppSwitch, AppDropdown } from "../components/controls";
 import { CheckBox } from "../components/inputs";
 import { UserIcon } from "../components/icons";
-import { SwitchDemo, ButtonsDemo, PaginationDemo, SearchDemo } from "../components/pages/controls";
+import { SwitchDemo, ButtonsDemo, PaginationDemo, SearchDemo, SearchSelectDemo } from "../components/pages/controls";
 export default defineComponent({
   components: {
     UserIcon,
@@ -58,6 +63,7 @@ export default defineComponent({
     CheckBox,
     PaginationDemo,
     SearchDemo,
+    SearchSelectDemo,
   },
   setup() {
     const switch1 = ref(false);

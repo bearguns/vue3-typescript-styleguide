@@ -1,6 +1,6 @@
 {
   "name": "@teliax/styleguide",
-  "version": "4.2.1",
+  "version": "4.3.0",
   "files": ["dist"],
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -9,7 +9,7 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "test": "yarn jest --coverage true",
+    "test": "yarn jest",
     "build:site": "vite build --config vite.deploy.config.ts",
     "build:types": "tsc --build tsconfigtypes.json",
     "build:lib": "NODE_ENV=production rollup --config rollup.config.js && yarn build:types",
@@ -18,15 +18,13 @@
   "dependencies": {
     "@zhuowenli/vue-feather-icons": "^5.0.2",
     "bulma": "^0.9.1",
-    "highlight.js": "^10.7.2",
     "sweetalert2": "^10.15.6",
     "vue": "^3.0.5",
     "vue-router": "4",
-    "vue3-markdown-it": "^1.0.8",
-    "vuex": "^4.0.0",
-    "yarn": "^1.22.10"
+    "vuex": "^4.0.0"
   },
   "devDependencies": {
+    "vue3-markdown-it": "^1.0.8",
     "@babel/core": "^7.12.10",
     "@babel/plugin-transform-runtime": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
@@ -71,6 +69,8 @@
     "vite-plugin-fonts": "^0.2.2",
     "vite-plugin-markdown": "^2.0.2",
     "vite-plugin-string": "^1.0.1",
-    "vue-jest": "^5.0.0-alpha.7"
+    "vue-jest": "^5.0.0-alpha.7",
+    "yarn": "^1.22.10",
+    "highlight.js": "^10.7.2"
   }
 }
