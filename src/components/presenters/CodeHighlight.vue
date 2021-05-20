@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts">
-import hljs from "highlight.js";
-
+import * as hljs from "highlight.js";
 import { defineComponent } from "vue";
+
 export default defineComponent({
   name: "CodeHighlight",
   setup() {},

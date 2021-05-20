@@ -2,4 +2,6 @@ import SwitchDemo from "./SwitchDemo.vue";
 import ButtonsDemo from "./ButtonsDemo.vue";
 import PaginationDemo from "./PaginationDemo.vue";
 import SearchDemo from "./SearchDemo.vue";
-export { SwitchDemo, ButtonsDemo, PaginationDemo, SearchDemo };
+import SearchSelectDemo from "./SearchSelectDemo.vue";
+import SearchSelectSingleDemo from "./SearchSelectSingleDemo.vue";
+export { SwitchDemo, ButtonsDemo, PaginationDemo, SearchDemo, SearchSelectDemo, SearchSelectSingleDemo };

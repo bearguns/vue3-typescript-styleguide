@@ -1,13 +1,13 @@
 import { mount } from "@vue/test-utils";
-import TxTag from "./TxTag.vue";
+import AppTag from "./AppTag.vue";
 
-describe("TxTag", () => {
+describe("AppTag", () => {
   const statusesUnderTest = ["primary", "success", "info", "danger", "warning"];
 
   // DRY
-  statusesUnderTest.forEach((status) => {
+  statusesUnderTest.forEach(status => {
     it(`renders appropriate ${status} color`, () => {
-      const wrapper = mount(TxTag, {
+      const wrapper = mount(AppTag, {
         props: {
           status,
         },
@@ -18,7 +18,7 @@ describe("TxTag", () => {
   });
 
   it("renders slotted content in default slot", () => {
-    const wrapper = mount(TxTag, {
+    const wrapper = mount(AppTag, {
       slots: {
         default: "tag me",
       },
@@ -27,7 +27,7 @@ describe("TxTag", () => {
   });
 
   it("renders delete button if removeable property is true", () => {
-    const wrapper = mount(TxTag, {
+    const wrapper = mount(AppTag, {
       props: {
         removeable: true,
       },
@@ -36,7 +36,7 @@ describe("TxTag", () => {
   });
 
   it("emits click to parent if removeable and user clicks delete button", async () => {
-    const wrapper = mount(TxTag, {
+    const wrapper = mount(AppTag, {
       props: {
         removeable: true,
       },
