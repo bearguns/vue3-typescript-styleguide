@@ -1,6 +1,6 @@
 <template>
   <div class="search-select">
-    <div class="search-select__selected" v-if="multiple">
+    <div class="search-select__selected">
       <AppTag
         v-for="item in selected"
         :key="item.value"
@@ -20,6 +20,7 @@
           :data-qa="`${name}-input`"
           type="text"
           :value="modelValue"
+          :placeholder="placeholder"
           @focus="showItemsList"
           @input="debouncedEmit($event.target.value)"
         />
@@ -58,16 +59,16 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    // Can user select multiple? Controls display of selected item tags
-    // Leave as false if user should only select 1
-    multiple: {
-      type: Boolean,
-      default: false,
-    },
     // Label for input fields
     label: {
       type: String,
       required: true,
+    },
+    // Placeholder text
+    placeholder: {
+      type: String,
+      required: false,
+      default: "Select an item or type to search",
     },
     // List of items to display in results. Parent is responsible for updating this
     items: {
@@ -91,10 +92,7 @@ export default defineComponent({
       timeout = setTimeout(() => emit("update:modelValue", value), 700);
     }
 
-    function toggleItemsView(): void {
-      showItems.value = !showItems.value;
-    }
-
+    // Hide list and remove event listener
     function hideItemsList(e: any): void {
       console.log(e);
       if (e.target.localName !== "li" && e.target.localName !== "input") {
@@ -103,6 +101,7 @@ export default defineComponent({
       }
     }
 
+    // Add listener to close items list when user clicks outside
     function showItemsList(): void {
       setTimeout(() => window.addEventListener("click", hideItemsList), 500);
       showItems.value = true;
@@ -115,7 +114,6 @@ export default defineComponent({
     return {
       showItems,
       showItemsList,
-      toggleItemsView,
       selectItem,
       debouncedEmit,
     };

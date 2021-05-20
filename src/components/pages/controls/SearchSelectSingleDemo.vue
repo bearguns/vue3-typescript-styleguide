@@ -1,7 +1,8 @@
 <template>
   <div class="box">
     <div class="block">
-      <AppTitle :size="3">SearchSelect</AppTitle>
+      <AppTitle :size="3">SearchSelect (single selection)</AppTitle>
+      <p>The parent component can customize how selected items are handled to support only a single selection.</p>
       <p class="title is-size-4">Selected Items:</p>
       <ul>
         <li v-for="item in selected" :key="item.value">{{ item.label }}</li>
@@ -9,19 +10,13 @@
     </div>
     <SearchSelect
       name="search-select-demo"
-      label="Select item(s)"
-      :multiple="true"
+      label="Select item"
       :items="displayItems"
       :selected="selected"
       v-model="searchTerm"
       @select="selectItem"
       @remove="removeSelectedItem"
     />
-    <div class="block">
-      <CodeHighlight>
-        <div class="block" v-html="html"></div>
-      </CodeHighlight>
-    </div>
   </div>
 </template>
 
@@ -29,11 +24,9 @@
 import { defineComponent, ref, computed } from "vue";
 import { AppTitle } from "../../layout";
 import { SearchSelect } from "../../controls";
-import { CodeHighlight } from "../../presenters";
-import { html } from "./search-select-demo.md";
 export default defineComponent({
-  name: "SearchSelectDemo",
-  components: { AppTitle, SearchSelect, CodeHighlight },
+  name: "SearchSelectSingleDemo",
+  components: { AppTitle, SearchSelect },
   setup() {
     // A two-way-bound query. Value comes _up_ from child,
     // and is passed _down_ from parent.
@@ -72,15 +65,15 @@ export default defineComponent({
     const selected = ref<any[]>([]);
 
     // Simple function to demonstrate receiving a selected value from the child,
-    // and storing user selections so the child can display tags
+    // and storing user selections. To allow single-input only, just do only a single value!
     function selectItem(value: any): void {
       const i: any = items.value.find((item: any) => item.value === value);
-      selected.value = [...selected.value, i];
+      selected.value = [i];
     }
 
     // Simple function to remove an item when user clicks the X icon on a tag
     function removeSelectedItem(value: any): void {
-      selected.value = [...selected.value.filter((item: any) => item.value !== value)];
+      selected.value = [];
     }
 
     return {
@@ -90,7 +83,6 @@ export default defineComponent({
       selectItem,
       searchTerm,
       removeSelectedItem,
-      html,
     };
   },
 });
