@@ -1,6 +1,6 @@
 <template>
   <div class="styleguide">
-    <AppSidebar>
+    <AppSidebar :open="menuOpen" @toggle="toggleMenu">
       <template #logo>
         <img alt="" :src="logoUrl" />
       </template>
@@ -23,7 +23,7 @@
         />
       </template>
     </AppSidebar>
-    <AppHeader title="Styleguide"> </AppHeader>
+    <AppHeader title="Styleguide" @toggle="toggleMenu"> </AppHeader>
     <div class="styleguide__content">
       <router-view />
       <NotificationCenter :loading="loading" />
@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
+import { defineComponent, computed, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { SidebarLink, SidebarLinkMenu, AppHeader, AppSidebar } from "./components/layout";
@@ -43,6 +43,8 @@ import logoUrl from "../public/logo.svg";
 export default defineComponent({
   components: { UserMenu, SidebarLink, SidebarLinkMenu, AppHeader, AppSidebar, NotificationCenter },
   setup() {
+    const isMobile = window.innerWidth > 768 ? false : true;
+    const menuOpen = ref(isMobile ? false : true);
     const route = useRoute();
     const router = useRouter();
     const store = useStore();
@@ -55,7 +57,11 @@ export default defineComponent({
       router.push({ name: "splash" });
     }
 
-    return { pageTitle, route, showLoader, loggedIn, logout, logoUrl, loading };
+    function toggleMenu() {
+      menuOpen.value = !menuOpen.value;
+    }
+
+    return { pageTitle, route, showLoader, menuOpen, toggleMenu, loggedIn, logout, logoUrl, loading };
   },
 });
 </script>
@@ -64,6 +70,10 @@ export default defineComponent({
 @import "./scss/main.scss";
 .styleguide {
   padding-left: 16rem;
+
+  @media screen and (max-width: 768px) {
+    padding-left: 0;
+  }
 
   &__content {
     padding: 2rem 1.25rem;

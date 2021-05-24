@@ -1,8 +1,16 @@
 <template>
-  <div class="app-sidebar">
+  <div class="app-sidebar" :class="classBindings">
     <nav class="app-nav">
       <div class="app-nav__logo">
         <slot name="logo"></slot>
+        <template v-if="isMobile">
+          <CloseIcon
+            color="danger"
+            class="has-text-danger app-sidebar__close-button"
+            size="3x"
+            @click="$emit('toggle')"
+          />
+        </template>
       </div>
       <ul class="app-nav__menu">
         <slot name="links"></slot>
@@ -12,9 +20,27 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, computed } from "vue";
+import { CloseIcon } from "../icons";
 export default defineComponent({
   name: "AppSidebar",
+  components: { CloseIcon },
+  emits: ["toggle"],
+  props: {
+    open: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+  },
+  setup(props) {
+    const isMobile = window.innerWidth > 768 ? false : true;
+    const classBindings = computed(() => {
+      return props.open ? "app-sidebar--open" : "app-sidebar--hidden";
+    });
+
+    return { classBindings, isMobile };
+  },
 });
 </script>
 <style lang="scss" scoped>
@@ -33,7 +59,28 @@ export default defineComponent({
   transition: all 0.3s ease-in-out;
 
   @media screen and (max-width: $tx-breakpoint--mobile) {
-    position: relative;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 5;
+    transition: all 0.2s ease-in-out;
+
+    &--hidden {
+      transform: translateX(-100%);
+      width: 0;
+      overflow: hidden;
+    }
+
+    &--open {
+      transform: translateX(0);
+      width: 100vw;
+    }
+
+    &__close-button {
+      margin-top: 2.5%;
+    }
   }
 }
 
@@ -44,11 +91,26 @@ export default defineComponent({
   justify-content: flex-start;
   align-items: center;
 
+  @media screen and (max-width: 768px) {
+    padding: 1.75rem 0.5rem;
+  }
+
   &__logo {
     width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     & img {
       margin: 0 auto;
+    }
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      padding: 0 0.75rem;
+      & img {
+        margin: 0;
+      }
     }
   }
 

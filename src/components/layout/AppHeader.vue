@@ -1,12 +1,10 @@
 <template>
   <header class="app-header">
+    <MenuIcon v-if="isMobile" size="2x" @click="$emit('toggle')" />
     <div class="app-header__title">
-      <AppTitle :size="1">
+      <AppTitle :size="isMobile ? 3 : 1">
         {{ title }}
       </AppTitle>
-      <nav class="breadcrumb">
-        <ul id="header-breadcrumbs"></ul>
-      </nav>
     </div>
     <div class="app-header__menu">
       <UserMenu>
@@ -20,11 +18,18 @@
 import { defineComponent } from "vue";
 import AppTitle from "./AppTitle.vue";
 import { UserMenu } from "../controls";
+import { MenuIcon } from "../icons";
 export default defineComponent({
   name: "AppHeader",
-  components: { AppTitle, UserMenu },
+  components: { AppTitle, UserMenu, MenuIcon },
+  emits: ["toggle"],
   props: {
     title: String,
+  },
+  setup(props) {
+    return {
+      isMobile: window.innerWidth > 768 ? false : true,
+    };
   },
 });
 </script>
@@ -63,6 +68,10 @@ export default defineComponent({
 
   &__menu {
     align-self: flex-end;
+  }
+
+  @media screen and (max-width: 768px) {
+    position: static;
   }
 }
 </style>
