@@ -80,7 +80,7 @@ export default defineComponent({
     }
   }
   &__input {
-    width: 275px;
+    width: 225px;
   }
 }
 </style>

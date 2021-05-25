@@ -9,6 +9,9 @@ import LoaderIcon from "./LoaderIcon.vue";
 import HomeIcon from "./HomeIcon.vue";
 import GithubIcon from "./GithubIcon.vue";
 import SearchIcon from "./SearchIcon.vue";
+import CloseIcon from "./CloseIcon.vue";
+import MenuIcon from "./MenuIcon.vue";
+
 export {
   GithubIcon,
   HomeIcon,
@@ -21,4 +24,6 @@ export {
   CheckCircleIcon,
   AlertIcon,
   SearchIcon,
+  CloseIcon,
+  MenuIcon,
 };

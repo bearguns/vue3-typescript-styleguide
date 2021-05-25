@@ -74,21 +74,28 @@ export default defineComponent({
     },
   },
   setup(props, { emit }) {
+    const isMobile = window.innerWidth > 768 ? false : true;
+    const offsetBase = isMobile ? 4 : 10;
     const isLastPage = computed(() => props.currentPage === props.lastPage);
     const isFirstPage = computed(() => props.currentPage === 1);
     const offset = computed(() => {
-      if (props.lastPage > 10 && props.currentPage > 5) {
-        if (props.currentPage > props.lastPage - 5) {
-          return props.lastPage - 10;
+      if (props.lastPage > offsetBase && props.currentPage > offsetBase / 2) {
+        if (props.currentPage > props.lastPage - offsetBase / 2) {
+          return props.lastPage - offsetBase;
         }
-        return props.currentPage - 5 - 1;
+        return props.currentPage - offsetBase / 2 - 1;
       }
       return 0;
     });
     const pageRange = computed(() => {
+      if (isMobile) {
+        return props.lastPage < 4 ? props.lastPage : 4;
+      }
+
       if (props.lastPage <= 10) {
         return props.lastPage;
       }
+
       return 10;
     });
 
