@@ -11,6 +11,7 @@ import GithubIcon from "./GithubIcon.vue";
 import SearchIcon from "./SearchIcon.vue";
 import CloseIcon from "./CloseIcon.vue";
 import MenuIcon from "./MenuIcon.vue";
+import EditIcon from "./EditIcon.vue";
 
 export {
   GithubIcon,
@@ -26,4 +27,5 @@ export {
   SearchIcon,
   CloseIcon,
   MenuIcon,
+  EditIcon,
 };
