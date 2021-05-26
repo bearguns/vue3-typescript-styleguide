@@ -1,5 +1,5 @@
 <template>
-  <div class="tx-icon" :class="colorClass">
+  <div class="app-icon" :class="colorClass">
     <slot></slot>
   </div>
 </template>
@@ -16,3 +16,11 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss">
+.app-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>

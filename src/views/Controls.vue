@@ -35,6 +35,7 @@
       </div>
     </div>
     <ButtonsDemo />
+    <IconButtons />
     <div class="columns">
       <div class="column is-one-third">
         <SearchSelectDemo />
@@ -61,6 +62,7 @@ import {
   SearchDemo,
   SearchSelectDemo,
   SearchSelectSingleDemo,
+  IconButtons,
 } from "../components/pages/controls";
 export default defineComponent({
   components: {
@@ -75,6 +77,7 @@ export default defineComponent({
     SearchDemo,
     SearchSelectDemo,
     SearchSelectSingleDemo,
+    IconButtons,
   },
   setup() {
     const switch1 = ref(false);

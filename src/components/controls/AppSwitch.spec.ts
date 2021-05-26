@@ -1,11 +1,11 @@
 import { mount } from "@vue/test-utils";
-import TxCheckbox from "./TxCheckbox.vue";
+import AppSwitch from "./AppSwitch.vue";
 
-describe("TxCheckbox", () => {
+describe("AppSwitch", () => {
   it("renders provided label and name", () => {
     const label = "Checkbox";
     const name = "checkbox-name";
-    const wrapper = mount(TxCheckbox, {
+    const wrapper = mount(AppSwitch, {
       props: {
         label,
         name,
@@ -15,7 +15,7 @@ describe("TxCheckbox", () => {
     expect(wrapper.find("input").element.name).toEqual(name);
   });
   it("renders as checked when provided value is true", () => {
-    const wrapper = mount(TxCheckbox, {
+    const wrapper = mount(AppSwitch, {
       props: {
         name: "checkbox",
         checked: true,
@@ -24,7 +24,7 @@ describe("TxCheckbox", () => {
     expect(wrapper.find("input").element.checked).toBe(true);
   });
   it("renders as disabled when disabled property is true", () => {
-    const wrapper = mount(TxCheckbox, {
+    const wrapper = mount(AppSwitch, {
       props: {
         name: "checkbox",
         checked: false,
@@ -34,7 +34,7 @@ describe("TxCheckbox", () => {
     expect(wrapper.find("input").element.disabled).toBe(true);
   });
   it("renders as not checked when provided value is false", () => {
-    const wrapper = mount(TxCheckbox, {
+    const wrapper = mount(AppSwitch, {
       props: {
         name: "checkbox",
         checked: false,
@@ -43,7 +43,7 @@ describe("TxCheckbox", () => {
     expect(wrapper.find("input").element.checked).toBe(false);
   });
   it("reacts to change in received checked prop", async () => {
-    const wrapper = mount(TxCheckbox, {
+    const wrapper = mount(AppSwitch, {
       props: {
         name: "checkbox",
         checked: false,
@@ -54,7 +54,7 @@ describe("TxCheckbox", () => {
     expect(wrapper.find("input").element.checked).toBe(true);
   });
   it("emits current value of checkbox when clicked (false => true)", () => {
-    const wrapper = mount(TxCheckbox, {
+    const wrapper = mount(AppSwitch, {
       props: {
         name: "checkbox",
         checked: false,
@@ -64,7 +64,7 @@ describe("TxCheckbox", () => {
     expect(wrapper.emitted().click[0]).toEqual([true]);
   });
   it("emits current value of checkbox when clicked (true => false)", () => {
-    const wrapper = mount(TxCheckbox, {
+    const wrapper = mount(AppSwitch, {
       props: {
         name: "checkbox",
         checked: true,

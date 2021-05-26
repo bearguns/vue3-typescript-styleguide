@@ -35,9 +35,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang="scss" scoped>
-.cv-icon {
-  margin-top: 50%;
-}
-</style>
