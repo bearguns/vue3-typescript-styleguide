@@ -1,6 +1,6 @@
 <template>
   <IconWrapper :color="color">
-    <TrashIconIcon :size="size" />
+    <TrashIcon :size="size" />
   </IconWrapper>
 </template>
 

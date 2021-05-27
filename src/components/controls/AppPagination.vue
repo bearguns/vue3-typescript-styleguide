@@ -126,7 +126,4 @@ export default defineComponent({
     flex-wrap: nowrap;
   }
 }
-.pagination-link__icon {
-  margin-top: 25%;
-}
 </style>
