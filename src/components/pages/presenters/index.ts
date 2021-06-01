@@ -1,3 +1,4 @@
 import AppTableDemo from "./AppTableDemo.vue";
 import SortTableDemo from "./SortTableDemo.vue";
-export { AppTableDemo, SortTableDemo };
+import TooltipDemo from "./TooltipDemo.vue";
+export { AppTableDemo, SortTableDemo, TooltipDemo };
