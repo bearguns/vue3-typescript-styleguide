@@ -7,15 +7,16 @@
     <div class="box">
       <AppTableDemo />
     </div>
+    <TooltipDemo />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { AppTableDemo } from "../components/pages/presenters";
+import { AppTableDemo, TooltipDemo } from "../components/pages/presenters";
 export default defineComponent({
   name: "PresentersView",
-  components: { AppTableDemo },
+  components: { AppTableDemo, TooltipDemo },
   setup() {},
 });
 </script>
