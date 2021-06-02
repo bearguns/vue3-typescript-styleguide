@@ -52,7 +52,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .button {
-  min-width: 6rem;
   width: auto;
 
   &--block {
