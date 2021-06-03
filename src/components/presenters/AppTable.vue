@@ -52,8 +52,10 @@ export default defineComponent({
   border: 1px solid $gray--darker;
   border-top: 2px solid $blue;
   border-radius: $radius;
+
   &__table {
     width: 100%;
+    border-collapse: separate;
 
     .table-head {
       width: 100%;
@@ -61,6 +63,7 @@ export default defineComponent({
         font-family: $heading-font;
         font-size: 1rem;
         font-weight: 400;
+        text-align: center;
 
         &.sortable {
           cursor: pointer;

@@ -1,5 +1,6 @@
 @import "colors";
 @import "typography";
+@import "variables";
 // Tabs
 $tabs-border-bottom-color: $primary;
 $tabs-link-active-border-bottom-color: $primary;
@@ -24,11 +25,8 @@ $tabs-boxed-link-hover-border-bottom-color: $primary;
     content: attr(data-tooltip);
     position: absolute;
     z-index: 9;
-    top: 50%;
-    left: 100%;
-    margin-left: .75rem;
     inline-size: max-content;
-    border-radius: 8px;
+    border-radius: $radius;
     background: $black;
     color: $white;
     font-size: 1rem;
@@ -40,49 +38,45 @@ $tabs-boxed-link-hover-border-bottom-color: $primary;
 
   &--top {
     &:before {
-      top: initial;
-      left: initial;
-      right: initial;
-      left: 0;
-      transform: translateY(0);
-      margin-bottom: .75rem;
+      bottom: 100%;
+      margin: 0 0 .25rem 0;
+      transform: translateY(75%);
     }
     &:hover::before {
-      transform: translateY(-100%);
+      transform: translateY(0);
     }
   }
 
   &--bottom {
     &:before {
-      left: initial;
-      right: initial;
-      transform: translateY(0);
+      top: 100%;
+      margin: 0.25rem 0 0 0;
+      transform: translateY(-75%);
     }
     &:hover::before {
-      transform: translateY(75%);
+      transform: translateY(0);
     }
   }
 
   &--left {
     &:before {
-      left: initial;
-      margin: initial;
-      top: 3px;
-      transform: translateX(0);
-      margin-right: .75rem;
+      right: 100%;
+      margin: 0 0.25rem 0 auto;
+      transform: translateX(75%);
     }
     &:hover::before {
-      transform: translateX(-100%);
+      transform: translateX(0);
     }
   }
 
   &--right {
     &:before {
-      top: 3px;
-      transform: translateX(-100%);
+      left: 100%;
+      margin: 0 0 0 0.25rem;
+      transform: translateX(-75%);
     }
     &:hover::before {
-      transform: translateX(-8px);
+      transform: translateX(0);
     }
   }
 

@@ -1,7 +1,9 @@
 {
   "name": "@teliax/styleguide",
   "version": "4.5.3",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/types/index.d.ts",
@@ -18,15 +20,14 @@
   "dependencies": {
     "@zhuowenli/vue-feather-icons": "^5.0.2",
     "bulma": "^0.9.1",
+    "highlight.js": "^10.7.2",
     "sweetalert2": "^10.15.6",
     "vue": "^3.0.5",
     "vue-router": "4",
     "vuex": "^4.0.0",
-    "yarn": "^1.22.10",
-    "highlight.js": "^10.7.2"
+    "yarn": "^1.22.10"
   },
   "devDependencies": {
-    "vue3-markdown-it": "^1.0.8",
     "@babel/core": "^7.12.10",
     "@babel/plugin-transform-runtime": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
@@ -52,7 +53,9 @@
     "babel-jest": "^26.6.3",
     "babel-preset-es2015-rollup": "^3.0.0",
     "babel-preset-vue": "^2.0.2",
+    "eslint": "^7.27.0",
     "jest": "^26.6.3",
+    "prettier": "^2.3.0",
     "rimraf": "^3.0.2",
     "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-css-only": "^3.1.0",
@@ -71,6 +74,7 @@
     "vite-plugin-fonts": "^0.2.2",
     "vite-plugin-markdown": "^2.0.2",
     "vite-plugin-string": "^1.0.1",
-    "vue-jest": "^5.0.0-alpha.7"
+    "vue-jest": "^5.0.0-alpha.7",
+    "vue3-markdown-it": "^1.0.8"
   }
 }
