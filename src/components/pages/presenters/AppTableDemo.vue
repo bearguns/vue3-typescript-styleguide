@@ -11,23 +11,29 @@
         default slot, a basic table will render.
       </p>
     </div>
-    <AppTable :columns="basicColumns">
-      <tr v-for="row in basicRows" :key="row.amount">
-        <td>{{ row.name }}</td>
-        <td>{{ row.date }}</td>
-        <td>{{ row.item }}</td>
-        <td>{{ row.amount }}</td>
-      </tr>
-    </AppTable>
+    <div class="block">
+      <AppTable :columns="basicColumns">
+        <AppTableRow v-for="row in basicRows" :key="row.amount">
+          <td>{{ row.name }}</td>
+          <td>{{ row.date }}</td>
+          <td>{{ row.item }}</td>
+          <td>{{ row.amount }}</td>
+        </AppTableRow>
+      </AppTable>
+    </div>
+    <div class="block">
+      <action-table-demo />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import { AppTable } from "../../presenters";
+import { AppTable, AppTableRow } from "../../presenters";
+import ActionTableDemo from "./ActionTableDemo.vue";
 export default defineComponent({
   name: "AppTableDemo",
-  components: { AppTable },
+  components: { AppTable, AppTableRow, ActionTableDemo },
   setup() {
     const basicColumns = ["Name", "Date", "Item", "Amount"];
     const basicRows = [
