@@ -1,17 +1,25 @@
 <template>
   <div class="sidebar-link-menu" @click="toggleExpanded">
-    <div class="sidebar-link-menu__label" :class="{ 'sidebar-link-menu__label--active': expanded }">
+    <div class="sidebar-link-menu__label" :class="{ 'sidebar-link-menu__label--active': showAsExpanded }">
       {{ label }}
-      <ChevronIcon :direction="expanded ? 'up' : 'down'" size="1x" :color="expanded ? 'primary' : 'white'" />
+      <ChevronIcon
+        :direction="showAsExpanded ? 'up' : 'down'"
+        size="1x"
+        :color="showAsExpanded ? 'primary' : 'white'"
+      />
     </div>
-    <div class="sidebar-link-menu__links" ref="linkList" :class="{ 'sidebar-link-menu__links--expanded': expanded }">
+    <div
+      class="sidebar-link-menu__links"
+      ref="linkList"
+      :class="{ 'sidebar-link-menu__links--expanded': showAsExpanded }"
+    >
       <slot></slot>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref, computed } from "vue";
+import { defineComponent, PropType, ref, computed, onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
 import SidebarLink from "./SidebarLink.vue";
 import { ChevronIcon } from "../icons";
@@ -30,14 +38,9 @@ export default defineComponent({
   },
   components: { ChevronIcon, SidebarLink },
   setup(props) {
-    // Reference to the actual list DOM element for controlling animations with JS
     const linkList = ref(null);
-
-    // Local state derived from parent
-    const expanded = ref(props.active);
-    // const showAsOpen = computed((): boolean => {
-    //   return props.active || expanded.value;
-    // });
+    const expanded = ref(false);
+    const showAsExpanded = computed(() => props.active || expanded.value);
 
     function smoothExpand() {
       // Get the height of the currently-hidden inner content
@@ -86,6 +89,7 @@ export default defineComponent({
       linkList,
       expanded,
       toggleExpanded,
+      showAsExpanded,
     };
   },
 });
