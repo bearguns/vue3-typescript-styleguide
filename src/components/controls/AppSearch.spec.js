@@ -27,12 +27,13 @@ describe("AppSearch", () => {
       },
     });
     wrapper.find("input").setValue("foo");
-    expect(wrapper.emitted("input")[0]).toEqual(["foo"]);
+    expect(wrapper.emitted("update:modelValue")[0]).toEqual(["foo"]);
   });
   it("emits submit event on button click", () => {
     const wrapper = mount(AppSearch, {
-      propsData: {
+      props: {
         name: "app-search",
+        hasButton: true,
       },
       global: {
         stubs: {

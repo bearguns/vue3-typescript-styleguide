@@ -76,7 +76,7 @@ export default defineComponent({
 
 .card {
   &-header {
-    padding: 0.75rem 1.25rem;
+    padding: 0.75rem;
     border-bottom: 1px solid $black;
 
     &--info {
@@ -111,7 +111,7 @@ export default defineComponent({
       overflow: hidden;
     }
     &--expanded {
-      padding: 1.5rem;
+      padding: 0.75rem;
       max-height: 999px;
     }
   }
