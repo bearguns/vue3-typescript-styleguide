@@ -6,8 +6,7 @@ $tx-breakpoint--mobile: 800px;
 $tx-breakpoint--tablet: 1279px;
 $tx-breakpoint--desktop: 1280px;
 $tx-breakpoint--giant: 1400px;
-// $tx-drop-shadow: 0 1.14em 0.75em -0.125em rgb(14 37 44 / 10%), 0 0px 0 1px rgb(14 37 44 / 2%);
-$tx-drop-shadow: 0.75px 3.25px 12px -1px rgba(0,1,26,0.36);
+$tx-drop-shadow: 0 0.5em 1em -0.125em rgba($black, 0.1), 0 0px 0 1px rgba($black, 0.02);
 
 // Bulma variables (customized)
 $radius: 4px;
@@ -17,7 +16,7 @@ $radius-large: 6px;
 // @Card component variables
 $card-background-color: $white;
 $card-header-padding: 0.75rem 1.25rem;
-// $card-header-shadow: none;
+$card-header-shadow: none;
 $card-shadow: $tx-drop-shadow;
 $card-footer-border-top: 1px solid $gray;
 
@@ -26,8 +25,8 @@ $card-footer-border-top: 1px solid $gray;
 $box-background-color: $white;
 $box-shadow: none;
 
-.box, .card {
-  border: 1px solid $gray--darker;
+.box {
+  border: 1px solid $gray--dark;
 }
 
 .message {

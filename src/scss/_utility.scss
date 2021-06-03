@@ -1,0 +1,19 @@
+// Utility classes for downstream projects
+@import "variables";
+@import "colors";
+
+.has-radius {
+  border-radius: $radius;
+
+  &--small {
+    border-radius: $radius-small;
+  }
+
+  &--large {
+    border-radius: $radius-large;
+  }
+}
+
+.has-shadow {
+  box-shadow: $tx-drop-shadow;
+}

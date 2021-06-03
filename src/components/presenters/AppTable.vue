@@ -1,5 +1,5 @@
 <template>
-  <div class="app-table">
+  <div class="app-table has-radius--small">
     <table class="app-table__table table is-striped is-hoverable">
       <thead class="table-head">
         <th class="table-head__cell" v-for="column in columns" :key="column">
@@ -45,51 +45,25 @@ export default defineComponent({
 @import "../../scss/variables";
 
 .app-table {
-  width: 100%;
-  height: auto;
-  background-color: $white;
-  padding: 2px;
   border: 1px solid $gray--darker;
   border-top: 2px solid $blue;
-  border-radius: $radius;
 
-  &__table {
+  & table {
     width: 100%;
     border-collapse: separate;
 
-    .table-head {
-      width: 100%;
-      & th {
-        font-family: $heading-font;
-        font-size: 1rem;
-        font-weight: 400;
-        text-align: center;
-
-        &.sortable {
-          cursor: pointer;
-          &:hover {
-            color: $blue;
-            transition: color 0.15s linear;
-          }
-
-          & span {
-            display: flex;
-            align-items: center;
-          }
+    & th {
+      &.sortable {
+        cursor: pointer;
+        &:hover {
+          color: $blue;
+          transition: color 0.15s linear;
         }
-      }
 
-      &--with-select th:first-child {
-        width: 8rem;
-        padding-left: 0.75rem;
-      }
-    }
-
-    & tr {
-      font-size: 1rem;
-
-      & td {
-        vertical-align: middle;
+        & span {
+          display: flex;
+          align-items: center;
+        }
       }
     }
   }

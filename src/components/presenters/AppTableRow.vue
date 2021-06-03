@@ -53,22 +53,21 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "../../scss/_colors.scss";
 .app-table-row {
+  transition: background-color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
   &--link {
     cursor: pointer;
   }
 
   & td {
     padding: 0.5rem;
-    text-align: center;
     vertical-align: middle;
   }
 
   &__actions {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     vertical-align: middle;
     padding: 0.5rem;
   }

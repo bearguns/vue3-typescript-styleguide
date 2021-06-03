@@ -11,18 +11,24 @@
         default slot, a basic table will render.
       </p>
     </div>
-    <div class="block">
-      <AppTable :columns="basicColumns">
-        <AppTableRow v-for="row in basicRows" :key="row.amount">
-          <td>{{ row.name }}</td>
-          <td>{{ row.date }}</td>
-          <td>{{ row.item }}</td>
-          <td>{{ row.amount }}</td>
-        </AppTableRow>
-      </AppTable>
+    <div class="columns">
+      <div class="column is-half">
+        <AppTable :columns="basicColumns">
+          <AppTableRow v-for="row in basicRows" :key="row.amount">
+            <td>{{ row.name }}</td>
+            <td>{{ row.date }}</td>
+            <td>{{ row.item }}</td>
+            <td>{{ row.amount }}</td>
+          </AppTableRow>
+        </AppTable>
+      </div>
     </div>
-    <div class="block">
-      <action-table-demo />
+    <div class="columns">
+      <div class="column is-half">
+        <div class="block">
+          <action-table-demo />
+        </div>
+      </div>
     </div>
   </div>
 </template>
