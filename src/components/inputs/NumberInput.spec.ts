@@ -24,9 +24,7 @@ describe("Components | Inputs | NumberInput", () => {
         ...defaultProps,
       },
     });
-    expect(wrapper.find("input").attributes("data-qa")).toBe(
-      `${defaultProps.name}_input`
-    );
+    expect(wrapper.find("input").attributes("data-qa")).toBe(`${defaultProps.name}_input`);
   });
 
   test("Receives current value as prop from parent", () => {
@@ -38,8 +36,7 @@ describe("Components | Inputs | NumberInput", () => {
           value: 0,
         };
       },
-      template:
-        '<NumberInput :min="min" :max="max" v-model="value" :name="name" :label="label" />',
+      template: '<NumberInput :min="min" :max="max" v-model="value" :name="name" :label="label" />',
     };
     const wrapper = mount(Component);
     expect(wrapper.find("input").element.value).toBe("0");
@@ -54,8 +51,7 @@ describe("Components | Inputs | NumberInput", () => {
           value: 0,
         };
       },
-      template:
-        '<NumberInput :min="min" :max="max" v-model="value" :name="name" :label="label" />',
+      template: '<NumberInput :min="min" :max="max" v-model="value" :name="name" :label="label" />',
     };
     const wrapper = mount(Component);
     await wrapper.setData({ value: 1 });
@@ -85,34 +81,13 @@ describe("Components | Inputs | NumberInput", () => {
   });
 
   test("Renders with red border if in error state", () => {
-    const errorMsg = "This is BAD.";
+    const errorText = "This is BAD.";
     const wrapper = mount(NumberInput, {
       props: {
         ...defaultProps,
-        errorMsg,
+        errorText,
       },
     });
-    expect(wrapper.find("input").classes()).toContain("is-danger");
-  });
-
-  test("Renders with green border if in success state", () => {
-    const successMsg = "This is SO GOOD";
-    const wrapper = mount(NumberInput, {
-      props: {
-        ...defaultProps,
-        successMsg,
-      },
-    });
-    expect(wrapper.find("input").classes()).toContain("is-success");
-  });
-
-  test("Renders with green border if isValid provided", () => {
-    const wrapper = mount(NumberInput, {
-      props: {
-        ...defaultProps,
-        isValid: true,
-      },
-    });
-    expect(wrapper.find("input").classes()).toContain("is-success");
+    expect(wrapper.find("input").element.classList).toContain("is-danger");
   });
 });
