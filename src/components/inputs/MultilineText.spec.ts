@@ -4,7 +4,7 @@ import MultilineText from "./MultilineText.vue";
 const defaultProps = {
   name: "message",
   label: "Message",
-  cols: 40,
+  columns: 40,
   rows: 20,
 };
 
@@ -32,15 +32,15 @@ describe("Components | Inputs | MultilineText", () => {
   });
 
   test("Renders textarea with provided number of columns", async () => {
-    const cols = 12;
+    const columns = 12;
     const wrapper = mount(MultilineText, {
       props: {
         ...defaultProps,
-        cols,
+        columns,
       },
     });
-    expect(wrapper.find("textarea").attributes("cols")).toBe(cols.toString());
-    await wrapper.setProps({ cols: 18 });
+    expect(wrapper.find("textarea").attributes("cols")).toBe(columns.toString());
+    await wrapper.setProps({ columns: 18 });
     expect(wrapper.find("textarea").attributes("cols")).toBe("18");
   });
 
