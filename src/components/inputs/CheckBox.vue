@@ -15,13 +15,19 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { defaultProps } from "../../composers/inputs";
 
 export default defineComponent({
   name: "CheckBox",
   emits: ["update:modelValue"],
   props: {
-    ...defaultProps(),
+    name: {
+      type: String,
+      required: true,
+    },
+    label: {
+      type: String,
+      required: true,
+    },
     modelValue: {
       type: Boolean,
     },

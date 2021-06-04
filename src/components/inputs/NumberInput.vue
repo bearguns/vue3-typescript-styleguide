@@ -16,6 +16,8 @@
         @blur="validateOnBlur"
       />
     </div>
+    <p class="help">{{ helpText }}</p>
+    <p class="help is-danger">{{ errorMsg }}</p>
   </div>
 </template>
 
