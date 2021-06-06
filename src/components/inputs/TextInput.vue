@@ -1,95 +1,160 @@
 <template>
-  <InputField
-    :label="label"
-    :name="name"
-    :errorMsg="errorMsg || error"
-    :helpMsg="helpMsg"
-    :successMsg="successMsg"
-    :isValid="success"
-  >
-    <template v-slot:input>
+  <div class="field">
+    <label class="label" :class="{ 'has-text-danger': errorMsg }" :for="name" :data-qa="`${name}_label`">
+      {{ label }}
+    </label>
+    <div class="control">
       <input
-        type="text"
         class="input"
-        :class="inputClasses"
-        :data-qa="`${name}_input`"
-        :name="name"
+        :class="{ 'is-danger': errorMsg }"
+        :type="inputType"
         :value="modelValue"
         :placeholder="placeholder"
+        :name="name"
+        :disabled="isDisabled"
+        :data-qa="`${name}_input`"
         @input="$emit('update:modelValue', $event.target.value)"
-        @blur="validateOnBlur($event.target.value)"
+        @blur="validateOnBlur"
       />
-    </template>
-  </InputField>
+    </div>
+    <p class="help">{{ helpText }}</p>
+    <p class="help is-danger">{{ errorMsg }}</p>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, toRef, ref } from "vue";
+import { defineComponent, ref, computed, PropType } from "vue";
 import {
-  defaultProps,
-  classBindings,
   Include,
+  validateEmailAddress,
   validateRequired,
+  errors,
   validateIncluded,
   validateExcluded,
-  errors,
 } from "../../composers/inputs";
-import InputField from "./InputField.vue";
+
+type InputType = "text" | "email" | "password";
 
 export default defineComponent({
   name: "TextInput",
-  components: { InputField },
-  emits: ["blur", "update:modelValue"],
   props: {
-    ...defaultProps(),
+    inputType: {
+      type: String as PropType<InputType>,
+      required: false,
+      default: "text",
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    label: {
+      type: String,
+      required: true,
+    },
+    placeholder: {
+      type: String,
+      required: true,
+    },
     modelValue: {
+      type: String,
+      required: false,
+      default: "",
+    },
+    include: {
+      type: Object as PropType<Include>,
+      required: false,
+    },
+    exclude: {
+      type: Array as PropType<string[]>,
+      required: false,
+    },
+    isDisabled: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    minLength: {
+      type: Number,
+      required: false,
+    },
+    maxLength: {
+      type: Number,
+      required: false,
+    },
+    required: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    helpText: {
+      type: String,
+      required: false,
+    },
+    errorText: {
       type: String,
       required: false,
     },
   },
-  setup(props, { emit }) {
-    const error = ref("");
-    function validateOnBlur(value: string): void {
-      emit("blur", value);
-      if (props.errorMsg) {
-        error.value = props.errorMsg;
+  setup(props) {
+    const localValidationError = ref("");
+    const errorMsg = computed(() => {
+      if (props.errorText) {
+        return props.errorText;
+      }
+      return localValidationError.value;
+    });
+
+    function validateOnBlur(): void {
+      if (props.inputType === "email") {
+        localValidationError.value = validateEmailAddress(props.modelValue) ? "" : errors.emailInvalid;
+        console.log("Error message: ", errorMsg.value);
         return undefined;
       }
 
       if (props.required) {
-        error.value = value.trim().length ? "" : errors.blank;
+        localValidationError.value = validateRequired(props.modelValue) ? "" : errors.blank;
+        console.log("Error message: ", errorMsg.value);
         return undefined;
       }
 
       if (props.include) {
         if (props.include.strict) {
-          error.value = validateIncluded(value, props.include) ? "" : errors.includeStrict(props.include.chars);
+          localValidationError.value = validateIncluded(props.modelValue, props.include)
+            ? ""
+            : errors.includeStrict(props.include.chars);
+          console.log("Error message: ", errorMsg.value);
           return undefined;
         }
-        error.value = validateIncluded(value, props.include) ? "" : errors.include(props.include.chars);
+        localValidationError.value = validateIncluded(props.modelValue, props.include)
+          ? ""
+          : errors.include(props.include.chars);
+        console.log("Error message: ", errorMsg.value);
         return undefined;
       }
 
       if (props.exclude) {
-        error.value = validateExcluded(value, props.exclude) ? "" : errors.exclude(props.exclude);
+        console.log("EXCLUDE: ", props.exclude);
+        localValidationError.value = validateExcluded(props.modelValue, props.exclude)
+          ? ""
+          : errors.exclude(props.exclude);
+        console.log("Error message: ", errorMsg.value);
         return undefined;
       }
 
-      if (props.min) {
-        error.value = value.length >= props.min ? "" : errors.short(props.min);
+      if (props.minLength) {
+        localValidationError.value = props.modelValue.length >= props.minLength ? "" : errors.short(props.minLength);
+        console.log("Error message: ", errorMsg.value);
         return undefined;
       }
 
-      if (props.max) {
-        error.value = value.length <= props.max ? "" : errors.long(props.max);
+      if (props.maxLength) {
+        localValidationError.value = props.modelValue.length <= props.maxLength ? "" : errors.long(props.maxLength);
+        console.log("Error message: ", errorMsg.value);
+        return undefined;
       }
     }
 
-    return {
-      inputClasses: classBindings(props),
-      error,
-      validateOnBlur,
-    };
+    return { errorMsg, validateOnBlur };
   },
 });
 </script>

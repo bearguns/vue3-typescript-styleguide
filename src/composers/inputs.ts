@@ -1,11 +1,9 @@
-import { computed, PropType } from "vue";
-
 export const errors = {
   blank: "This field cannot be blank.",
   emailInvalid: "Email address is not valid.",
   numeric: "Field must only contain numbers.",
   alpha: "Field must only contain letters.",
-  exclude(exclude: string[]) {
+  exclude(exclude: string[]): string {
     return `This field cannot contain these characters: ${exclude.join(",")}`;
   },
   includeStrict(include: string[]) {
@@ -14,10 +12,10 @@ export const errors = {
   include(include: string[]) {
     return `This field must include at least one of these characters: ${include.join(",")}`;
   },
-  long(max: number) {
+  long(max: number): string {
     return `Must be ${max} or fewer characters.`;
   },
-  short(min: number) {
+  short(min: number): string {
     return `Must be at least ${min} characters.`;
   },
 };
@@ -31,73 +29,9 @@ export interface Include {
   strict?: boolean;
 }
 
-const props = {
-  label: {
-    type: String,
-    required: true,
-  },
-  name: {
-    type: String,
-    required: true,
-  },
-  placeholder: {
-    type: String,
-    required: true,
-  },
-  helpMsg: {
-    type: String,
-    required: false,
-  },
-  errorMsg: {
-    type: String,
-    required: false,
-  },
-  successMsg: {
-    type: String,
-    required: false,
-  },
-  success: {
-    type: Boolean,
-    required: false,
-  },
-  allow: {
-    type: String as PropType<Allow>,
-    required: false,
-    default: "alphanumeric",
-  },
-  required: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  include: {
-    type: Object as PropType<Include>,
-    required: false,
-  },
-  exclude: {
-    type: Array as PropType<string[]>,
-    required: false,
-  },
-  min: {
-    type: Number,
-    required: false,
-  },
-  max: {
-    type: Number,
-    required: false,
-  },
-};
-
-export const defaultProps = () => props;
-
-export const classBindings = (props: any) => {
-  return computed(() => {
-    return {
-      "is-danger": props.errorMsg,
-      "is-success": props.success || props.successMsg,
-    };
-  });
-};
+export function validateEmailAddress(emailAddress: string): boolean {
+  return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(emailAddress);
+}
 
 export const validateRequired = (value: InputValue): boolean => !!value;
 

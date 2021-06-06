@@ -20,7 +20,6 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import { defaultProps } from "../../composers/inputs";
 import { UploadIcon } from "../icons";
 
 export default defineComponent({
@@ -28,7 +27,14 @@ export default defineComponent({
   components: { UploadIcon },
   emits: ["change"],
   props: {
-    ...defaultProps(),
+    name: {
+      type: String,
+      required: true,
+    },
+    label: {
+      type: String,
+      required: true,
+    },
     accept: {
       type: String,
       required: false,

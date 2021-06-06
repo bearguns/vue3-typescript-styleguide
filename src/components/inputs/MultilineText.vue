@@ -1,40 +1,38 @@
 <template>
-  <InputField
-    :name="name"
-    :label="label"
-    :errorMsg="errorMsg"
-    :helpMsg="helpMsg"
-    :successMsg="successMsg"
-    :isValid="isValid"
-  >
-    <template v-slot:input>
+  <div class="field">
+    <label class="label" :for="name" :data-qa="`${name}_label`">{{ label }}</label>
+    <div class="control">
       <textarea
         class="textarea"
-        :class="inputClasses"
-        :cols="cols"
-        id=""
+        :class="{ 'is-danger': errorMsg }"
         :name="name"
+        :cols="columns"
         :rows="rows"
         :value="modelValue"
         :data-qa="`${name}_textarea`"
         @input="$emit('update:modelValue', $event.target.value)"
-        @blur="$emit('blur')"
-      ></textarea>
-    </template>
-  </InputField>
+        @blur="validateOnBlur"
+      />
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import { defaultProps, classBindings } from "../../composers/inputs.ts";
-import InputField from "./InputField.vue";
+import { defineComponent, ref, computed } from "vue";
+import { errors } from "../../composers/inputs";
 export default defineComponent({
   name: "MultilineText",
-  components: { InputField },
   emits: ["blur", "update:modelValue"],
   props: {
-    ...defaultProps(),
-    cols: {
+    name: {
+      type: String,
+      required: true,
+    },
+    label: {
+      type: String,
+      required: true,
+    },
+    columns: {
       type: Number,
       required: false,
       default: 30,
@@ -48,11 +46,34 @@ export default defineComponent({
       type: String,
       required: false,
     },
+    required: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    helpText: {
+      type: String,
+      required: false,
+    },
+    errorText: {
+      type: String,
+      required: false,
+    },
   },
-  setup(props) {
-    return {
-      inputClasses: classBindings(props),
-    };
+  setup(props, { emit }) {
+    const localValidationError = ref("");
+    const errorMsg = computed(() => props.errorText || localValidationError.value);
+
+    function validateOnBlur(): void {
+      emit("blur");
+      if (props.required && !props.modelValue) {
+        localValidationError.value = errors.blank;
+        return undefined;
+      }
+      localValidationError.value = "";
+    }
+
+    return { errorMsg, validateOnBlur };
   },
 });
 </script>

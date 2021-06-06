@@ -1,13 +1,7 @@
 <template>
-  <InputField
-    :name="name"
-    :label="label"
-    :errorMsg="errorMsg"
-    :successMsg="successMsg"
-    :helpMsg="helpMsg"
-    :isValid="isValid"
-  >
-    <template v-slot:input>
+  <div class="field">
+    <label class="label" :for="name" :data-qa="`${name}_label`">{{ label }}</label>
+    <div class="control">
       <input
         :name="name"
         :data-qa="`${name}_input`"
@@ -17,24 +11,30 @@
         :min="min"
         :max="max"
         class="input"
-        :class="inputClasses"
+        :class="{ 'is-danger': errorMsg }"
         @input="$emit('update:modelValue', $event.target.value)"
-        @blur="$emit('blur')"
+        @blur="validateOnBlur"
       />
-    </template>
-  </InputField>
+    </div>
+    <p class="help">{{ helpText }}</p>
+    <p class="help is-danger">{{ errorMsg }}</p>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import { defaultProps, classBindings } from "../../composers/inputs.ts";
-import InputField from "./InputField.vue";
-export default {
+import { defineComponent, computed, ref } from "vue";
+export default defineComponent({
   name: "NumberInput",
-  components: { InputField },
   emits: ["blur", "update:modelValue"],
   props: {
-    ...defaultProps(),
+    name: {
+      type: String,
+      required: true,
+    },
+    label: {
+      type: String,
+      required: true,
+    },
     step: {
       type: Number,
       required: false,
@@ -54,11 +54,40 @@ export default {
       type: Number,
       required: false,
     },
+    errorText: {
+      type: String,
+      required: false,
+    },
+    helpText: {
+      type: String,
+      required: false,
+    },
   },
-  setup(props) {
+  setup(props, { emit }) {
+    const localValidationError = ref("");
+    const errorMsg = computed(() => {
+      return props.errorText || localValidationError.value;
+    });
+
+    function validateOnBlur(): void {
+      emit("blur");
+
+      if (props.min) {
+        localValidationError.value = props.modelValue >= props.min ? "" : `Must be at least ${props.min}`;
+        return undefined;
+      }
+
+      if (props.max) {
+        localValidationError.value = props.modelValue <= props.max ? "" : `Cannot be greater than ${props.max}`;
+        return undefined;
+      }
+
+      localValidationError.value = "";
+    }
     return {
-      inputClasses: classBindings(props),
+      errorMsg,
+      validateOnBlur,
     };
   },
-};
+});
 </script>

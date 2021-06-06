@@ -8,9 +8,8 @@
           :data-qa="name"
           :placeholder="placeholder"
           type="text"
-          v-model="modelValue"
           @keyup.enter="$emit('submit')"
-          @input="$emit('update:modelValue', $event.target.value)"
+          @input="debouncedEmit($event.target.value)"
         />
         <span class="icon is-right">
           <SearchIcon color="gray" />
@@ -52,15 +51,22 @@ export default defineComponent({
       required: false,
       default: false,
     },
-    modelValue: {
-      type: String,
-    },
   },
-  setup(props) {
+  setup(props, { emit }) {
     const alignClass = computed(() => (props.align === "right" ? "right-align" : "left-align"));
+    let timeout: number;
+
+    function debouncedEmit(value: string): void {
+      console.log(value);
+      if (timeout) clearTimeout(timeout);
+      setTimeout(() => {
+        emit("update:modelValue", value);
+      }, 500);
+    }
 
     return {
       alignClass,
+      debouncedEmit,
     };
   },
 });
