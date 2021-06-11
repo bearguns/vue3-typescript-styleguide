@@ -14,7 +14,6 @@ interface Popup {
   title: string;
   text: string;
   id: string;
-  showConfirm: boolean;
 }
 
 export const toastMessages = reactive<Toast[]>([]);
@@ -23,7 +22,6 @@ export const popupMessage = reactive<Popup>({
   text: "",
   title: "",
   id: "0",
-  showConfirm: true,
 });
 
 function deregisterNotification(id: string) {
@@ -38,7 +36,7 @@ export function deregisterPopup() {
   popupMessage.text = "";
 }
 
-const registerToast = (text: string, status: status, timeout: number = 2000) => {
+const registerToast = (text: string, status: status, timeout: number) => {
   const id = uuid();
   const msg: Toast = {
     text,
@@ -49,41 +47,37 @@ const registerToast = (text: string, status: status, timeout: number = 2000) => 
   setTimeout(() => deregisterNotification(id), timeout);
 };
 
-const registerPopup = (title: string, status: status, text: string, showConfirm?: boolean, timeout: number = 7000) => {
+const registerPopup = (title: string, status: status, text: string) => {
   const id = uuid();
   const msg: Popup = {
     title,
     status,
     text,
     id,
-    showConfirm: showConfirm ? true : false,
   };
   Object.assign(popupMessage, msg);
-  if (!showConfirm) {
-    setTimeout(() => deregisterPopup(), timeout);
-  }
 };
 
 export const toast = {
-  error(text: string, timeout: number) {
+  error(text: string, timeout: number = 5000) {
     registerToast(text, "danger", timeout);
   },
-  success(text: string, timeout: number) {
+  success(text: string, timeout: number = 5000) {
     registerToast(text, "success", timeout);
   },
-  info(text: string, timeout: number) {
+  info(text: string, timeout: number = 5000) {
     registerToast(text, "info", timeout);
   },
 };
 
 export const popup = {
-  error(title: string, text: string, showConfirm: boolean = true) {
-    registerPopup(title, "danger", text, showConfirm);
+  error(title: string, text: string) {
+    registerPopup(title, "danger", text);
   },
-  success(title: string, text: string, showConfirm: boolean = true) {
-    registerPopup(title, "success", text, showConfirm);
+  success(title: string, text: string) {
+    registerPopup(title, "success", text);
   },
-  info(title: string, text: string, showConfirm: boolean = true) {
-    registerPopup(title, "info", text, showConfirm);
+  info(title: string, text: string) {
+    registerPopup(title, "info", text);
   },
 };

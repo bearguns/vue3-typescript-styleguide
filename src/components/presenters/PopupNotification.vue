@@ -9,7 +9,7 @@
     <div class="popup__body">
       <p class="is-size-5">{{ popupMessage.text || "" }}</p>
     </div>
-    <div class="field" v-if="popupMessage.showConfirm">
+    <div class="field">
       <div class="control">
         <AppButton status="primary" @click="deregisterPopup">OK</AppButton>
       </div>
@@ -99,6 +99,10 @@ export default defineComponent({
   align-items: center;
   animation: 0.2s cubic-bezier(0.165, 0.84, 0.44, 1) popupSlideIn;
   animation-fill-mode: forwards;
+
+  &__title {
+    text-align: center;
+  }
 
   &__body {
     text-align: center;

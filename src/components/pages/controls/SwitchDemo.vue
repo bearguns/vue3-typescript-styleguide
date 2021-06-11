@@ -7,6 +7,8 @@
     <CodeHighlight>
       <div class="block" v-html="html"></div>
     </CodeHighlight>
+    <AppSwitch v-model="disabledButOn" label="Disabled switch in 'on' state" :disabled="true" />
+    <AppSwitch v-model="disabledAndOff" label="Disabled switch in 'off' state" :disabled="true" />
   </div>
 </template>
 
@@ -20,8 +22,12 @@ export default defineComponent({
   components: { AppSwitch, CodeHighlight },
   setup() {
     const switchState = ref(false);
+    const disabledButOn = ref(true);
+    const disabledAndOff = ref(false);
     return {
       switchState,
+      disabledButOn,
+      disabledAndOff,
       html,
     };
   },

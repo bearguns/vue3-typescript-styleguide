@@ -118,6 +118,11 @@ export default defineComponent({
     margin-top: 1.75rem;
     padding: 1.25rem;
     text-align: left;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 }
 </style>
