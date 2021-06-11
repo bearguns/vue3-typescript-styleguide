@@ -9,7 +9,7 @@ const defaultProps = {
 };
 
 describe("Components | Inputs | TextInput", () => {
-  test("Sets provided name on name attribute of input", () => {
+  it("Sets provided name on name attribute of input", () => {
     const wrapper = mount(TextInput, {
       props: {
         ...defaultProps,
@@ -36,7 +36,7 @@ describe("Components | Inputs | TextInput", () => {
 
     await wrapper.find("input").setValue("foobar");
     await wrapper.find("input").trigger("input");
-    const emittedValues: any[] = wrapper.emitted("update:modelValue");
+    const emittedValues: any[] = wrapper.emitted("update:modelValue") || [[]];
     expect(emittedValues[0][0]).toEqual("foobar");
   });
 
