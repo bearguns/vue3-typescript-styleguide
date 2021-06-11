@@ -12,27 +12,30 @@ describe("AppSwitch", () => {
       },
     });
     expect(wrapper.find("label").html()).toContain(label);
-    expect(wrapper.find("input").element.name).toEqual(name);
+    expect(wrapper.find("input").attributes("name")).toEqual(name);
   });
+
   it("renders as checked when provided value is true", () => {
     const wrapper = mount(AppSwitch, {
       props: {
         name: "checkbox",
-        checked: true,
+        modelValue: true,
       },
     });
     expect(wrapper.find("input").element.checked).toBe(true);
   });
+
   it("renders as disabled when disabled property is true", () => {
     const wrapper = mount(AppSwitch, {
       props: {
         name: "checkbox",
-        checked: false,
+        modelValue: false,
         disabled: true,
       },
     });
-    expect(wrapper.find("input").element.disabled).toBe(true);
+    expect(wrapper.find("span.switch-label").element.classList).toContain("switch-label--disabled");
   });
+
   it("renders as not checked when provided value is false", () => {
     const wrapper = mount(AppSwitch, {
       props: {
@@ -42,35 +45,44 @@ describe("AppSwitch", () => {
     });
     expect(wrapper.find("input").element.checked).toBe(false);
   });
+
   it("reacts to change in received checked prop", async () => {
     const wrapper = mount(AppSwitch, {
       props: {
         name: "checkbox",
-        checked: false,
+        modelValue: false,
       },
     });
     expect(wrapper.find("input").element.checked).toBe(false);
-    await wrapper.setProps({ checked: true });
+    await wrapper.setProps({ modelValue: true });
     expect(wrapper.find("input").element.checked).toBe(true);
   });
+
   it("emits current value of checkbox when clicked (false => true)", () => {
     const wrapper = mount(AppSwitch, {
       props: {
         name: "checkbox",
-        checked: false,
+        modelValue: false,
       },
     });
-    wrapper.find("input").element.click();
-    expect(wrapper.emitted().click[0]).toEqual([true]);
+    wrapper.find("input").trigger("click");
+    wrapper.find("input").trigger("change");
+    expect(wrapper.emitted("update:modelValue")).toHaveLength(1);
+    // @ts-ignore
+    expect(wrapper.emitted("update:modelValue")[0]).toEqual([true]);
   });
-  it("emits current value of checkbox when clicked (true => false)", () => {
+
+  it("emits current value of checkbox when clicked (true => false)", async () => {
     const wrapper = mount(AppSwitch, {
       props: {
         name: "checkbox",
-        checked: true,
+        modelValue: true,
       },
     });
-    wrapper.find("input").element.click();
-    expect(wrapper.emitted().click[0]).toEqual([false]);
+    wrapper.find("input").trigger("click");
+    wrapper.find("input").trigger("change");
+    expect(wrapper.emitted("update:modelValue")).toHaveLength(1);
+    // @ts-ignore
+    expect(wrapper.emitted("update:modelValue")[0]).toEqual([false]);
   });
 });
