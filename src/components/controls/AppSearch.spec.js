@@ -1,7 +1,7 @@
 import { mount } from "@vue/test-utils";
 import AppSearch from "./AppSearch.vue";
 
-describe("AppSearch", () => {
+describe("Unit | Components | Controls |AppSearch", () => {
   it("renders", () => {
     const wrapper = mount(AppSearch, {
       props: {
@@ -15,6 +15,17 @@ describe("AppSearch", () => {
     });
     expect(wrapper).toBeTruthy();
   });
+
+  it("renders with no button if :hasButton=false", () => {
+    const wrapper = mount(AppSearch, {
+      props: {
+        name: "my-search",
+        hasButton: false,
+      },
+    });
+    expect(wrapper.find("button").exists()).toBeFalsy();
+  });
+
   it("emits current value on input", () => {
     const wrapper = mount(AppSearch, {
       props: {
@@ -27,8 +38,9 @@ describe("AppSearch", () => {
       },
     });
     wrapper.find("input").setValue("foo");
-    expect(wrapper.emitted("update:modelValue")[0]).toEqual(["foo"]);
+    setTimeout(() => expect(wrapper.emitted("update:modelValue")[0]).toEqual(["foo"]), 1000);
   });
+
   it("emits submit event on button click", () => {
     const wrapper = mount(AppSearch, {
       props: {

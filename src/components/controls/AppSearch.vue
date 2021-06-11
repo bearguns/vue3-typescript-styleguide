@@ -57,7 +57,6 @@ export default defineComponent({
     let timeout: number;
 
     function debouncedEmit(value: string): void {
-      console.log(value);
       if (timeout) clearTimeout(timeout);
       setTimeout(() => {
         emit("update:modelValue", value);
