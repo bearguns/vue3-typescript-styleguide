@@ -11,7 +11,7 @@
         :value="modelValue"
         :placeholder="placeholder"
         :name="name"
-        :disabled="isDisabled"
+        :disabled="disabled"
         :data-qa="`${name}_input`"
         @input="$emit('update:modelValue', $event.target.value)"
         @blur="validateOnBlur"
@@ -68,7 +68,7 @@ export default defineComponent({
       type: Array as PropType<string[]>,
       required: false,
     },
-    isDisabled: {
+    disabled: {
       type: Boolean,
       required: false,
       default: false,

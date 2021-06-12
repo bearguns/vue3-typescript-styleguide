@@ -56,6 +56,16 @@ describe("Components | Inputs | TextInput", () => {
     expect(wrapper.find("input").element.value).toContain("foo");
   });
 
+  it("Renders disabled input if :disabled=true", () => {
+    const wrapper = mount(TextInput, {
+      props: {
+        ...defaultProps,
+        disabled: true,
+      },
+    });
+    expect(wrapper.find("input").element.disabled).toBe(true);
+  });
+
   test("Renders red border if in error state", () => {
     const errorText = "This field was filled out incorrectly.";
     const wrapper = mount(TextInput, {
