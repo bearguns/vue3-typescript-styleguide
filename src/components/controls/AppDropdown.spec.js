@@ -2,9 +2,9 @@ import { mount } from "@vue/test-utils";
 import AppDropdown from "./AppDropdown.vue";
 
 describe("AppDropdown", () => {
-  it("renders button element with provided label prop", () => {
+  it("renders provided label in #label slot", () => {
     const wrapper = mount(AppDropdown, {
-      props: {
+      slots: {
         label: "Dropdown",
       },
       global: {
@@ -15,6 +15,7 @@ describe("AppDropdown", () => {
     });
     expect(wrapper.find(".button").html()).toContain("Dropdown");
   });
+
   it("sets active value on button click", async () => {
     const wrapper = mount(AppDropdown, {
       global: {
@@ -29,19 +30,24 @@ describe("AppDropdown", () => {
     await wrapper.find(".button").element.click();
     expect(wrapper.vm.isActive).toBe(false);
   });
-  it("registers event listener if persistent prop is false", () => {
+
+  it("registers event listener if persist prop is false", () => {
     window.addEventListener = jest.fn();
     const wrapper = mount(AppDropdown, {
+      props: {
+        persist: false,
+      },
       global: {
         stubs: {
           ChevronIcon: true,
         },
       },
     });
-    expect(window.addEventListener).toHaveBeenCalledWith("click", wrapper.vm.closeDropdown);
+    expect(window.addEventListener).toHaveBeenCalledTimes(1);
     window.addEventListener.mockClear();
   });
-  it("does not register event listener on window if persistent prop is true", () => {
+
+  it("does not register event listener on window if persist prop is true", () => {
     window.addEventListener = jest.fn();
     const wrapper = mount(AppDropdown, {
       global: {
@@ -50,13 +56,14 @@ describe("AppDropdown", () => {
         },
       },
       props: {
-        persistent: true,
+        persist: true,
       },
     });
     expect(window.addEventListener).not.toHaveBeenCalled();
     window.addEventListener.mockClear();
   });
-  it("removes event listener on unmount when persistent prop is false", async () => {
+
+  it("removes event listener on unmount when persist prop is false", () => {
     window.removeEventListener = jest.fn();
     const wrapper = mount(AppDropdown, {
       global: {
@@ -65,8 +72,8 @@ describe("AppDropdown", () => {
         },
       },
     });
-    await wrapper.unmount();
-    expect(window.removeEventListener).toHaveBeenCalledWith("click", wrapper.vm.closeDropdown);
+    wrapper.unmount();
+    expect(window.removeEventListener).toHaveBeenCalledTimes(1);
     window.removeEventListener.mockClear();
   });
 });

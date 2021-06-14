@@ -3,12 +3,17 @@
     <label class="label" :for="name" data-qa="`${name}_label`">{{ label }}</label>
     <div class="control">
       <label>
-        <span class="switch-label" :class="{ 'switch-label--active': modelValue === true }"></span>
+        <span
+          class="switch-label"
+          :class="{ 'switch-label--active': modelValue === true, 'switch-label--disabled': disabled }"
+        ></span>
         <input
           type="checkbox"
+          :name="name"
           style="position: relative; z-index: -1; opacity: 0"
           @change="$emit('update:modelValue', $event.target.checked)"
           :checked="modelValue"
+          :disabled="disabled"
         />
       </label>
     </div>
@@ -16,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 export default defineComponent({
   name: "AppSwitch",
   emits: ["update:modelValue"],
@@ -59,9 +64,16 @@ label.label {
   border-radius: 100px;
   z-index: 1;
   transition: 0.3s;
+
   &--active {
     background-color: $success;
   }
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
   &:after {
     content: "";
     position: absolute;

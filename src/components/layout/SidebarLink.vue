@@ -33,6 +33,7 @@ export default defineComponent({
   color: $white;
   transition: color 0.3s ease-in-out;
   position: relative;
+  margin-top: 0.25rem;
 
   &.router-link-active,
   &.router-link-exact-active {

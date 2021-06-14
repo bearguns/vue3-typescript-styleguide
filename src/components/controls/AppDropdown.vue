@@ -46,6 +46,7 @@ export default defineComponent({
     function toggleActive(): void {
       isActive.value = !isActive.value;
     }
+
     if (!props.persist) {
       window.addEventListener("click", closeDropdown);
     }

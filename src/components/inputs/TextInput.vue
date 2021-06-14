@@ -11,7 +11,7 @@
         :value="modelValue"
         :placeholder="placeholder"
         :name="name"
-        :disabled="isDisabled"
+        :disabled="disabled"
         :data-qa="`${name}_input`"
         @input="$emit('update:modelValue', $event.target.value)"
         @blur="validateOnBlur"
@@ -68,7 +68,7 @@ export default defineComponent({
       type: Array as PropType<string[]>,
       required: false,
     },
-    isDisabled: {
+    disabled: {
       type: Boolean,
       required: false,
       default: false,
@@ -107,13 +107,11 @@ export default defineComponent({
     function validateOnBlur(): void {
       if (props.inputType === "email") {
         localValidationError.value = validateEmailAddress(props.modelValue) ? "" : errors.emailInvalid;
-        console.log("Error message: ", errorMsg.value);
         return undefined;
       }
 
       if (props.required) {
         localValidationError.value = validateRequired(props.modelValue) ? "" : errors.blank;
-        console.log("Error message: ", errorMsg.value);
         return undefined;
       }
 
@@ -122,34 +120,28 @@ export default defineComponent({
           localValidationError.value = validateIncluded(props.modelValue, props.include)
             ? ""
             : errors.includeStrict(props.include.chars);
-          console.log("Error message: ", errorMsg.value);
           return undefined;
         }
         localValidationError.value = validateIncluded(props.modelValue, props.include)
           ? ""
           : errors.include(props.include.chars);
-        console.log("Error message: ", errorMsg.value);
         return undefined;
       }
 
       if (props.exclude) {
-        console.log("EXCLUDE: ", props.exclude);
         localValidationError.value = validateExcluded(props.modelValue, props.exclude)
           ? ""
           : errors.exclude(props.exclude);
-        console.log("Error message: ", errorMsg.value);
         return undefined;
       }
 
       if (props.minLength) {
         localValidationError.value = props.modelValue.length >= props.minLength ? "" : errors.short(props.minLength);
-        console.log("Error message: ", errorMsg.value);
         return undefined;
       }
 
       if (props.maxLength) {
         localValidationError.value = props.modelValue.length <= props.maxLength ? "" : errors.long(props.maxLength);
-        console.log("Error message: ", errorMsg.value);
         return undefined;
       }
     }

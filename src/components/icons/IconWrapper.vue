@@ -13,6 +13,7 @@ export default defineComponent({
   },
   setup(props) {
     const colorClass = iconColor(props);
+    return { colorClass };
   },
 });
 </script>
