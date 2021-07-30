@@ -1,5 +1,6 @@
 <template>
   <div class="notifications-page">
+    <p>{{ successToast.foo.bar }}</p>
     <PopupDemo />
     <LoadingBannerDemo />
   </div>

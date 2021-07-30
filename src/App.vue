@@ -25,8 +25,10 @@
     </AppSidebar>
     <AppHeader title="Styleguide" @toggle="toggleMenu"> </AppHeader>
     <div class="styleguide__content">
-      <router-view />
-      <NotificationCenter :loading="loading" />
+      <error-boundary>
+        <router-view />
+        <NotificationCenter :loading="loading" />
+      </error-boundary>
     </div>
   </div>
 </template>
@@ -38,10 +40,11 @@ import { useStore } from "vuex";
 import { SidebarLink, SidebarLinkMenu, AppHeader, AppSidebar } from "./components/layout";
 import { NotificationCenter } from "./components/presenters";
 import { UserMenu } from "./components/controls";
+import ErrorBoundary from "./components/error-boundary.vue";
 import { showLoader } from "./composers/demo";
 import logoUrl from "../public/logo.svg";
 export default defineComponent({
-  components: { UserMenu, SidebarLink, SidebarLinkMenu, AppHeader, AppSidebar, NotificationCenter },
+  components: { UserMenu, SidebarLink, SidebarLinkMenu, AppHeader, AppSidebar, NotificationCenter, ErrorBoundary },
   setup() {
     const isMobile = window.innerWidth > 768 ? false : true;
     const menuOpen = ref(isMobile ? false : true);
