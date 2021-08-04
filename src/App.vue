@@ -1,9 +1,6 @@
 <template>
   <div class="styleguide">
     <AppSidebar :open="menuOpen" @toggle="toggleMenu">
-      <template #logo>
-        <img alt="" :src="logoUrl" />
-      </template>
       <template #links>
         <SidebarLink :to="{ name: 'home' }" label="Home" :active="route.name === 'home'" />
         <SidebarLinkMenu
@@ -25,10 +22,8 @@
     </AppSidebar>
     <AppHeader title="Styleguide" @toggle="toggleMenu"> </AppHeader>
     <div class="styleguide__content">
-      <error-boundary>
-        <router-view />
-        <NotificationCenter :loading="loading" />
-      </error-boundary>
+      <router-view />
+      <NotificationCenter :loading="loading" />
     </div>
   </div>
 </template>
@@ -40,11 +35,9 @@ import { useStore } from "vuex";
 import { SidebarLink, SidebarLinkMenu, AppHeader, AppSidebar } from "./components/layout";
 import { NotificationCenter } from "./components/presenters";
 import { UserMenu } from "./components/controls";
-import ErrorBoundary from "./components/error-boundary.vue";
 import { showLoader } from "./composers/demo";
-import logoUrl from "../public/logo.svg";
 export default defineComponent({
-  components: { UserMenu, SidebarLink, SidebarLinkMenu, AppHeader, AppSidebar, NotificationCenter, ErrorBoundary },
+  components: { UserMenu, SidebarLink, SidebarLinkMenu, AppHeader, AppSidebar, NotificationCenter },
   setup() {
     const isMobile = window.innerWidth > 768 ? false : true;
     const menuOpen = ref(isMobile ? false : true);
@@ -64,7 +57,7 @@ export default defineComponent({
       menuOpen.value = !menuOpen.value;
     }
 
-    return { pageTitle, route, showLoader, menuOpen, toggleMenu, loggedIn, logout, logoUrl, loading };
+    return { pageTitle, route, showLoader, menuOpen, toggleMenu, loggedIn, logout, loading };
   },
 });
 </script>
